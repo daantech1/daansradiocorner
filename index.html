@@ -4,24 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#08111e">
-<meta name="description" content="Daan's Radio Corner: FM-radio, noodfrequenties, zendamateurs en radio-ontvangers.">
-<title>Daan's Radio Corner</title>
+<meta name="description" content="Daan's Radio Corner - FM-radio, noodfrequenties, radiozendamateurs en ontvangers.">
+<title>Daan's Radio Corner | Ontdek de ether</title>
 
 <style>
 :root{
   --bg:#08111e;
-  --surface:#121f32;
-  --surface2:#1b2d45;
-  --line:#2c405b;
+  --panel:#122136;
+  --panel2:#1a304b;
+  --line:#2b435f;
   --text:#f2f7ff;
-  --muted:#a5b7cf;
-  --green:#55e7b7;
-  --red:#ff4b64;
-  --amber:#ffc77b;
+  --muted:#a2b6ce;
+  --green:#52e9b8;
+  --red:#fa4a65;
+  --orange:#ffcb80;
+  --cyan:#4fd5ff;
 }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+
 body{
   margin:0;
   background:var(--bg);
@@ -29,461 +31,846 @@ body{
   font-family:Arial,Helvetica,sans-serif;
   line-height:1.6;
 }
+
 button,input,select{font:inherit}
 button{cursor:pointer}
 a{color:var(--green);text-decoration:none}
-.container{width:min(1150px,93%);margin:auto}
+a:hover{text-decoration:underline}
+
+.container{
+  width:min(1150px,93%);
+  margin:auto;
+}
 
 header{
-  background:#0d192bf5;
-  border-bottom:1px solid var(--line);
   position:sticky;
   top:0;
-  z-index:30;
-  backdrop-filter:blur(12px);
+  z-index:50;
+  background:#0d1b2cf5;
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(14px);
 }
+
 .nav{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  gap:12px;
+  justify-content:space-between;
+  gap:14px;
   flex-wrap:wrap;
-  padding:14px 0;
+  padding:15px 0;
 }
+
 .logo{
-  color:white;
-  font-weight:800;
   font-size:21px;
+  font-weight:900;
+  color:white;
 }
+
 .logo span{color:var(--green)}
-.links{display:flex;gap:5px;flex-wrap:wrap}
+
+.links{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+}
+
 .links button{
+  color:var(--muted);
   background:transparent;
   border:0;
-  color:var(--muted);
-  padding:10px 12px;
   border-radius:9px;
+  padding:10px 12px;
 }
-.links button:hover,.links button.active{
-  background:var(--surface2);
+
+.links button:hover,
+.links button.active{
+  background:var(--panel2);
   color:var(--green);
 }
-.page{display:none;min-height:70vh;padding:45px 0 80px}
+
+.page{
+  display:none;
+  min-height:70vh;
+  padding:45px 0 80px;
+}
+
 .page.active{display:block}
+
 .eyebrow{
   color:var(--green);
   font-weight:bold;
-  letter-spacing:2px;
   font-size:12px;
+  letter-spacing:2px;
   text-transform:uppercase;
 }
+
 h1{
-  font-size:clamp(36px,5.5vw,65px);
+  font-size:clamp(36px,5.5vw,64px);
   letter-spacing:-2px;
   line-height:1.12;
   margin:15px 0;
 }
+
 h1 span,h2 span{color:var(--green)}
-h2{font-size:29px;margin:0 0 12px}
-h3{margin:0 0 8px}
+h2{font-size:28px;margin:0 0 12px}
+h3{margin:0 0 9px}
 p{color:var(--muted)}
-.hero{
-  padding:48px 0 50px;
-  text-align:center;
-}
-.hero p{
-  max-width:680px;
-  font-size:18px;
-  margin:15px auto 25px;
-}
-.greeting{
-  font-size:clamp(28px,4vw,45px);
-  color:var(--green);
-  font-weight:800;
-}
+
 .btn{
   display:inline-block;
-  padding:12px 19px;
   background:var(--green);
+  color:#09271d;
+  padding:13px 20px;
   border:1px solid var(--green);
-  border-radius:10px;
+  border-radius:11px;
   font-weight:bold;
-  color:#0b211a;
   margin:5px;
 }
+
 .btn.secondary{
   background:transparent;
   color:var(--green);
 }
+
 .btn.dark{
-  background:var(--surface2);
+  background:var(--panel2);
   border-color:var(--line);
   color:white;
 }
-.btn:hover{filter:brightness(1.1)}
+
+.btn:hover{
+  filter:brightness(1.1);
+  text-decoration:none;
+}
+
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:15px;
-  margin:30px 0;
+  margin:26px 0;
 }
+
 .card{
-  padding:23px;
-  background:var(--surface);
+  background:var(--panel);
   border:1px solid var(--line);
   border-radius:16px;
+  padding:23px;
 }
-.card p{margin-bottom:0}
-.card-icon{font-size:35px;margin-bottom:12px}
-.clickable{cursor:pointer;transition:.2s}
+
+.card-icon{
+  font-size:34px;
+  margin-bottom:12px;
+}
+
+.clickable{
+  cursor:pointer;
+  transition:transform .2s,border-color .2s;
+}
+
 .clickable:hover{
   transform:translateY(-3px);
   border-color:var(--green);
 }
+
+.card p{margin-bottom:0}
+
 .notice{
+  background:#14362e;
+  border:1px solid #337863;
+  padding:19px;
+  border-radius:13px;
   margin:25px 0;
-  padding:19px;
-  background:#14372e;
-  border:1px solid #367a63;
-  border-radius:13px;
 }
-.notice p{color:#c3efdf;margin:0}
+
+.notice p{color:#c3f0df;margin:0}
+
 .warning{
-  background:#362a1e;
-  border:1px solid #937146;
-  border-radius:13px;
+  background:#35291d;
+  border:1px solid #906d42;
   padding:19px;
-  margin:23px 0;
+  border-radius:13px;
+  margin:22px 0;
 }
-.warning p{color:#ebd6b8;margin:0}
+
+.warning p{color:#edd8ba;margin:0}
+
 .badge{
   display:inline-block;
   padding:5px 9px;
+  border-radius:6px;
   font-size:11px;
   font-weight:800;
-  border-radius:6px;
-  background:#20473b;
+  background:#204b3c;
   color:var(--green);
 }
-.badge.red{background:#e5324d;color:white}
-.badge.blue{background:#2b5077;color:#d4e7ff}
-.badge.orange{background:#644427;color:#ffdfb2}
+
+.badge.red{
+  background:#df2b48;
+  color:white;
+}
+
+.badge.blue{
+  background:#284c74;
+  color:#d2e5ff;
+}
+
+.badge.orange{
+  background:#68492e;
+  color:#ffe3bd;
+}
+
+.status-dot{
+  display:inline-block;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--green);
+  margin-right:7px;
+  box-shadow:0 0 10px var(--green);
+}
+
+.status-dot.offline{
+  background:var(--red);
+  box-shadow:0 0 10px var(--red);
+}
+
+.status-dot.unknown{
+  background:var(--orange);
+  box-shadow:0 0 10px var(--orange);
+}
+
+/* ==================================
+   HOMEPAGE
+================================== */
+
+.hero{
+  text-align:center;
+  padding:40px 0 25px;
+}
+
+.greeting{
+  color:var(--green);
+  font-size:clamp(27px,4vw,44px);
+  font-weight:900;
+}
+
+.hero p{
+  max-width:720px;
+  margin:17px auto;
+  font-size:18px;
+}
+
+.home-actions{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:20px 0;
+}
+
+/* ==================================
+   7 SEGMENT KLOK
+================================== */
+
+.clock-panel{
+  max-width:820px;
+  margin:30px auto;
+  background:linear-gradient(140deg,#183448,#0c1e30);
+  border:1px solid #396777;
+  border-radius:24px;
+  padding:25px 15px;
+  box-shadow:0 18px 50px #0006;
+}
+
+.clock-label{
+  color:var(--green);
+  text-align:center;
+  font-size:12px;
+  letter-spacing:3px;
+  font-weight:bold;
+}
+
+.digital-clock{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(3px,1.2vw,10px);
+  margin:24px 0;
+}
+
+.digit{
+  position:relative;
+  width:clamp(32px,8.5vw,75px);
+  height:clamp(59px,15vw,130px);
+  flex-shrink:0;
+}
+
+.segment{
+  position:absolute;
+  background:#1c483a;
+  opacity:.25;
+}
+
+.segment.on{
+  background:var(--green);
+  opacity:1;
+  box-shadow:0 0 13px #52e9b877;
+}
+
+.seg-a,.seg-g,.seg-d{
+  left:16%;
+  width:68%;
+  height:8%;
+  clip-path:polygon(
+    12% 0,88% 0,100% 50%,
+    88% 100%,12% 100%,0 50%
+  );
+}
+
+.seg-a{top:2%}
+.seg-g{top:46%}
+.seg-d{bottom:2%}
+
+.seg-f,.seg-b,.seg-e,.seg-c{
+  height:39%;
+  width:13%;
+  clip-path:polygon(
+    50% 0,100% 10%,100% 90%,
+    50% 100%,0 90%,0 10%
+  );
+}
+
+.seg-f{left:3%;top:8%}
+.seg-b{right:3%;top:8%}
+.seg-e{left:3%;bottom:8%}
+.seg-c{right:3%;bottom:8%}
+
+.colon{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-evenly;
+  align-items:center;
+  height:clamp(59px,15vw,130px);
+  width:clamp(8px,2vw,18px);
+}
+
+.colon i{
+  width:40%;
+  aspect-ratio:1;
+  background:var(--green);
+  border-radius:50%;
+  box-shadow:0 0 10px var(--green);
+}
+
+.clock-date{
+  text-align:center;
+  font-weight:bold;
+  font-size:clamp(16px,2.5vw,23px);
+  color:#d4fff0;
+  text-transform:capitalize;
+}
+
+.clock-zone{
+  color:var(--muted);
+  font-size:12px;
+  text-align:center;
+  margin-top:7px;
+}
+
+/* ==================================
+   LIVE RADIO DASHBOARD
+================================== */
+
+.live-section{
+  margin:35px 0 45px;
+}
+
+.live-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+
+.live-heading h2{margin:0}
+
+.live-label{
+  color:var(--green);
+  font-weight:bold;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+.dashboard{
+  display:grid;
+  grid-template-columns:1.6fr 1fr;
+  gap:16px;
+}
+
+.monitor{
+  background:#101f32;
+  border:1px solid #35556f;
+  border-radius:17px;
+  padding:20px;
+  overflow:hidden;
+}
+
+.monitor-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.monitor-header strong{
+  color:var(--green);
+  letter-spacing:2px;
+  font-size:12px;
+}
+
+.monitor-header span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+#spectrumCanvas{
+  width:100%;
+  height:180px;
+  display:block;
+  margin-top:15px;
+  background:#071622;
+  border:1px solid #254c4b;
+  border-radius:9px;
+}
+
+#waterfallCanvas{
+  width:100%;
+  height:105px;
+  display:block;
+  background:#071622;
+  border:1px solid #254c4b;
+  border-radius:9px;
+  margin-top:8px;
+}
+
+.spectrum-scale{
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-family:monospace;
+  font-size:11px;
+  margin-top:7px;
+}
+
+.monitor-foot{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:11px;
+}
+
+.live-side{
+  display:grid;
+  gap:16px;
+}
+
+.live-stat{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:20px;
+}
+
+.live-stat h3{
+  font-size:15px;
+  color:var(--muted);
+  font-weight:normal;
+}
+
+.stat-value{
+  font-size:clamp(24px,3vw,35px);
+  color:var(--green);
+  font-weight:900;
+  margin:8px 0;
+}
+
+.stat-foot{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.kp-meter{
+  height:10px;
+  background:#25354b;
+  border-radius:10px;
+  overflow:hidden;
+  margin:12px 0;
+}
+
+.kp-fill{
+  height:100%;
+  background:linear-gradient(
+    90deg,#52e9b8,#f9d36f,#f45963
+  );
+  width:0%;
+  transition:width 1s;
+}
+
+.quick-status{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:13px;
+  margin-top:16px;
+}
+
+.quick-item{
+  padding:17px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+.quick-item small{
+  display:block;
+  color:var(--muted);
+  margin-bottom:7px;
+}
+
+.quick-item strong{
+  font-size:15px;
+}
+
+.pulse-icon{
+  display:inline-block;
+  color:var(--green);
+  animation:radioPulse 2s ease-in-out infinite;
+}
+
+@keyframes radioPulse{
+  0%,100%{opacity:.5;transform:scale(.95)}
+  50%{opacity:1;transform:scale(1.1)}
+}
+
+/* ==================================
+   PROVINCIES
+================================== */
+
 .provinces{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:12px;
+  gap:13px;
   margin:25px 0;
 }
+
 .province{
   text-align:left;
-  padding:19px;
-  min-height:103px;
-  background:var(--surface);
-  color:white;
+  background:var(--panel);
   border:1px solid var(--line);
   border-radius:13px;
+  color:white;
+  padding:19px;
+  min-height:105px;
 }
-.province strong{display:block;font-size:17px}
-.province small{display:block;color:var(--muted);margin-top:7px}
-.province:hover{border-color:var(--green);background:#1a3b35}
+
+.province strong{
+  display:block;
+  font-size:17px;
+}
+
+.province small{
+  display:block;
+  color:var(--muted);
+  margin-top:7px;
+}
+
+.province:hover{
+  background:#1a3e38;
+  border-color:var(--green);
+}
+
 .back{
   background:transparent;
   border:0;
   color:var(--green);
-  padding:0;
   margin-bottom:20px;
+  padding:0;
 }
+
+/* ==================================
+   FM RADIO
+================================== */
+
+.emergency{
+  background:#341e2a;
+  border:1px solid #a24960;
+  padding:23px;
+  border-radius:16px;
+  margin:25px 0;
+}
+
+.emergency p{color:#e9c3cb}
+
+.emergency-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:11px;
+  margin-top:18px;
+}
+
+.emergency-item{
+  background:#492531;
+  border:1px solid #985269;
+  border-radius:11px;
+  padding:15px;
+}
+
+.emergency-item strong{
+  display:block;
+  font-size:23px;
+  color:#ffc3cd;
+}
+
+.emergency-item small{color:#e7c6ce}
+
 .search{
   width:100%;
   padding:14px;
-  background:#101e31;
-  border:1px solid #405a77;
-  border-radius:10px;
+  background:#101e30;
   color:white;
-  outline:none;
+  border:1px solid #48617c;
+  border-radius:10px;
   margin:15px 0;
+  outline:none;
 }
+
 .search:focus{border-color:var(--green)}
+
 .table-wrap{
   overflow-x:auto;
   border:1px solid var(--line);
   border-radius:13px;
 }
+
 table{
-  width:100%;
   border-collapse:collapse;
+  width:100%;
   min-width:480px;
 }
+
 th{
-  text-align:left;
-  background:#1c2c43;
   padding:14px;
-  color:#c1d2e8;
+  background:#1a2e46;
+  color:#c3d6eb;
+  text-align:left;
 }
+
 td{
-  padding:13px 14px;
+  padding:14px;
   border-top:1px solid var(--line);
 }
-tr:hover td{background:#192b42}
-.freq{color:var(--green);font-weight:bold}
-.nood-row td{background:#2a1c2a}
-.nood-row .freq{color:#ff95a4}
+
+tr:hover td{background:#1a2b42}
+
+.freq{
+  color:var(--green);
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.emergency-row td{background:#2c1c2a}
+.emergency-row .freq{color:#ff9aaa}
+
 .station-name{
   display:flex;
   gap:8px;
-  align-items:center;
   flex-wrap:wrap;
+  align-items:center;
 }
-.emergency{
+
+/* ==================================
+   REPEATERS
+================================== */
+
+.unlock{
+  background:#1d2f48;
+  border:1px solid #52718c;
   padding:23px;
-  background:#351f2a;
-  border:1px solid #a34960;
   border-radius:15px;
-  margin:24px 0;
+  margin:25px 0;
 }
-.emergency p{color:#e4bec7}
-.emergency-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(205px,1fr));
+
+.unlock-controls{
+  display:flex;
+  align-items:center;
   gap:10px;
-  margin-top:18px;
+  flex-wrap:wrap;
+  margin:15px 0;
 }
-.emergency-item{
-  padding:14px;
-  border:1px solid #965267;
-  background:#482632;
+
+.unlock-controls input{
+  flex:1;
+  min-width:180px;
+  padding:13px;
   border-radius:10px;
+  background:#101e30;
+  border:1px solid #58728d;
+  color:white;
 }
-.emergency-item strong{
-  display:block;
-  color:#ffc0ca;
-  font-size:22px;
+
+.unlock-controls button{
+  background:var(--green);
+  color:#09241c;
+  border:0;
+  border-radius:10px;
+  padding:13px 19px;
+  font-weight:bold;
 }
-.emergency-item small{color:#e5b9c3}
+
 .repeater-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:16px;
   margin-top:20px;
 }
+
 .repeater{
-  background:var(--surface);
+  padding:22px;
+  background:var(--panel);
   border:1px solid var(--line);
   border-radius:15px;
-  padding:22px;
 }
+
 .repeater-head{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:10px;
   flex-wrap:wrap;
 }
+
 .call{
-  font:800 24px monospace;
   color:var(--green);
+  font-family:monospace;
+  font-size:24px;
+  font-weight:900;
 }
+
 .fields{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:10px;
-  margin:20px 0;
+  margin:19px 0;
 }
+
 .field{
-  padding:13px;
-  background:#0e1b2e;
+  background:#0d1b2d;
   border:1px solid var(--line);
   border-radius:10px;
+  padding:13px;
 }
+
 .field small{
   display:block;
   color:var(--muted);
   font-size:11px;
   letter-spacing:1px;
 }
+
 .field strong{
   display:block;
-  font-size:16px;
   margin-top:5px;
+  font-size:16px;
   overflow-wrap:anywhere;
 }
+
 .field.rx strong{color:var(--green)}
-.field.locked strong{color:#91a2b9}
+.field.locked strong{color:#8fa3bc}
+
 .repeater-info{
   border-top:1px solid var(--line);
   padding-top:15px;
 }
-.repeater-info p{margin:5px 0}
+
+.repeater-info p{margin:6px 0}
+
 .repeater-photo{
+  display:block;
   width:100%;
   max-height:350px;
   object-fit:contain;
-  border-radius:12px;
-  background:#091727;
+  margin:18px 0 7px;
+  background:#091725;
   border:1px solid var(--line);
-  margin-top:17px;
+  border-radius:12px;
 }
-.caption{font-size:12px;color:var(--muted)}
-.unlock{
-  padding:23px;
-  background:#1d2d46;
-  border:1px solid #496683;
-  border-radius:15px;
+
+.photo-credit{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.photo-credit a{
+  color:var(--green);
+  text-decoration:underline;
+}
+
+/* ==================================
+   OVERIGE
+================================== */
+
+.info{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:20px;
   margin:25px 0;
 }
-.unlock-controls{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:15px;
-}
-.unlock-controls input{
-  flex:1;
-  min-width:180px;
-  padding:13px;
-  background:#102035;
-  border:1px solid #526d88;
-  border-radius:10px;
-  color:white;
-}
-.unlock-controls button{
-  padding:13px 18px;
-  background:var(--green);
-  border:0;
-  color:#082319;
-  border-radius:10px;
-  font-weight:bold;
-}
-.info{
-  background:var(--surface);
-  border:1px solid var(--line);
-  padding:20px;
-  border-radius:13px;
-  margin:26px 0;
-}
+
 .info a{text-decoration:underline}
+
 .empty{
-  padding:25px;
-  color:var(--muted);
+  padding:28px;
   text-align:center;
+  color:var(--muted);
 }
+
 footer{
   border-top:1px solid var(--line);
-  padding:30px 12px;
   text-align:center;
+  padding:30px 12px;
   color:var(--muted);
   font-size:14px;
 }
 
-/* =====================================
-   7-SEGMENT DIGITALE KLOK
-===================================== */
-
-.clock-panel{
-  background:linear-gradient(150deg,#152a3b,#0b1a2a);
-  border:1px solid #355c69;
-  border-radius:23px;
-  max-width:800px;
-  margin:35px auto;
-  padding:28px 20px 24px;
-  box-shadow:0 18px 60px #0005;
-}
-.clock-label{
-  color:var(--green);
-  letter-spacing:3px;
-  font-size:12px;
-  text-align:center;
-  font-weight:bold;
-}
-.digital-clock{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:clamp(4px,1.4vw,12px);
-  margin:22px auto;
-}
-.digit{
-  position:relative;
-  width:clamp(32px,8.7vw,76px);
-  height:clamp(60px,16.2vw,132px);
-  flex-shrink:0;
-}
-.segment{
-  position:absolute;
-  background:#15392f;
-  opacity:.35;
-  transition:background .12s,opacity .12s;
-}
-.segment.on{
-  background:var(--green);
-  opacity:1;
-  box-shadow:0 0 12px #55e8b877;
-}
-.seg-a,.seg-g,.seg-d{
-  left:16%;
-  width:68%;
-  height:8%;
-  clip-path:polygon(12% 0,88% 0,100% 50%,88% 100%,12% 100%,0 50%);
-}
-.seg-a{top:2%}
-.seg-g{top:46%}
-.seg-d{bottom:2%}
-.seg-f,.seg-b,.seg-e,.seg-c{
-  height:39%;
-  width:13%;
-  clip-path:polygon(50% 0,100% 10%,100% 90%,50% 100%,0 90%,0 10%);
-}
-.seg-f{left:3%;top:8%}
-.seg-b{right:3%;top:8%}
-.seg-e{left:3%;bottom:8%}
-.seg-c{right:3%;bottom:8%}
-.colon{
-  display:flex;
-  flex-direction:column;
-  justify-content:space-evenly;
-  align-items:center;
-  height:clamp(60px,16.2vw,132px);
-  width:clamp(8px,2vw,18px);
-  flex-shrink:0;
-}
-.colon i{
-  width:40%;
-  aspect-ratio:1;
-  background:var(--green);
-  border-radius:50%;
-  box-shadow:0 0 10px #55e8b877;
-}
-.clock-date{
-  text-align:center;
-  color:#d4f9ea;
-  font-size:clamp(16px,2.5vw,22px);
-  font-weight:bold;
-  text-transform:capitalize;
-}
-.clock-zone{
-  text-align:center;
-  color:var(--muted);
-  font-size:12px;
-  margin-top:9px;
-}
 @media(max-width:950px){
   .grid{grid-template-columns:repeat(2,1fr)}
   .provinces{grid-template-columns:repeat(3,1fr)}
+  .dashboard{grid-template-columns:1fr}
+  .live-side{grid-template-columns:repeat(2,1fr)}
 }
+
 @media(max-width:650px){
   .nav{justify-content:center}
   .links{justify-content:center}
   .links button{padding:8px}
   .grid,.repeater-grid{grid-template-columns:1fr}
   .provinces{grid-template-columns:repeat(2,1fr)}
-  .province{padding:15px}
+  .live-side{grid-template-columns:1fr}
+  .quick-status{grid-template-columns:1fr}
   .page{padding-top:30px}
-  .clock-panel{padding:19px 8px}
+  .clock-panel{padding:18px 8px}
   .digital-clock{gap:4px}
+  .monitor{padding:12px}
 }
+
 @media(prefers-reduced-motion:reduce){
-  .clickable{transition:none}
-  html{scroll-behavior:auto}
+  *,*:before,*:after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
 }
 </style>
 </head>
@@ -492,7 +879,10 @@ footer{
 
 <header>
 <div class="container nav">
-  <a href="#home" class="logo">📻 Daan's <span>Radio Corner</span></a>
+  <a class="logo" href="#home">
+    📻 Daan's <span>Radio Corner</span>
+  </a>
+
   <nav class="links">
     <button data-page="home">Home</button>
     <button data-page="fm">FM-radio</button>
@@ -505,435 +895,648 @@ footer{
 
 <main>
 
-<!-- =====================================
+<!-- ==================================
      HOMEPAGE
-===================================== -->
+================================== -->
 
 <section id="home" class="page">
 <div class="container">
 
-<div class="hero">
+  <div class="hero">
 
-  <div class="eyebrow">● Welkom in de wereld van radio</div>
-
-  <div class="greeting" id="greeting">Welkom!</div>
-
-  <h1>Daan's <span>Radio Corner.</span></h1>
-
-  <p>
-    Welkom op mijn radio-website!
-    Hier ontdek je alles over gewone FM-radio,
-    regionale noodzenders, radiozendamateurs
-    en binnenkort radio-ontvangers.
-  </p>
-
-  <!-- LIVE KLOK -->
-
-  <div class="clock-panel">
-    <div class="clock-label">◉ NEDERLANDSE TIJD</div>
-
-    <div class="digital-clock" id="digitalClock"
-         role="timer" aria-label="Nederlandse tijd"></div>
-
-    <div class="clock-date" id="clockDate">
-      Datum laden...
+    <div class="eyebrow">
+      ● Welkom in de wereld van radio
     </div>
 
-    <div class="clock-zone" id="clockZone">
-      Europe/Amsterdam
+    <div class="greeting" id="greeting">
+      Welkom!
     </div>
+
+    <h1>Daan's <span>Radio Corner.</span></h1>
+
+    <p>
+      Welkom op mijn radio-website!
+      Ontdek FM-radio, calamiteitenzenders,
+      radiozendamateurs en radio-ontvangers.
+    </p>
+
+    <!-- DIGITALE KLOK -->
+
+    <div class="clock-panel">
+
+      <div class="clock-label">
+        ◉ NEDERLANDSE TIJD
+      </div>
+
+      <div class="digital-clock"
+           id="digitalClock"
+           role="timer"
+           aria-label="Nederlandse tijd">
+      </div>
+
+      <div id="clockDate" class="clock-date"></div>
+
+      <div id="clockZone" class="clock-zone">
+        Europe/Amsterdam
+      </div>
+
+    </div>
+
+    <div class="home-actions">
+      <button class="btn" data-page="fm">
+        📻 FM-radio
+      </button>
+
+      <button class="btn secondary" data-page="amateur">
+        📡 Zendamateurs
+      </button>
+
+      <button class="btn secondary" data-page="receiver">
+        🎧 Radio-ontvangers
+      </button>
+    </div>
+
   </div>
 
-  <p>
-    Ontdek welke radiozenders je kunt ontvangen,
-    bekijk amateurrepeaters of lees meer
-    over het fascinerende radiospectrum.
-  </p>
+  <!-- LIVE RADIO DASHBOARD -->
 
-  <button class="btn" data-page="fm">📻 FM-radio</button>
-  <button class="btn secondary" data-page="amateur">📡 Zendamateurs</button>
+  <div class="live-section">
 
-</div>
+    <div class="live-heading">
+      <div>
+        <div class="eyebrow">Radio Control Center</div>
+        <h2>📡 Live <span>Radio Dashboard</span></h2>
+      </div>
 
-<h2>Waar wil je naartoe?</h2>
+      <div class="live-label">
+        <span class="pulse-icon">◉</span> LIVE MONITOR
+      </div>
+    </div>
 
-<div class="grid">
-  <div class="card clickable" data-page="fm">
-    <div class="card-icon">📻</div>
-    <h3>FM-radio</h3>
+    <div class="dashboard">
+
+      <!-- SPECTRUM -->
+
+      <div class="monitor">
+
+        <div class="monitor-header">
+          <strong>◉ SPECTRUM MONITOR</strong>
+          <span>FM 87.5 – 108.0 MHz</span>
+        </div>
+
+        <canvas id="spectrumCanvas"></canvas>
+
+        <div class="spectrum-scale">
+          <span>87.5</span>
+          <span>92</span>
+          <span>96</span>
+          <span>100</span>
+          <span>104</span>
+          <span>108 MHz</span>
+        </div>
+
+        <canvas id="waterfallCanvas"></canvas>
+
+        <div class="monitor-foot">
+          <span class="status-dot"></span>
+          Geanimeerde spectrum- en watervalsimulatie.
+          Geen echte antenne of RF-metingen.
+        </div>
+
+      </div>
+
+      <!-- LIVE GEGEVENS -->
+
+      <div class="live-side">
+
+        <div class="live-stat">
+
+          <h3>☀️ Geomagnetische activiteit</h3>
+
+          <div class="stat-value" id="kpValue">
+            -- 
+          </div>
+
+          <div class="kp-meter">
+            <div class="kp-fill" id="kpFill"></div>
+          </div>
+
+          <div id="kpDescription" class="stat-foot">
+            NOAA-gegevens laden...
+          </div>
+
+          <div id="kpUpdated" class="stat-foot">
+          </div>
+
+          <a href="https://www.swpc.noaa.gov/"
+             target="_blank"
+             rel="noopener noreferrer"
+             style="font-size:12px">
+            Bron: NOAA Space Weather ↗
+          </a>
+
+        </div>
+
+        <div class="live-stat">
+
+          <h3>📡 PI3UTR repeaterstatus</h3>
+
+          <div class="stat-value" style="font-size:25px">
+            PI3UTR
+          </div>
+
+          <p style="margin:5px 0">
+            RX: 145.575 MHz
+          </p>
+
+          <div class="stat-foot">
+            Beheerder: Stichting Scoop Hobbyfonds
+          </div>
+
+          <a class="btn secondary"
+             href="https://hobbyscoop.nl/status/pi3utr/"
+             target="_blank"
+             rel="noopener noreferrer"
+             style="margin-top:14px;font-size:13px">
+            Bekijk actuele status ↗
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- EXTRA STATUS -->
+
+    <div class="quick-status">
+
+      <div class="quick-item">
+        <small>🌐 Internetverbinding</small>
+        <strong id="networkStatus">
+          Verbinding controleren...
+        </strong>
+      </div>
+
+      <div class="quick-item">
+        <small>🕒 Nederlandse tijdzone</small>
+        <strong id="timeZoneStatus">
+          Europe/Amsterdam
+        </strong>
+      </div>
+
+      <div class="quick-item">
+        <small>📻 Laatste ruimteweerupdate</small>
+        <strong id="lastUpdate">
+          Nog niet geladen
+        </strong>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- WEBSITE ONDERDELEN -->
+
+  <h2>Wat wil je ontdekken?</h2>
+
+  <div class="grid">
+
+    <div class="card clickable" data-page="fm">
+      <div class="card-icon">📻</div>
+      <h3>FM-radio</h3>
+      <p>
+        Landelijke, regionale en lokale zenders.
+        Met noodfrequenties per provincie.
+      </p>
+    </div>
+
+    <div class="card clickable" data-page="amateur">
+      <div class="card-icon">📡</div>
+      <h3>Zendamateurs</h3>
+      <p>
+        RX, TX, CTCSS, repeaters
+        en informatie per regio.
+      </p>
+    </div>
+
+    <div class="card clickable" data-page="receiver">
+      <div class="card-icon">🎧</div>
+      <h3>Radio-ontvangers</h3>
+      <p>
+        Binnenkort scanners, SDR,
+        luisteren en ontvangen.
+      </p>
+    </div>
+
+    <div class="card clickable" data-page="about">
+      <div class="card-icon">👋</div>
+      <h3>Over Daan</h3>
+      <p>
+        Alles over mijn radiohobby,
+        apparatuur en projecten.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="notice">
     <p>
-      Normale muziekzenders, lokale radio,
-      landelijke zenders en noodfrequenties.
+      <strong>📡 Welkom bij Daan's Radio Corner!</strong>
+      De website wordt verder uitgebreid
+      met meer frequenties, radio-informatie
+      en handige functies.
     </p>
   </div>
-
-  <div class="card clickable" data-page="amateur">
-    <div class="card-icon">📡</div>
-    <h3>Zendamateurs</h3>
-    <p>
-      Amateurrepeaters, RX, TX, CTCSS
-      en informatie per regio.
-    </p>
-  </div>
-
-  <div class="card clickable" data-page="receiver">
-    <div class="card-icon">🎧</div>
-    <h3>Radio-ontvangers</h3>
-    <p>
-      Binnenkort meer over luisteren,
-      ontvangers, SDR en radiosignalen.
-    </p>
-  </div>
-
-  <div class="card clickable" data-page="about">
-    <div class="card-icon">👋</div>
-    <h3>Over Daan</h3>
-    <p>
-      Mijn radiohobby, apparatuur,
-      projecten en informatie over deze site.
-    </p>
-  </div>
-</div>
-
-<div class="notice">
-  <p>
-    <strong>📻 Daan's Radio Corner</strong><br>
-    Een radio-website voor luisteraars en zendamateurs.
-    De informatie wordt verder aangevuld en gecontroleerd.
-  </p>
-</div>
 
 </div>
 </section>
 
-<!-- =====================================
-     NORMALE FM-RADIO
-===================================== -->
+<!-- ==================================
+     FM RADIO
+================================== -->
 
 <section id="fm" class="page">
 <div class="container">
 
-<div class="eyebrow">Gewone FM-radio · Nederland</div>
-<h1>FM-radio <span>Nederland.</span></h1>
-<p>
-  Kies een provincie om radiofrequenties te bekijken.
-  De regionale noodfrequenties herken je
-  direct aan het rode label.
-</p>
+  <div class="eyebrow">FM-radio Nederland</div>
 
-<div id="fmProvinces" class="provinces"></div>
+  <h1>Ontdek de <span>FM-band.</span></h1>
 
-<div class="info">
-  <h3>📻 Welke zenders vind je hier?</h3>
   <p>
-    Landelijke publieke en commerciële radio,
-    regionale omroepen en lokale FM-zenders.
-    De lijst is uitbreidbaar en niet compleet.
+    Selecteer een provincie om de beschikbare
+    radiofrequenties te bekijken.
+    Noodfrequenties herken je aan het rode label.
   </p>
-  <p>
-    Voor een uitgebreider overzicht:
+
+  <div id="fmProvinces" class="provinces"></div>
+
+  <div class="info">
+    <h3>📻 FM-radio in Nederland</h3>
+
+    <p>
+      Het reguliere FM-omroepbereik loopt van
+      87,5 tot 108 MHz.
+    </p>
+
+    <p>
+      Deze lijst bevat een selectie van
+      landelijke, regionale en lokale zenders.
+      Niet elke frequentie is overal in
+      de provincie te ontvangen.
+    </p>
+
     <a href="https://www.radio-tv-nederland.nl/"
        target="_blank" rel="noopener noreferrer">
-      Radio-TV Nederland ↗
+      Bekijk aanvullende FM-frequenties ↗
     </a>
-  </p>
-</div>
+  </div>
 
 </div>
 </section>
 
-<!-- FM-PROVINCIE -->
+<!-- FM PROVINCIE -->
 
 <section id="fmRegion" class="page">
 <div class="container">
 
-<button class="back" id="fmBack">← Alle provincies</button>
+  <button class="back" id="fmBack">
+    ← Alle provincies
+  </button>
 
-<div class="eyebrow">FM-radio per provincie</div>
-<h1 id="fmRegionTitle"></h1>
-<p>Zoek een radiozender, plaats of frequentie.</p>
+  <div class="eyebrow">
+    FM-frequenties per provincie
+  </div>
 
-<div class="emergency">
-  <span class="badge red">🚨 NOODFREQUENTIE</span>
-  <h2 style="margin-top:12px">Regionale calamiteitenzenders</h2>
+  <h1 id="fmRegionTitle"></h1>
 
   <p>
-    Bij een calamiteit kan de overheid via deze
-    regionale publieke omroep informatie geven.
+    Radiozenders en regionale
+    calamiteitenfrequenties.
   </p>
 
-  <div id="emergencyGrid" class="emergency-grid"></div>
+  <div class="emergency">
 
-  <p style="font-size:13px">
-    Bron:
-    <a href="https://www.denkvooruit.nl/bereid-je-voor/zo-krijg-je-een-waarschuwing/radio"
-       target="_blank" rel="noopener noreferrer">
-      Denk Vooruit – Officiële noodradiofrequenties
-    </a>.
-  </p>
-</div>
+    <span class="badge red">
+      🚨 NOODFREQUENTIE
+    </span>
 
-<h2>📻 FM-frequenties</h2>
+    <h2 style="margin-top:13px">
+      Regionale calamiteitenzenders
+    </h2>
 
-<input class="search" id="fmSearch"
-       type="search"
-       placeholder="Zoek bijvoorbeeld 538, NPO, Amsterdam of 97.5...">
+    <p>
+      Bij een calamiteit kan de overheid
+      de regionale publieke omroep gebruiken
+      om informatie door te geven.
+    </p>
 
-<p id="fmCount"></p>
+    <div id="emergencyGrid" class="emergency-grid"></div>
 
-<div class="table-wrap">
-  <table>
-    <thead>
-      <tr>
-        <th>MHz</th>
-        <th>Radiozender</th>
-        <th>Locatie / regio</th>
-      </tr>
-    </thead>
-    <tbody id="fmRows"></tbody>
-  </table>
-</div>
+    <p style="font-size:12px">
+      Bron:
+      <a href="https://www.denkvooruit.nl/bereid-je-voor/zo-krijg-je-een-waarschuwing/radio"
+         target="_blank" rel="noopener noreferrer">
+        Denk Vooruit – Nederlandse overheid
+      </a>
+    </p>
 
-<div class="info">
-  <strong>Let op</strong>
-  <p>
-    Dit is een voorlopige FM-database.
-    Niet alle lokale en commerciële frequenties
-    zijn opgenomen of afzonderlijk op huidige
-    uitzending gecontroleerd.
-    Ontvangst verschilt per plaats.
-  </p>
-</div>
+  </div>
+
+  <h2>📻 FM-frequenties</h2>
+
+  <input class="search"
+         id="fmSearch"
+         type="search"
+         placeholder="Zoek radiozender, plaats of frequentie...">
+
+  <p id="fmCount"></p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Frequentie</th>
+          <th>Radiozender</th>
+          <th>Regio</th>
+        </tr>
+      </thead>
+
+      <tbody id="fmRows"></tbody>
+    </table>
+  </div>
+
+  <div class="info">
+    <strong>Let op</strong>
+    <p>
+      Dit is een uitbreidbare FM-startlijst,
+      geen volledig live bijgewerkte database.
+      Controleer frequenties en uitzendingen
+      bij de betreffende omroep.
+    </p>
+  </div>
 
 </div>
 </section>
 
-<!-- =====================================
+<!-- ==================================
      ZENDAMATEURS
-===================================== -->
+================================== -->
 
 <section id="amateur" class="page">
 <div class="container">
 
-<div class="eyebrow">Amateurradio · Nederland</div>
-<h1>De <span>zendamateurhoek.</span></h1>
+  <div class="eyebrow">Ham Radio Nederland</div>
 
-<p>
-  Bekijk repeaters in Nederland.
-  Je kunt per provincie de RX-frequentie,
-  locatie, CTCSS en TX-frequentie vinden.
-</p>
+  <h1>De <span>zendamateurhoek.</span></h1>
 
-<div class="notice">
   <p>
-    <strong>📡 RX is openbaar.</strong>
-    TX en CTCSS staan achter een zichtbaarheidsslot.
-    Dit is geen controle op een zendvergunning.
+    Ontdek amateurrepeaters in Nederland.
+    Klik op een provincie voor RX,
+    TX, CTCSS en aanvullende informatie.
   </p>
-</div>
 
-<div class="warning">
-  <p>
-    ⚠️ Voor zenden op amateurfrequenties
-    moet je aan de Nederlandse registratie-
-    en gebruiksregels voldoen.
-    Luisteren en zenden zijn verschillende dingen.
-  </p>
-</div>
+  <div class="notice">
+    <p>
+      <strong>📡 RX-frequenties zijn openbaar.</strong>
+      TX en CTCSS verschijnen na het
+      invullen van het demo-wachtwoord.
+    </p>
+  </div>
 
-<h2>Kies een provincie</h2>
-<div id="amateurProvinces" class="provinces"></div>
+  <div class="warning">
+    <p>
+      ⚠️ Een wachtwoord geeft geen zendbevoegdheid.
+      Voor radioamateurzenden gelden
+      Nederlandse registratie- en gebruiksregels.
+    </p>
+  </div>
 
-<div class="info">
-  <h3>Wat betekenen RX, TX en CTCSS?</h3>
-  <p>
-    <strong>RX:</strong> op deze frequentie
-    ontvang je het repeateruitgangssignaal.
-  </p>
-  <p>
-    <strong>TX:</strong> op deze frequentie
-    zend je naar de ingang van de repeater.
-  </p>
-  <p>
-    <strong>CTCSS:</strong> een subaudiotoon
-    die sommige analoge repeaters nodig hebben.
-    Niet iedere repeater gebruikt een CTCSS-toon.
-  </p>
-</div>
+  <h2>Kies je provincie</h2>
+
+  <div id="amateurProvinces" class="provinces"></div>
+
+  <div class="info">
+    <h3>Wat betekenen RX, TX en CTCSS?</h3>
+
+    <p>
+      <strong>RX:</strong> frequentie waarop
+      je de repeater kunt ontvangen.
+    </p>
+
+    <p>
+      <strong>TX:</strong> frequentie van de
+      ingang van de repeater.
+    </p>
+
+    <p>
+      <strong>CTCSS:</strong> subaudiotoon
+      voor sommige analoge repeaters.
+    </p>
+
+    <p>
+      Niet iedere repeater gebruikt CTCSS.
+      Digitale repeaters kunnen
+      andere instellingen nodig hebben.
+    </p>
+  </div>
 
 </div>
 </section>
 
-<!-- REPEATER-PROVINCIE -->
+<!-- ZENDAMATEUR REGIO -->
 
 <section id="amateurRegion" class="page">
 <div class="container">
 
-<button class="back" id="amateurBack">
-  ← Alle provincies
-</button>
+  <button class="back" id="amateurBack">
+    ← Alle provincies
+  </button>
 
-<div class="eyebrow">Radiozendamateurrepeaters</div>
-<h1 id="amateurRegionTitle"></h1>
-<p id="amateurRegionInfo"></p>
+  <div class="eyebrow">Amateurrepeaters</div>
 
-<div class="unlock">
-  <span class="badge orange">🔒 Zendinstellingen</span>
-  <h2 style="margin-top:12px">TX en CTCSS bekijken</h2>
+  <h1 id="amateurRegionTitle"></h1>
 
-  <p>
-    Vul het demo-wachtwoord in
-    om TX en CTCSS zichtbaar te maken.
-  </p>
+  <p id="amateurRegionInfo"></p>
 
-  <div class="unlock-controls">
-    <input type="password" id="password"
-           placeholder="Wachtwoord..."
-           autocomplete="off">
-    <button id="unlockButton">Ontgrendelen</button>
-    <button id="lockButton" hidden>Vergrendelen</button>
+  <div class="unlock">
+
+    <span class="badge orange">
+      🔒 Zendinstellingen
+    </span>
+
+    <h2 style="margin-top:12px">
+      TX en CTCSS bekijken
+    </h2>
+
+    <p>
+      Vul het websitewachtwoord in
+      om de zendinstellingen te tonen.
+    </p>
+
+    <div class="unlock-controls">
+
+      <input type="password"
+             id="password"
+             placeholder="Wachtwoord"
+             autocomplete="off">
+
+      <button id="unlockButton">
+        Ontgrendelen
+      </button>
+
+      <button id="lockButton" hidden>
+        Vergrendelen
+      </button>
+
+    </div>
+
+    <p id="passwordMessage"></p>
+
+    <p style="font-size:12px">
+      Dit zichtbaarheidsslot is geen
+      licentiecontrole. Bij een statische
+      website zijn de gegevens in
+      de broncode terug te vinden.
+    </p>
+
   </div>
 
-  <p id="passwordMessage"></p>
+  <h2>📡 Repeaters in deze regio</h2>
 
-  <p style="font-size:12px">
-    Dit is alleen een zichtbaarheidsslot.
-    Omdat de site op GitHub Pages staat,
-    zijn de gegevens in de broncode terug te vinden.
-    Het wachtwoord is geen licentiecontrole.
-  </p>
-</div>
+  <input class="search"
+         id="repeaterSearch"
+         type="search"
+         placeholder="Zoek PI3UTR, plaats, band of RX...">
 
-<h2>📡 Repeaters</h2>
+  <p id="repeaterCount"></p>
 
-<input class="search" id="repeaterSearch"
-       type="search"
-       placeholder="Zoek PI3UTR, 2m, 70cm, plaats of RX...">
+  <div id="repeaterGrid" class="repeater-grid"></div>
 
-<p id="repeaterCount"></p>
+  <div class="info">
+    <h3>Repeaterinformatie</h3>
 
-<div id="repeaterGrid" class="repeater-grid"></div>
+    <p>
+      Instellingen en de operationele status
+      van repeaters kunnen veranderen.
+      Controleer de actuele gegevens
+      altijd bij de beheerder.
+    </p>
 
-<div class="info">
-  <h3>Bronnen en controle</h3>
-  <p>
-    Repeaterinformatie kan wijzigen.
-    Controleer altijd de actuele
-    instellingen en status bij de beheerder.
-  </p>
-  <p>
-    <a href="https://ph5hp.nl/dutch-repeaters"
+    <a href="https://hobbyscoop.nl/status/"
        target="_blank" rel="noopener noreferrer">
-      PH5HP – Dutch Repeaters ↗
+      Hobbyscoop systemen ↗
     </a>
-  </p>
-  <p>
-    <a href="https://a34.veron.nl/vhf-repeaters/"
-       target="_blank" rel="noopener noreferrer">
-      VERON – VHF Repeaters ↗
-    </a>
-  </p>
-</div>
+  </div>
 
 </div>
 </section>
 
-<!-- =====================================
-     RADIO-ONTVANGERS
-===================================== -->
+<!-- ==================================
+     RADIO ONTVANGERS
+================================== -->
 
 <section id="receiver" class="page">
 <div class="container">
 
-<div class="eyebrow">Luisteren · Ontvangen · Ontdekken</div>
-<h1>De <span>radio-ontvangerhoek.</span></h1>
+  <div class="eyebrow">
+    Luisteren · Ontvangen · Ontdekken
+  </div>
 
-<p>
-  Welkom bij het toekomstige gedeelte
-  voor radioluisteraars, scanners en SDR.
-</p>
+  <h1>Radio-<span>ontvangers.</span></h1>
 
-<div class="notice">
   <p>
-    <strong>🎧 Binnenkort!</strong>
-    Aan dit gedeelte gaan we later werken.
-    De pagina staat alvast klaar.
+    Welkom bij de toekomstige hoek
+    voor radioluisteraars en ontvangers.
   </p>
-</div>
 
-<div class="grid">
-  <div class="card">
-    <div class="card-icon">🎧</div>
-    <h3>Luisterfrequenties</h3>
-    <p>Overzicht van legaal te ontvangen radiosignalen.</p>
+  <div class="notice">
+    <p>
+      🎧 Dit gedeelte is nog in ontwikkeling.
+      Hier gaan we binnenkort verder aan bouwen!
+    </p>
   </div>
 
-  <div class="card">
-    <div class="card-icon">📟</div>
-    <h3>Radio-ontvangers</h3>
-    <p>Scanners, draagbare radio's en breedbandontvangers.</p>
-  </div>
+  <div class="grid">
 
-  <div class="card">
-    <div class="card-icon">💻</div>
-    <h3>SDR</h3>
-    <p>Software Defined Radio, dongles en WebSDR.</p>
-  </div>
+    <div class="card">
+      <div class="card-icon">📟</div>
+      <h3>Scanners</h3>
+      <p>
+        Binnenkort informatie over
+        breedbandontvangers en scanners.
+      </p>
+    </div>
 
-  <div class="card">
-    <div class="card-icon">🌍</div>
-    <h3>Kortegolf</h3>
-    <p>HF-ontvangst, propagatie en verre stations.</p>
-  </div>
-</div>
+    <div class="card">
+      <div class="card-icon">💻</div>
+      <h3>SDR</h3>
+      <p>
+        Software Defined Radio,
+        SDR-dongles en WebSDR.
+      </p>
+    </div>
 
-<div class="info">
-  <h3>🔧 In ontwikkeling</h3>
-  <p>
-    Later voegen we frequenties,
-    handige categorieën en uitleg toe.
-    Houd rekening met de geldende regels
-    voor het ontvangen en gebruiken van communicatie.
-  </p>
-</div>
+    <div class="card">
+      <div class="card-icon">🌍</div>
+      <h3>Kortegolf</h3>
+      <p>
+        HF-ontvangst en verre
+        radioverbindingen.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🎧</div>
+      <h3>Luisterfrequenties</h3>
+      <p>
+        Later een overzicht van
+        interessante radiofrequenties.
+      </p>
+    </div>
+
+  </div>
 
 </div>
 </section>
 
-<!-- =====================================
-     OVER DAAN
-===================================== -->
+<!-- ==================================
+     OVER
+================================== -->
 
 <section id="about" class="page">
 <div class="container">
 
-<div class="eyebrow">Over deze website</div>
-<h1>Over <span>Daan.</span></h1>
+  <div class="eyebrow">Over deze website</div>
 
-<div class="card">
-  <h2>Welkom in mijn radiohoek!</h2>
+  <h1>Over <span>Daan.</span></h1>
 
-  <p>
-    Hoi! Ik ben Daan.
-    Dit is mijn persoonlijke radio-website.
-  </p>
+  <div class="card">
 
-  <p>
-    Hier verzamel ik informatie over
-    gewone FM-radio, radiozendamateurs,
-    repeaters, ontvangers en radioapparatuur.
-  </p>
+    <h2>Welkom bij mijn radiohoek!</h2>
 
-  <p>
-    Binnenkort voeg ik hier meer informatie
-    toe over mijn eigen apparatuur,
-    antennes en radioprojecten.
-  </p>
+    <p>
+      Hoi! Ik ben Daan en dit is
+      mijn eigen radio-website.
+    </p>
 
-  <p>
-    Bedankt voor je bezoek!
-  </p>
-</div>
+    <p>
+      Ik verzamel hier informatie
+      over FM-radio, radiozendamateurs,
+      repeaters, ontvangers en frequenties.
+    </p>
+
+    <p>
+      Binnenkort vertel ik hier meer
+      over mijn eigen radioapparatuur
+      en radioprojecten.
+    </p>
+
+    <p>
+      De website is een persoonlijk hobbyproject.
+    </p>
+
+  </div>
 
 </div>
 </section>
@@ -941,23 +1544,21 @@ footer{
 </main>
 
 <footer>
-  <strong>📻 Daan's Radio Corner</strong>
-  <p>FM-radio · Zendamateurs · Radio-ontvangers</p>
-  <p>© <span id="footerYear"></span> Daan's Radio Corner</p>
+  📻 <strong>Daan's Radio Corner</strong>
+  <p>
+    FM-radio · Zendamateurs · Radio-ontvangers
+  </p>
+  © <span id="year"></span> Daan's Radio Corner
 </footer>
 
 <script>
 "use strict";
 
-/* =====================================
+/* ==================================
    ALGEMENE INSTELLINGEN
-===================================== */
+================================== */
 
-// Demo-wachtwoord voor zichtbaarheid.
-// Dit is GEEN beveiligde verificatie.
-
-const WEBSITE_PASSWORD = "DAAN2026";
-
+const PASSWORD = "DAAN2026";
 const TIME_ZONE = "Europe/Amsterdam";
 
 const provinces = [
@@ -979,11 +1580,9 @@ let selectedFM = "Utrecht";
 let selectedAmateur = "Utrecht";
 let unlocked = false;
 
-/* =====================================
-   LIVE NEDERLANDSE KLOK
-===================================== */
-
-// 7 segmenten: a, b, c, d, e, f, g
+/* ==================================
+   LIVE 7 SEGMENT KLOK
+================================== */
 
 const segmentMap = {
   "0":[1,1,1,1,1,1,0],
@@ -1003,51 +1602,53 @@ const segmentNames = [
   "seg-d","seg-e","seg-f","seg-g"
 ];
 
-const digitElements = [];
+const clockDigits = [];
 
-function buildClock() {
+function buildClock(){
   const clock = document.getElementById("digitalClock");
   clock.replaceChildren();
 
-  for(let i=0;i<6;i++) {
+  for(let i=0;i<6;i++){
 
-    if(i===2 || i===4) {
-      const colon = document.createElement("div");
-      colon.className = "colon";
+    if(i===2 || i===4){
+      const colon=document.createElement("div");
+      colon.className="colon";
 
-      const dot1 = document.createElement("i");
-      const dot2 = document.createElement("i");
+      colon.append(
+        document.createElement("i"),
+        document.createElement("i")
+      );
 
-      colon.append(dot1,dot2);
       clock.appendChild(colon);
     }
 
-    const digit = document.createElement("div");
-    digit.className = "digit";
+    const digit=document.createElement("div");
+    digit.className="digit";
 
-    const segments = [];
+    const segments=[];
 
-    segmentNames.forEach(name => {
-      const segment = document.createElement("span");
-      segment.className = "segment " + name;
+    segmentNames.forEach(name=>{
+      const segment=document.createElement("span");
+      segment.className="segment "+name;
+
       digit.appendChild(segment);
       segments.push(segment);
     });
 
-    digitElements.push(segments);
+    clockDigits.push(segments);
     clock.appendChild(digit);
   }
 }
 
-function displayDigit(index,number) {
-  const pattern = segmentMap[number] || segmentMap["0"];
+function displayDigit(index,number){
+  const pattern=segmentMap[number]||segmentMap["0"];
 
-  digitElements[index].forEach((segment,i) => {
+  clockDigits[index].forEach((segment,i)=>{
     segment.classList.toggle("on",pattern[i]===1);
   });
 }
 
-const timeFormatter = new Intl.DateTimeFormat("nl-NL",{
+const timeFormatter=new Intl.DateTimeFormat("nl-NL",{
   timeZone:TIME_ZONE,
   hour:"2-digit",
   minute:"2-digit",
@@ -1055,7 +1656,7 @@ const timeFormatter = new Intl.DateTimeFormat("nl-NL",{
   hourCycle:"h23"
 });
 
-const dateFormatter = new Intl.DateTimeFormat("nl-NL",{
+const dateFormatter=new Intl.DateTimeFormat("nl-NL",{
   timeZone:TIME_ZONE,
   weekday:"long",
   day:"numeric",
@@ -1063,46 +1664,49 @@ const dateFormatter = new Intl.DateTimeFormat("nl-NL",{
   year:"numeric"
 });
 
-const zoneFormatter = new Intl.DateTimeFormat("nl-NL",{
+const zoneFormatter=new Intl.DateTimeFormat("nl-NL",{
   timeZone:TIME_ZONE,
   timeZoneName:"short"
 });
 
-function updateClock() {
-  const now = new Date();
+function updateClock(){
+  const now=new Date();
+  const parts=timeFormatter.formatToParts(now);
 
-  const parts = timeFormatter.formatToParts(now);
+  function part(type){
+    return parts.find(p=>p.type===type)?.value||"00";
+  }
 
-  const getPart = type =>
-    parts.find(part => part.type===type)?.value || "00";
+  const hour=part("hour");
+  const minute=part("minute");
+  const second=part("second");
 
-  const hour = getPart("hour");
-  const minute = getPart("minute");
-  const second = getPart("second");
-
-  const digits = (hour+minute+second).split("");
-
-  digits.forEach((digit,i) => {
-    displayDigit(i,digit);
+  (hour+minute+second).split("").forEach((n,i)=>{
+    displayDigit(i,n);
   });
 
   document.getElementById("digitalClock")
     .setAttribute("aria-label",hour+":"+minute+":"+second);
 
-  document.getElementById("clockDate").textContent =
+  document.getElementById("clockDate").textContent=
     dateFormatter.format(now);
 
-  document.getElementById("clockZone").textContent =
-    "Nederland · "+zoneFormatter.formatToParts(now)
-      .find(part => part.type==="timeZoneName")?.value;
+  const timezoneName=zoneFormatter.formatToParts(now)
+    .find(p=>p.type==="timeZoneName")?.value||"NL";
 
-  const h = Number(hour);
+  document.getElementById("clockZone").textContent=
+    "Nederland · "+timezoneName;
+
+  document.getElementById("timeZoneStatus").textContent=
+    timezoneName+" · Amsterdam";
+
+  const h=Number(hour);
 
   let greeting;
 
-  if(h>=6 && h<12) greeting="Goedemorgen! ☀️";
-  else if(h>=12 && h<18) greeting="Goedemiddag! 🌤️";
-  else if(h>=18 && h<23) greeting="Goedenavond! 🌙";
+  if(h>=6&&h<12)greeting="Goedemorgen! ☀️";
+  else if(h>=12&&h<18)greeting="Goedemiddag! 🌤️";
+  else if(h>=18&&h<23)greeting="Goedenavond! 🌙";
   else greeting="Goedenacht! 🌌";
 
   document.getElementById("greeting").textContent=greeting;
@@ -1110,18 +1714,433 @@ function updateClock() {
 
 buildClock();
 updateClock();
-setInterval(updateClock,250);
+setInterval(updateClock,1000);
+
+/* ==================================
+   ANIMATIE RADIO SPECTRUM
+================================== */
+
+// Deze grafieken zijn gesimuleerd.
+// Ze meten GEEN echte radiogolven.
+
+const spectrumCanvas=document.getElementById("spectrumCanvas");
+const waterfallCanvas=document.getElementById("waterfallCanvas");
+
+const spectrumCtx=spectrumCanvas.getContext("2d");
+const waterfallCtx=waterfallCanvas.getContext("2d");
+
+let animationTick=0;
+let waterfallRows=[];
+let spectrumWidth=600;
+let spectrumHeight=180;
+let waterfallWidth=600;
+let waterfallHeight=105;
+
+function resizeCanvases(){
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+
+  const spectrumRect=spectrumCanvas.getBoundingClientRect();
+  const waterfallRect=waterfallCanvas.getBoundingClientRect();
+
+  spectrumWidth=Math.max(1,spectrumRect.width);
+  spectrumHeight=Math.max(1,spectrumRect.height);
+  waterfallWidth=Math.max(1,waterfallRect.width);
+  waterfallHeight=Math.max(1,waterfallRect.height);
+
+  spectrumCanvas.width=Math.round(spectrumWidth*dpr);
+  spectrumCanvas.height=Math.round(spectrumHeight*dpr);
+
+  waterfallCanvas.width=Math.round(waterfallWidth*dpr);
+  waterfallCanvas.height=Math.round(waterfallHeight*dpr);
+
+  spectrumCtx.setTransform(dpr,0,0,dpr,0,0);
+  waterfallCtx.setTransform(dpr,0,0,dpr,0,0);
+
+  waterfallRows=[];
+}
+
+window.addEventListener("resize",resizeCanvases);
+resizeCanvases();
+
+const peaks=[
+  {pos:.11,power:.38,width:.018},
+  {pos:.23,power:.57,width:.012},
+  {pos:.37,power:.42,width:.02},
+  {pos:.49,power:.82,width:.012},
+  {pos:.66,power:.59,width:.016},
+  {pos:.79,power:.72,width:.012},
+  {pos:.91,power:.33,width:.02}
+];
+
+function signalAt(x,time){
+  let signal=0.08;
+
+  signal+=0.025*Math.sin(x*90+time*2);
+  signal+=0.018*Math.sin(x*170-time*3);
+
+  peaks.forEach(peak=>{
+    const distance=(x-peak.pos)/peak.width;
+    const gaussian=Math.exp(-.5*distance*distance);
+
+    const flutter=
+      .85+.15*Math.sin(time*1.5+peak.pos*12);
+
+    signal+=peak.power*gaussian*flutter;
+  });
+
+  signal+=Math.random()*.025;
+
+  return Math.max(0,Math.min(1,signal));
+}
+
+function drawSpectrum(){
+  const w=spectrumWidth;
+  const h=spectrumHeight;
+  const t=animationTick*.025;
+
+  spectrumCtx.clearRect(0,0,w,h);
+  spectrumCtx.fillStyle="#071622";
+  spectrumCtx.fillRect(0,0,w,h);
+
+  // Raster
+  spectrumCtx.strokeStyle="#1c3b42";
+  spectrumCtx.lineWidth=1;
+
+  for(let i=0;i<=10;i++){
+    const x=w*i/10;
+
+    spectrumCtx.beginPath();
+    spectrumCtx.moveTo(x,0);
+    spectrumCtx.lineTo(x,h);
+    spectrumCtx.stroke();
+  }
+
+  for(let i=0;i<=5;i++){
+    const y=h*i/5;
+
+    spectrumCtx.beginPath();
+    spectrumCtx.moveTo(0,y);
+    spectrumCtx.lineTo(w,y);
+    spectrumCtx.stroke();
+  }
+
+  const values=[];
+
+  for(let x=0;x<=w;x+=2){
+    values.push({
+      x,
+      y:h-(signalAt(x/w,t)*(h-25)+9)
+    });
+  }
+
+  // Groen gekleurde vulling
+  const gradient=spectrumCtx.createLinearGradient(0,0,0,h);
+
+  gradient.addColorStop(0,"rgba(82,233,184,.42)");
+  gradient.addColorStop(1,"rgba(82,233,184,0)");
+
+  spectrumCtx.beginPath();
+  spectrumCtx.moveTo(0,h);
+
+  values.forEach(point=>{
+    spectrumCtx.lineTo(point.x,point.y);
+  });
+
+  spectrumCtx.lineTo(w,h);
+  spectrumCtx.closePath();
+  spectrumCtx.fillStyle=gradient;
+  spectrumCtx.fill();
+
+  // Signaallijn
+  spectrumCtx.beginPath();
+
+  values.forEach((point,i)=>{
+    if(i===0){
+      spectrumCtx.moveTo(point.x,point.y);
+    }else{
+      spectrumCtx.lineTo(point.x,point.y);
+    }
+  });
+
+  spectrumCtx.strokeStyle="#52e9b8";
+  spectrumCtx.lineWidth=2;
+  spectrumCtx.shadowColor="#52e9b8";
+  spectrumCtx.shadowBlur=8;
+  spectrumCtx.stroke();
+  spectrumCtx.shadowBlur=0;
+
+  // Watervalrij
+  const row=[];
+
+  for(let i=0;i<180;i++){
+    row.push(signalAt(i/180,t));
+  }
+
+  waterfallRows.unshift(row);
+
+  if(waterfallRows.length>110){
+    waterfallRows.pop();
+  }
+
+  waterfallCtx.fillStyle="#071622";
+  waterfallCtx.fillRect(0,0,waterfallWidth,waterfallHeight);
+
+  const cellW=waterfallWidth/180;
+  const cellH=waterfallHeight/110;
+
+  waterfallRows.forEach((values,y)=>{
+    values.forEach((value,x)=>{
+      const level=Math.max(0,Math.min(1,value));
+
+      let r,g,b;
+
+      if(level<.25){
+        r=4;g=25+level*180;b=38+level*240;
+      }else if(level<.60){
+        r=10;g=100+level*170;b=95;
+      }else{
+        r=100+level*155;
+        g=180+level*65;
+        b=75;
+      }
+
+      waterfallCtx.fillStyle=
+        `rgb(${Math.round(r)},${Math.round(g)},${Math.round(b)})`;
+
+      waterfallCtx.fillRect(
+        x*cellW,
+        y*cellH,
+        cellW+1,
+        cellH+1
+      );
+    });
+  });
+
+  animationTick++;
+}
+
+let spectrumLastFrame=0;
+let spectrumRunning=false;
+const reduceMotion=window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
+
+function animateSpectrum(timestamp){
+  spectrumRunning=true;
+
+  if(timestamp-spectrumLastFrame>=70){
+    drawSpectrum();
+    spectrumLastFrame=timestamp;
+  }
+
+  if(!document.hidden && !reduceMotion){
+    requestAnimationFrame(animateSpectrum);
+  }else{
+    spectrumRunning=false;
+  }
+}
+
+drawSpectrum();
+
+if(!reduceMotion){
+  requestAnimationFrame(animateSpectrum);
+}
 
 document.addEventListener("visibilitychange",()=>{
-  if(!document.hidden) updateClock();
+  if(!document.hidden&&!spectrumRunning&&!reduceMotion){
+    requestAnimationFrame(animateSpectrum);
+  }
 });
 
-/* =====================================
-   FM-NOODFREQUENTIES
-   Bron: Denk Vooruit
-===================================== */
+/* ==================================
+   LIVE NOAA RUIMTEWEER
+================================== */
 
-const emergency = {
+// Werkelijke externe data.
+// Als ophalen mislukt: "niet beschikbaar".
+// Nooit fictieve Kp-getallen tonen.
+
+const NOAA_URL=
+  "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json";
+
+async function loadSpaceWeather(){
+  const valueElement=document.getElementById("kpValue");
+  const descriptionElement=document.getElementById("kpDescription");
+  const updatedElement=document.getElementById("kpUpdated");
+  const meter=document.getElementById("kpFill");
+  const lastUpdate=document.getElementById("lastUpdate");
+
+  try{
+    const response=await fetch(NOAA_URL,{
+      cache:"no-store"
+    });
+
+    if(!response.ok){
+      throw new Error("NOAA niet bereikbaar");
+    }
+
+    const rows=await response.json();
+
+    if(!Array.isArray(rows)||rows.length<2){
+      throw new Error("Ongeldige NOAA-data");
+    }
+
+    // Eerste rij zijn doorgaans kolomnamen.
+    const headers=rows[0].map(x=>String(x).toLowerCase());
+
+    const timeIndex=headers.findIndex(h=>h.includes("time_tag"));
+
+    let kpIndex=headers.findIndex(h=>h==="kp");
+
+    if(kpIndex<0){
+      kpIndex=headers.findIndex(h=>h.includes("kp"));
+    }
+
+    if(kpIndex<0){
+      throw new Error("Kp-kolom niet gevonden");
+    }
+
+    let latest=null;
+
+    for(let i=rows.length-1;i>=1;i--){
+      const row=rows[i];
+      const kp=Number(row[kpIndex]);
+
+      if(Number.isFinite(kp)&&kp>=0&&kp<=9){
+        latest={kp,time:timeIndex>=0?row[timeIndex]:null};
+        break;
+      }
+    }
+
+    if(!latest){
+      throw new Error("Geen Kp-data");
+    }
+
+    const kp=latest.kp;
+
+    valueElement.textContent="Kp "+kp.toFixed(1);
+    meter.style.width=Math.min(100,kp/9*100)+"%";
+
+    let explanation;
+
+    if(kp<2){
+      explanation="Rustig geomagnetisch veld";
+    }else if(kp<4){
+      explanation="Lichte geomagnetische activiteit";
+    }else if(kp<5){
+      explanation="Actief geomagnetisch veld";
+    }else{
+      explanation="Geomagnetische stormactiviteit";
+    }
+
+    descriptionElement.textContent=explanation;
+
+    const observation=latest.time
+      ?new Date(String(latest.time).replace(" ","T")+"Z")
+      :null;
+
+    if(observation&&!Number.isNaN(observation.getTime())){
+      const formatted=new Intl.DateTimeFormat("nl-NL",{
+        timeZone:TIME_ZONE,
+        day:"2-digit",
+        month:"2-digit",
+        hour:"2-digit",
+        minute:"2-digit"
+      }).format(observation);
+
+      updatedElement.textContent="NOAA-meting: "+formatted;
+    }else{
+      updatedElement.textContent="Tijdstip meting onbekend";
+    }
+
+    const now=new Intl.DateTimeFormat("nl-NL",{
+      timeZone:TIME_ZONE,
+      hour:"2-digit",
+      minute:"2-digit"
+    }).format(new Date());
+
+    lastUpdate.textContent=now+" · NOAA opgehaald";
+
+  }catch(error){
+    valueElement.textContent="--";
+    descriptionElement.textContent=
+      "Actuele NOAA-gegevens niet beschikbaar";
+    updatedElement.textContent=
+      "Probeer later opnieuw";
+    lastUpdate.textContent="Geen live data";
+    meter.style.width="0%";
+  }
+}
+
+loadSpaceWeather();
+
+// Elke 10 minuten opnieuw ophalen.
+setInterval(loadSpaceWeather,10*60*1000);
+
+/* ==================================
+   NETWERKINDICATOR
+================================== */
+
+// navigator.onLine geeft alleen de browser-
+// verbindingsstatus weer, geen end-to-end
+// controle van het internet.
+
+function updateNetworkStatus(){
+  const element=document.getElementById("networkStatus");
+
+  element.replaceChildren();
+
+  const dot=document.createElement("span");
+  dot.className="status-dot";
+
+  if(navigator.onLine){
+    element.append(
+      dot,
+      document.createTextNode("Browser online")
+    );
+  }else{
+    dot.classList.add("offline");
+
+    element.append(
+      dot,
+      document.createTextNode("Browser offline")
+    );
+  }
+}
+
+window.addEventListener("online",()=>{
+  updateNetworkStatus();
+  loadSpaceWeather();
+});
+
+window.addEventListener("offline",updateNetworkStatus);
+
+updateNetworkStatus();
+
+/* ==================================
+   PROVINCIES
+================================== */
+
+const provinces=[
+  ["Groningen","🌾"],
+  ["Friesland","⛵"],
+  ["Drenthe","🌲"],
+  ["Overijssel","🌿"],
+  ["Flevoland","🌊"],
+  ["Gelderland","🏰"],
+  ["Utrecht","🏙️"],
+  ["Noord-Holland","🌷"],
+  ["Zuid-Holland","🌉"],
+  ["Zeeland","⚓"],
+  ["Noord-Brabant","🏡"],
+  ["Limburg","⛰️"]
+];
+
+/* ==================================
+   NOODFREQUENTIES
+================================== */
+
+const emergency={
 "Groningen":[
   ["Radio Noord","97.5","Groningen"]
 ],
@@ -1180,21 +2199,18 @@ const emergency = {
 ]
 };
 
-/* =====================================
-   NORMALE FM-RADIOZENDERS
-=====================================
+/* ==================================
+   NORMALE FM FREQUENTIES
+==================================
 
 Formaat:
-Provincie|Frequentie|Zender|Zendlocatie
+Provincie|Frequentie|Zender|Locatie
 
-Voorlopige lijst. Niet volledig
-of live geverifieerd.
+Voorlopige ingebouwde lijst.
+Geen live gecontroleerde FM-database.
+================================== */
 
-Noodzenders worden automatisch
-aan de tabel toegevoegd.
-===================================== */
-
-const fmText = `
+const fmData=`
 Groningen|89.1|RADIONL|Groningen
 Groningen|89.6|BNR Nieuwsradio|Hoogersmilde
 Groningen|90.3|Sublime|Hoogezand
@@ -1202,6 +2218,7 @@ Groningen|91.3|Simone FM|Stadskanaal
 Groningen|92.4|Radio Continu|Hoogezand
 Groningen|92.9|Simone FM|Groningen
 Groningen|93.7|SLAM!|Hoogezand
+Groningen|95.3|Regio FM|Bedum
 Groningen|104.4|RADIONL|Groningen
 Friesland|91.0|SLAM!|Tjerkgaast
 Friesland|92.8|Waterstad FM|Heerenveen
@@ -1210,6 +2227,7 @@ Friesland|93.5|Waterstad FM|Drachten
 Friesland|94.1|RADIONL|Tjerkgaast
 Friesland|94.3|RADIONL|Sneek
 Friesland|95.5|BNR Nieuwsradio|Tjerkgaast
+Friesland|96.0|RADIONL|Drachten
 Friesland|96.6|RADIONL|Leeuwarden
 Friesland|97.9|Radio Continu|Tjerkgaast
 Friesland|99.1|100%NL|Tjerkgaast
@@ -1222,6 +2240,7 @@ Drenthe|90.5|Sublime|Hoogersmilde
 Drenthe|91.8|NPO Radio 1|Hoogersmilde
 Drenthe|92.3|Radio Continu|Emmen
 Drenthe|92.6|Radio Continu|Eext
+Drenthe|93.0|Simone FM|Assen
 Drenthe|94.2|100%NL|Hoogersmilde
 Drenthe|94.8|NPO Klassiek|Hoogersmilde
 Drenthe|97.1|RADIONL|Assen
@@ -1232,8 +2251,10 @@ Overijssel|90.0|Tukker FM|De Lutte
 Overijssel|90.7|Sublime|Enschede
 Overijssel|91.0|SLAM!|Markelo
 Overijssel|91.4|NPO Klassiek|Markelo
+Overijssel|92.3|Radio 350|Rijssen
 Overijssel|93.3|RADIONL|Enschede
 Overijssel|93.5|RADIONL|Markelo
+Overijssel|93.9|Twente FM|Wierden
 Overijssel|95.3|BNR Nieuwsradio|Zwollekerspel
 Overijssel|96.2|NPO 3FM|Markelo
 Overijssel|97.6|100%NL|Zwolle
@@ -1347,136 +2368,147 @@ Limburg|97.6|Qmusic Limburg|Maastricht
 Limburg|104.8|NPO Radio 1|Roermond
 `;
 
-/* FM-data samenvoegen */
+const fmStations=[];
 
-const fmStations = [];
+fmData.trim().split("\n").forEach(line=>{
+  const [province,freq,name,place]=
+    line.split("|").map(s=>s.trim());
 
-fmText.trim().split("\n").forEach(line => {
-  const [province,freq,name,place] =
-    line.split("|").map(v=>v.trim());
-
-  if(!province || !freq || !name) return;
+  if(!province||!freq||!name)return;
 
   fmStations.push({
-    province,freq,name,place,
-    isEmergency:false
+    province,
+    freq,
+    name,
+    place,
+    emergency:false
   });
 });
 
-Object.entries(emergency).forEach(([province,entries])=>{
-  entries.forEach(([name,freq,place])=>{
+// Noodzenders aan dezelfde tabel toevoegen.
+
+Object.entries(emergency).forEach(([province,items])=>{
+  items.forEach(([name,freq,place])=>{
     fmStations.push({
-      province,freq,name,place,
-      isEmergency:true
+      province,
+      freq,
+      name,
+      place,
+      emergency:true
     });
   });
 });
 
-/* =====================================
+/* ==================================
    ZENDAMATEURREPEATERS
-=====================================
+==================================
 
 Formaat:
-Provincie|Callsign|Plaats|Band|RX|TX|CTCSS|Mode|Info
+Provincie|Call|Plaats|Band|RX|TX|CTCSS|Mode|Info
 
-RX = repeateruitgang.
-TX = repeateringang.
+RX = repeateruitgang
+TX = repeateringang
 
-"-" betekent dat de waarde
-niet bevestigd of niet van
-toepassing is.
+Dit is een startoverzicht op basis van
+openbare repeaterlijsten.
 
-De gegevens zijn openbare
-voorbeeld- en referentielijsten.
-Niet alle actieve repeaters
-staan erin.
-===================================== */
+Niet alle gegevens zijn afzonderlijk
+actueel gecontroleerd.
+================================== */
 
-const repeaterText = `
-Utrecht|PI3UTR|Utrecht / IJsselstein|2m|145.5750|144.9750|77.0|FM|Bekende bovenregionale 2-meter repeater in de regio Utrecht. De opstelling wordt met IJsselstein en de omgeving Utrecht geassocieerd.
-Utrecht|PI3AMF|Amersfoort|2m|145.6250|145.0250|77.0|FM|Amateurrepeater voor Amersfoort en omgeving.
-Utrecht|PI2ZST|Zeist|70cm|430.0750|431.6750|-|FM|70-centimeter repeater in de omgeving Zeist. Controleer de actuele toon.
-Utrecht|PI2NOS|IJsselstein / Utrecht|70cm|430.1250|431.7250|77.0|FM|Bovenregionale repeater; controleer de actuele gekoppelde locaties en de benodigde toon.
-Groningen|PI3GRN|Groningen|2m|145.7500|145.1500|82.5|FM|Amateurrepeater in Groningen.
+const repeaterData=`
+Utrecht|PI3UTR|Utrecht / IJsselstein|2m|145.5750|144.9750|77.0|FM|Bovenregionale repeater van Hobbyscoop met zendlocatie IJsselstein en aanvullende opstellingen.
+Utrecht|PI2NOS|Utrecht / IJsselstein|70cm|430.1250|431.7250|77.0|FM|Bovenregionale repeater van Hobbyscoop. Controleer de actuele toon.
+Utrecht|PI2ZST|Zeist|70cm|430.0750|431.6750|-|FM|Amateurrepeater in de regio Zeist.
+Utrecht|PI3AMF|Amersfoort|2m|145.6250|145.0250|77.0|FM|Repeatervermelding voor de omgeving Amersfoort.
+Groningen|PI3GRN|Groningen|2m|145.7500|145.1500|82.5|FM|2-meter repeater in Groningen.
 Groningen|PI3NOG|Delfzijl|2m|145.6125|145.0125|82.5|FM|Repeater voor Noordoost-Groningen.
 Groningen|PI2GRO|Groningen|70cm|430.2375|431.8375|82.5|FM|70-centimeter repeatervermelding voor Groningen.
-Groningen|PI2NOG|Delfzijl|70cm|430.3250|431.9250|82.5|FM|70-centimeter repeater in Noordoost-Groningen.
-Friesland|PI3HVN|Heerenveen|2m|145.7000|145.1000|82.5|FM|2-meter repeater in Heerenveen.
-Friesland|PI2HVN|Heerenveen|70cm|430.0250|431.6250|82.5|FM|70-centimeter repeatervermelding voor Heerenveen.
-Friesland|PI2FRL|Leeuwarden|70cm|430.1000|431.7000|82.5|FM|Amateurrepeater in de omgeving Leeuwarden.
-Drenthe|PI3ZOD|Emmen|2m|145.6250|145.0250|-|FM|Repeater voor Zuidoost-Drenthe. Sommige bronnen noemen een 1750Hz-openingstoon; dat is geen CTCSS.
+Groningen|PI2NOG|Delfzijl|70cm|430.3250|431.9250|82.5|FM|Repeatervermelding in Delfzijl.
+Friesland|PI3HVN|Heerenveen|2m|145.7000|145.1000|82.5|FM|Repeater voor Heerenveen.
+Friesland|PI2HVN|Heerenveen|70cm|430.0250|431.6250|82.5|FM|70-centimeter repeater in Heerenveen.
+Friesland|PI2FRL|Leeuwarden|70cm|430.1000|431.7000|82.5|FM|Repeatervermelding voor Leeuwarden.
+Drenthe|PI3ZOD|Emmen|2m|145.6250|145.0250|-|FM|Repeater in Zuidoost-Drenthe. Controleer de vereiste openingstoon.
 Drenthe|PI3MEP|Meppel|2m|145.6500|145.0500|82.5|FM|Regionale repeater bij Meppel.
-Drenthe|PI2ASN|Assen|70cm|430.0500|431.6500|-|FM|70-centimeter repeatervermelding voor Assen.
-Overijssel|PI3VHP|Den Ham|2m|145.6875|145.0875|77.0|FM|2-meter repeater voor Den Ham en omgeving Twente.
-Overijssel|PI2KMP|Kampen|70cm|430.1750|431.7750|77.0|FM|Repeater in Kampen.
-Overijssel|PI2TWE|Enschede|70cm|430.2250|431.8250|-|FM|Repeatervermelding voor Twente. Controleer de CTCSS-instelling.
-Overijssel|PI2DEV|Deventer|70cm|438.2500|430.6500|-|FM|70-centimeter repeater voor Deventer.
-Flevoland|PI3FLD|Lelystad|2m|145.7375|145.1375|77.0|FM|Repeatervermelding in Lelystad. Controleer actuele status.
+Drenthe|PI2ASN|Assen|70cm|430.0500|431.6500|-|FM|Repeatervermelding voor Assen.
+Overijssel|PI3VHP|Den Ham|2m|145.6875|145.0875|77.0|FM|Repeater voor Den Ham en de regio Twente.
+Overijssel|PI2KMP|Kampen|70cm|430.1750|431.7750|77.0|FM|70-centimeter repeater voor Kampen.
+Overijssel|PI2TWE|Enschede|70cm|430.2250|431.8250|-|FM|Repeatervermelding in Twente.
+Overijssel|PI2DEV|Deventer|70cm|438.2500|430.6500|-|FM|Repeater in Deventer.
 Flevoland|PI2NOS|Lelystad / Utrecht|70cm|430.1250|431.7250|77.0|FM|Bovenregionale repeater met dekking richting Flevoland.
-Gelderland|PI3APD|Apeldoorn|2m|145.7250|145.1250|77.0|FM|2-meter repeater voor Apeldoorn.
-Gelderland|PI3DTC|Doetinchem|2m|145.7000|145.1000|77.0|FM|Repeater voor Doetinchem en de Achterhoek.
+Gelderland|PI3APD|Apeldoorn|2m|145.7250|145.1250|77.0|FM|2-meter repeater in Apeldoorn.
+Gelderland|PI3DTC|Doetinchem|2m|145.7000|145.1000|77.0|FM|Repeater in de Achterhoek.
 Gelderland|PI3NOV|'t Harde|2m|145.6750|145.0750|77.0|FM|Repeater op de noordelijke Veluwe.
-Gelderland|PI2NMG|Nijmegen|2m|145.7500|145.1500|-|FM|Regionale repeater voor Nijmegen. Toon niet bevestigd.
-Gelderland|PI2ANH|Oosterbeek|70cm|430.0500|431.6500|77.0|FM|Repeater in de regio Arnhem.
-Gelderland|PI2APD|Apeldoorn|70cm|430.1500|431.7500|77.0|FM|70-centimeter repeatervermelding voor Apeldoorn.
-Noord-Holland|PI3ALK|Alkmaar|2m|145.6000|145.0000|88.5|FM|2-meter repeater voor Alkmaar.
-Noord-Holland|PI3ZAZ|Assendelft|2m|145.7125|145.1125|88.5|FM|Regionale repeater in de Zaanstreek.
+Gelderland|PI2NMG|Nijmegen|2m|145.7500|145.1500|-|FM|Regionale repeatervermelding voor Nijmegen.
+Gelderland|PI2ANH|Oosterbeek|70cm|430.0500|431.6500|77.0|FM|70-centimeter repeater in de regio Arnhem.
+Gelderland|PI2APD|Apeldoorn|70cm|430.1500|431.7500|77.0|FM|70-centimeter repeatervermelding in Apeldoorn.
+Noord-Holland|PI3ALK|Alkmaar|2m|145.6000|145.0000|88.5|FM|Repeater voor Alkmaar.
+Noord-Holland|PI3ZAZ|Assendelft|2m|145.7125|145.1125|88.5|FM|Repeater in de Zaanstreek.
 Noord-Holland|PI3ASD|Amsterdam|2m|145.7875|145.1875|110.9|FM|2-meter repeater in Amsterdam.
-Noord-Holland|PI3YMD|IJmuiden|2m|145.6875|145.0875|-|FM|Repeater voor IJmuiden en omgeving.
+Noord-Holland|PI3YMD|IJmuiden|2m|145.6875|145.0875|-|FM|Repeatervermelding voor IJmuiden.
 Noord-Holland|PI2ALK|Alkmaar|70cm|430.3750|431.9750|88.5|FM|70-centimeter repeater in Alkmaar.
 Noord-Holland|PI2HLM|Haarlem|70cm|430.2500|431.8500|88.5|FM|Repeater voor Haarlem en Kennemerland.
 Noord-Holland|PI2ASD|Amsterdam|70cm|430.2000|431.8000|110.9|FM|70-centimeter repeatervermelding in Amsterdam.
 Noord-Holland|PI2TXL|Texel|70cm|438.1000|430.5000|88.5|FM|Repeatervermelding voor Texel.
-Zuid-Holland|PI3RTD|Rotterdam|2m|145.6750|145.0750|88.5|FM|Bekende 2-meter repeater voor Rotterdam.
+Zuid-Holland|PI3RTD|Rotterdam|2m|145.6750|145.0750|88.5|FM|2-meter repeater in de regio Rotterdam.
 Zuid-Holland|PI3RAZ|Zoetermeer|2m|145.7500|145.1500|88.5|FM|Repeater in Zoetermeer.
 Zuid-Holland|PI2RTD|Rotterdam|70cm|430.3000|431.9000|88.5|FM|70-centimeter repeater in Rotterdam.
-Zuid-Holland|PI2NWK|Noordwijk|70cm|430.0500|431.6500|88.5|FM|Repeater voor Noordwijk en de Bollenstreek.
+Zuid-Holland|PI2NWK|Noordwijk|70cm|430.0500|431.6500|88.5|FM|Repeater voor de Duin- en Bollenstreek.
 Zuid-Holland|PI2SWK|Gouda|70cm|430.2250|431.8250|88.5|FM|Repeatervermelding voor Gouda.
 Zeeland|PI3GOE|Goes|2m|145.7750|145.1750|88.5|FM|2-meter repeater in Goes.
-Zeeland|PI3ZVL|Westdorpe|2m|145.6000|145.0000|88.5|FM|Repeater in Zeeuws-Vlaanderen.
+Zeeland|PI3ZVL|Westdorpe|2m|145.6000|145.0000|88.5|FM|Repeatervermelding voor Zeeuws-Vlaanderen.
 Zeeland|PI2VLI|Vlissingen|70cm|430.3375|431.9375|88.5|FM|70-centimeter repeater in Vlissingen.
 Noord-Brabant|PI3BOZ|Bergen op Zoom|2m|145.6250|145.0250|88.5|FM|Repeater in West-Brabant.
-Noord-Brabant|PI3BRD|Breda|2m|145.6500|145.0500|71.9|FM|2-meter repeater voor Breda.
-Noord-Brabant|PI3EHV|Eindhoven|2m|145.7000|145.1000|71.9|FM|Amateurrepeater voor Eindhoven.
-Noord-Brabant|PI2EHV|Eindhoven|70cm|430.1000|431.7000|71.9|FM|70-centimeter repeatervermelding in Eindhoven.
-Noord-Brabant|PI2SHB|'s-Hertogenbosch|70cm|430.1750|431.7750|71.9|FM|Repeater voor Den Bosch en omgeving.
-Noord-Brabant|PI2BOZ|Bergen op Zoom|70cm|438.2750|430.6750|88.5|FM|70-centimeter repeater voor Bergen op Zoom.
-Limburg|PI3SRT|Venlo|2m|145.6000|145.0000|71.9|FM|2-meter repeater in Noord-Limburg.
-Limburg|PI3ZLB|Hulsberg|2m|145.7250|145.1250|71.9|FM|Regionale repeater voor Zuid-Limburg.
+Noord-Brabant|PI3BRD|Breda|2m|145.6500|145.0500|71.9|FM|Repeatervermelding voor Breda.
+Noord-Brabant|PI3EHV|Eindhoven|2m|145.7000|145.1000|71.9|FM|2-meter repeater voor Eindhoven.
+Noord-Brabant|PI2EHV|Eindhoven|70cm|430.1000|431.7000|71.9|FM|70-centimeter repeater voor Eindhoven.
+Noord-Brabant|PI2SHB|'s-Hertogenbosch|70cm|430.1750|431.7750|71.9|FM|Repeater voor Den Bosch.
+Noord-Brabant|PI2BOZ|Bergen op Zoom|70cm|438.2750|430.6750|88.5|FM|70-centimeter repeatervermelding in Bergen op Zoom.
+Limburg|PI3SRT|Venlo|2m|145.6000|145.0000|71.9|FM|Repeater in Noord-Limburg.
+Limburg|PI3ZLB|Hulsberg|2m|145.7250|145.1250|71.9|FM|Repeater voor Zuid-Limburg.
 Limburg|PI2NLB|Heijen|70cm|430.2000|431.8000|71.9|FM|70-centimeter repeater voor Noord-Limburg.
 Limburg|PI2VNR|Venray|70cm|430.3500|431.9500|71.9|FM|Repeatervermelding voor Venray.
 `;
 
-const repeaters = [];
+const repeaters=[];
 
-repeaterText.trim().split("\n").forEach(line=>{
+repeaterData.trim().split("\n").forEach(line=>{
   const parts=line.split("|").map(s=>s.trim());
 
   if(parts.length!==9)return;
 
-  const [province,call,place,band,rx,tx,tone,mode,info]=parts;
+  const [
+    province,call,place,band,
+    rx,tx,tone,mode,info
+  ]=parts;
 
   repeaters.push({
-    province,call,place,band,rx,tx,tone,mode,info
+    province,call,place,band,
+    rx,tx,tone,mode,info
   });
 });
 
-/* =====================================
-   VEILIGE TEKSTCOMPONENTEN
-===================================== */
+/* ==================================
+   HULPFUNCTIE
+================================== */
 
 function el(tag,text,className){
   const element=document.createElement(tag);
 
-  if(text!==undefined)element.textContent=text;
-  if(className)element.className=className;
+  if(text!==undefined){
+    element.textContent=text;
+  }
+
+  if(className){
+    element.className=className;
+  }
 
   return element;
 }
 
-/* =====================================
+/* ==================================
    PROVINCIEKNOPPEN
-===================================== */
+================================== */
 
 function renderProvinceButtons(){
   const fmGrid=document.getElementById("fmProvinces");
@@ -1486,38 +2518,48 @@ function renderProvinceButtons(){
   amateurGrid.replaceChildren();
 
   provinces.forEach(([name,emoji])=>{
-    const fmBtn=el("button",undefined,"province");
+    const fmButton=el("button",undefined,"province");
 
-    fmBtn.append(
+    fmButton.append(
       el("strong",emoji+" "+name),
-      el("small","📻 FM + 🚨 noodzenders")
+      el("small","📻 FM + 🚨 Nood")
     );
 
-    fmBtn.addEventListener("click",()=>openFM(name));
-    fmGrid.appendChild(fmBtn);
+    fmButton.addEventListener("click",()=>{
+      openFM(name);
+    });
 
-    const count=repeaters.filter(r=>r.province===name).length;
+    fmGrid.appendChild(fmButton);
 
-    const amBtn=el("button",undefined,"province");
+    const count=repeaters.filter(
+      r=>r.province===name
+    ).length;
 
-    amBtn.append(
+    const amateurButton=el("button",undefined,"province");
+
+    amateurButton.append(
       el("strong",emoji+" "+name),
       el("small","📡 "+count+" repeatervermeldingen")
     );
 
-    amBtn.addEventListener("click",()=>openAmateur(name));
-    amateurGrid.appendChild(amBtn);
+    amateurButton.addEventListener("click",()=>{
+      openAmateur(name);
+    });
+
+    amateurGrid.appendChild(amateurButton);
   });
 }
 
-/* =====================================
-   FM-RADIO TONEN
-===================================== */
+/* ==================================
+   FM RADIO TONEN
+================================== */
 
 function openFM(name){
   selectedFM=name;
 
-  const emoji=provinces.find(p=>p[0]===name)?.[1]||"📻";
+  const emoji=provinces.find(
+    p=>p[0]===name
+  )?.[1]||"📻";
 
   document.getElementById("fmRegionTitle").textContent=
     emoji+" "+name;
@@ -1525,19 +2567,20 @@ function openFM(name){
   document.getElementById("fmSearch").value="";
 
   const grid=document.getElementById("emergencyGrid");
+
   grid.replaceChildren();
 
   (emergency[name]||[]).forEach(([station,freq,place])=>{
-    const card=el("div",undefined,"emergency-item");
+    const item=el("div",undefined,"emergency-item");
 
-    card.append(
+    item.append(
       el("span","🚨 NOODFREQUENTIE","badge red"),
       el("h3",station),
       el("strong",freq+" MHz"),
       el("small","📍 "+place)
     );
 
-    grid.appendChild(card);
+    grid.appendChild(item);
   });
 
   renderFM();
@@ -1564,7 +2607,8 @@ function renderFM(){
 
   if(!filtered.length){
     const tr=el("tr");
-    const td=el("td","Geen frequenties gevonden.","empty");
+    const td=el("td","Geen zenders gevonden.","empty");
+
     td.colSpan=3;
     tr.appendChild(td);
     tbody.appendChild(tr);
@@ -1573,25 +2617,31 @@ function renderFM(){
 
   filtered.forEach(s=>{
     const tr=el("tr");
-    if(s.isEmergency)tr.className="nood-row";
+
+    if(s.emergency){
+      tr.className="emergency-row";
+    }
 
     const tdFreq=el("td",s.freq+" MHz","freq");
     const tdName=el("td");
-    const wrapper=el("div",undefined,"station-name");
+    const nameWrap=el("div",undefined,"station-name");
 
-    wrapper.appendChild(el("strong",s.name));
+    nameWrap.appendChild(el("strong",s.name));
 
-    if(s.isEmergency){
-      wrapper.appendChild(
+    if(s.emergency){
+      nameWrap.appendChild(
         el("span","🚨 NOODFREQUENTIE","badge red")
       );
     }
 
-    tdName.appendChild(wrapper);
+    tdName.appendChild(nameWrap);
 
-    const tdPlace=el("td",s.place);
+    tr.append(
+      tdFreq,
+      tdName,
+      el("td",s.place)
+    );
 
-    tr.append(tdFreq,tdName,tdPlace);
     tbody.appendChild(tr);
   });
 }
@@ -1599,21 +2649,23 @@ function renderFM(){
 document.getElementById("fmSearch")
   .addEventListener("input",renderFM);
 
-/* =====================================
-   ZENDAMATEUR REPEATERS TONEN
-===================================== */
+/* ==================================
+   AMATEUR REGIO
+================================== */
 
 function openAmateur(name){
   selectedAmateur=name;
 
-  const emoji=provinces.find(p=>p[0]===name)?.[1]||"📡";
+  const emoji=provinces.find(
+    p=>p[0]===name
+  )?.[1]||"📡";
 
   document.getElementById("amateurRegionTitle").textContent=
     emoji+" Repeaters "+name;
 
   document.getElementById("amateurRegionInfo").textContent=
-    "RX-frequenties, locaties, technische gegevens "+
-    "en achtergrondinformatie voor de regio "+name+".";
+    "Ontdek RX-frequenties, locaties, "+
+    "technische gegevens en informatie voor "+name+".";
 
   document.getElementById("repeaterSearch").value="";
 
@@ -1621,42 +2673,67 @@ function openAmateur(name){
   navigate("amateurRegion");
 }
 
-function createField(title,value,isLocked=false,isRX=false){
+function createField(label,value,locked=false,rx=false){
   const field=el("div",undefined,"field");
 
-  if(isLocked&&!unlocked)field.classList.add("locked");
-  if(isRX)field.classList.add("rx");
+  if(locked&&!unlocked){
+    field.classList.add("locked");
+  }
+
+  if(rx){
+    field.classList.add("rx");
+  }
 
   field.append(
-    el("small",title),
-    el("strong",isLocked&&!unlocked?"🔒 Verborgen":value)
+    el("small",label),
+    el("strong",locked&&!unlocked?"🔒 Verborgen":value)
   );
 
   return field;
 }
 
+/* ==================================
+   PI3UTR FOTO + BRON HOBBYSCOOP
+================================== */
+
 function addPI3UTRPhoto(container){
   const image=document.createElement("img");
 
   image.src="foto1.png";
-  image.alt="Foto van de PI3UTR-repeater in Utrecht";
+  image.alt="PI3UTR repeater - foto afkomstig van Hobbyscoop";
   image.className="repeater-photo";
   image.loading="lazy";
 
-  const caption=el(
-    "div",
-    "📷 PI3UTR - eigen foto van de repeater",
-    "caption"
+  const caption=el("div",undefined,"photo-credit");
+
+  caption.appendChild(
+    document.createTextNode("📷 Fotobron: ")
   );
+
+  const source=el("a","Hobbyscoop – PI3UTR");
+  source.href="https://hobbyscoop.nl/status/pi3utr/";
+  source.target="_blank";
+  source.rel="noopener noreferrer";
+
+  caption.appendChild(source);
 
   image.addEventListener("error",()=>{
     image.hidden=true;
-    caption.textContent=
-      "📷 Upload foto1.png naast index.html om de foto te tonen.";
+
+    const message=el(
+      "p",
+      "Voeg foto1.png naast index.html toe om de foto te tonen."
+    );
+
+    container.appendChild(message);
   });
 
   container.append(image,caption);
 }
+
+/* ==================================
+   REPEATERS TONEN
+================================== */
 
 function renderRepeaters(){
   const query=document.getElementById("repeaterSearch")
@@ -1670,17 +2747,20 @@ function renderRepeaters(){
     )
     .sort((a,b)=>{
       const order={"2m":0,"70cm":1,"23cm":2};
-      const d=(order[a.band]??9)-(order[b.band]??9);
 
-      if(d!==0)return d;
+      const difference=
+        (order[a.band]??9)-(order[b.band]??9);
+
+      if(difference!==0)return difference;
+
       return Number(a.rx)-Number(b.rx);
     });
 
-  const grid=document.getElementById("repeaterGrid");
-  grid.replaceChildren();
-
   document.getElementById("repeaterCount").textContent=
     filtered.length+" repeatervermeldingen";
+
+  const grid=document.getElementById("repeaterGrid");
+  grid.replaceChildren();
 
   if(!filtered.length){
     grid.appendChild(
@@ -1691,18 +2771,22 @@ function renderRepeaters(){
 
   filtered.forEach(r=>{
     const card=el("article",undefined,"repeater");
-    const head=el("div",undefined,"repeater-head");
 
+    const head=el("div",undefined,"repeater-head");
     const badges=el("div");
+
     badges.append(
       el("span",r.band,"badge blue"),
       document.createTextNode(" "),
       el("span",r.mode,"badge")
     );
 
-    head.append(el("span",r.call,"call"),badges);
-    card.appendChild(head);
+    head.append(
+      el("span",r.call,"call"),
+      badges
+    );
 
+    card.appendChild(head);
     card.appendChild(el("p","📍 "+r.place));
 
     const fields=el("div",undefined,"fields");
@@ -1732,10 +2816,18 @@ function renderRepeaters(){
 
       info.appendChild(el(
         "p",
-        "PI3UTR staat in de regio Utrecht. "+
-        "Deze foto is afkomstig uit jouw eigen "+
-        "GitHub-repository en toont de repeater."
+        "PI3UTR is een bovenregionale repeater "+
+        "van Hobbyscoop. De hoofdopstelling "+
+        "staat in IJsselstein, in de provincie Utrecht."
       ));
+
+      const liveLink=el("a","📡 Bekijk actuele PI3UTR-status ↗");
+
+      liveLink.href="https://hobbyscoop.nl/status/pi3utr/";
+      liveLink.target="_blank";
+      liveLink.rel="noopener noreferrer";
+
+      info.appendChild(liveLink);
     }
 
     card.appendChild(info);
@@ -1746,9 +2838,9 @@ function renderRepeaters(){
 document.getElementById("repeaterSearch")
   .addEventListener("input",renderRepeaters);
 
-/* =====================================
-   WACHTWOORD
-===================================== */
+/* ==================================
+   WACHTWOORD ZICHTBAARHEID
+================================== */
 
 const passwordInput=document.getElementById("password");
 const passwordMessage=document.getElementById("passwordMessage");
@@ -1756,20 +2848,21 @@ const unlockButton=document.getElementById("unlockButton");
 const lockButton=document.getElementById("lockButton");
 
 function unlock(){
-  if(passwordInput.value===WEBSITE_PASSWORD){
+  if(passwordInput.value===PASSWORD){
     unlocked=true;
 
     passwordMessage.textContent=
-      "✅ TX en CTCSS zichtbaar. Dit geeft geen zendbevoegdheid.";
+      "✅ TX en CTCSS zichtbaar. Dit verleent geen zendbevoegdheid.";
+
     passwordMessage.style.color="var(--green)";
 
+    passwordInput.hidden=true;
     unlockButton.hidden=true;
     lockButton.hidden=false;
-    passwordInput.hidden=true;
 
     renderRepeaters();
   }else{
-    passwordMessage.textContent="❌ Onjuist wachtwoord.";
+    passwordMessage.textContent="❌ Verkeerd wachtwoord.";
     passwordMessage.style.color="var(--red)";
   }
 }
@@ -1777,7 +2870,9 @@ function unlock(){
 unlockButton.addEventListener("click",unlock);
 
 passwordInput.addEventListener("keydown",event=>{
-  if(event.key==="Enter")unlock();
+  if(event.key==="Enter"){
+    unlock();
+  }
 });
 
 lockButton.addEventListener("click",()=>{
@@ -1788,15 +2883,15 @@ lockButton.addEventListener("click",()=>{
   unlockButton.hidden=false;
   lockButton.hidden=true;
 
-  passwordMessage.textContent="🔒 Zendinstellingen vergrendeld.";
+  passwordMessage.textContent="🔒 Gegevens vergrendeld.";
   passwordMessage.style.color="var(--muted)";
 
   renderRepeaters();
 });
 
-/* =====================================
+/* ==================================
    NAVIGATIE
-===================================== */
+================================== */
 
 const pages=[
   "home",
@@ -1809,17 +2904,21 @@ const pages=[
 ];
 
 function showPage(page){
-  if(!pages.includes(page))page="home";
+  if(!pages.includes(page)){
+    page="home";
+  }
 
   document.querySelectorAll(".page").forEach(section=>{
     section.classList.toggle(
-      "active",section.id===page
+      "active",
+      section.id===page
     );
   });
 
   document.querySelectorAll("[data-page]").forEach(button=>{
     button.classList.toggle(
-      "active",button.dataset.page===page
+      "active",
+      button.dataset.page===page
     );
   });
 
@@ -1847,18 +2946,20 @@ window.addEventListener("hashchange",()=>{
   showPage(location.hash.slice(1));
 });
 
-/* =====================================
+/* ==================================
    WEBSITE STARTEN
-===================================== */
+================================== */
 
-document.getElementById("footerYear").textContent=
+document.getElementById("year").textContent=
   new Intl.DateTimeFormat("nl-NL",{
-    year:"numeric",timeZone:TIME_ZONE
+    year:"numeric",
+    timeZone:TIME_ZONE
   }).format(new Date());
 
 renderProvinceButtons();
 showPage(location.hash.slice(1)||"home");
 
 </script>
+
 </body>
 </html>
