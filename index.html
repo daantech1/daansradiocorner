@@ -2,262 +2,475 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b1220">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080f1d">
+<meta name="description" content="Daan's Radio Corner - FM-frequenties, calamiteitenzenders en radiozendamateurs in Nederland.">
 <title>Daan's Radio Corner | Ontdek de ether</title>
 
 <style>
 :root {
-  --bg: #0b1220;
-  --panel: #142239;
-  --panel2: #1b304b;
-  --accent: #55e5b9;
-  --text: #f1f6ff;
-  --muted: #9cafc7;
-  --border: #2b405b;
-  --warning: #ffc477;
+  --bg:#080f1d;
+  --panel:#121f32;
+  --panel2:#1a2b42;
+  --line:#293c54;
+  --green:#56e8b8;
+  --text:#eff5ff;
+  --muted:#a1b2c9;
+  --red:#ff5368;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
 
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
 }
 
-button, input { font: inherit; }
-button { cursor: pointer; }
-a { color: inherit; text-decoration: none; }
+a { color:inherit; text-decoration:none; }
+button,input { font:inherit; }
+button { cursor:pointer; }
 
 .container {
-  width: min(1100px, 92%);
-  margin: auto;
+  width:min(1150px,93%);
+  margin:auto;
 }
 
 header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: #101b2ef7;
-  border-bottom: 1px solid var(--border);
+  background:#101a2cf5;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:20;
+  backdrop-filter:blur(12px);
 }
 
 .nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 16px 0;
-  flex-wrap: wrap;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding:17px 0;
+  flex-wrap:wrap;
 }
 
 .logo {
-  font-weight: bold;
-  font-size: 20px;
-  color: var(--accent);
+  font-size:21px;
+  font-weight:800;
 }
 
-nav {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
+.logo span { color:var(--green); }
+
+.links {
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
 }
 
-nav a {
-  font-size: 14px;
-  color: var(--muted);
+.links button {
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  padding:10px 13px;
+  border-radius:9px;
 }
 
-nav a:hover { color: var(--accent); }
+.links button:hover,
+.links button.active {
+  color:var(--green);
+  background:var(--panel2);
+}
 
 .page {
-  display: none;
-  padding: 50px 0 75px;
-  min-height: 70vh;
+  display:none;
+  min-height:70vh;
 }
 
-.page.active { display: block; }
+.page.active { display:block; }
 
 .hero {
-  padding: 75px 0 55px;
-  text-align: center;
+  padding:90px 0 75px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:35px;
+  align-items:center;
 }
 
-.hero .symbol {
-  font-size: 65px;
+.eyebrow {
+  color:var(--green);
+  font-size:13px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-weight:bold;
 }
 
 h1 {
-  font-size: clamp(32px, 6vw, 56px);
-  line-height: 1.15;
-  margin: 15px 0;
+  font-size:clamp(38px,5vw,65px);
+  line-height:1.12;
+  letter-spacing:-2px;
+  margin:16px 0;
 }
 
-h2 { margin-top: 0; }
+h1 span { color:var(--green); }
 
-h3 { margin-bottom: 8px; }
-
-.accent { color: var(--accent); }
-
-.muted { color: var(--muted); }
-
-.hero p {
-  color: var(--muted);
-  max-width: 650px;
-  margin: 15px auto 25px;
+h2 {
+  font-size:29px;
+  margin:0 0 12px;
 }
 
-.actions {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
+h3 { margin:0 0 10px; }
+
+p { color:var(--muted); }
+
+.lead { font-size:18px; }
 
 .btn {
-  display: inline-block;
-  padding: 12px 20px;
-  background: var(--accent);
-  color: #091724;
-  border: 1px solid var(--accent);
-  border-radius: 10px;
-  font-weight: bold;
+  display:inline-block;
+  background:var(--green);
+  border:1px solid var(--green);
+  color:#09241c;
+  padding:13px 20px;
+  border-radius:10px;
+  font-weight:bold;
+  margin:5px 7px 5px 0;
 }
 
 .btn.secondary {
-  background: transparent;
-  color: var(--accent);
+  background:transparent;
+  color:var(--green);
 }
 
-.btn:hover { opacity: .85; }
+.btn:hover { opacity:.85; }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 16px;
-  margin-top: 24px;
+.radio {
+  background:linear-gradient(145deg,#283f5b,#111b2d);
+  border:1px solid #456079;
+  border-radius:25px;
+  padding:30px;
+  box-shadow:0 25px 65px #0007;
+}
+
+.radio-top {
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.screen {
+  margin-top:23px;
+  border:1px solid #367765;
+  background:#092b2b;
+  border-radius:14px;
+  padding:24px;
+}
+
+.digits {
+  font-family:monospace;
+  font-size:clamp(47px,6vw,75px);
+  font-weight:bold;
+  color:var(--green);
+}
+
+.screen p {
+  margin:0;
+  color:#a3e8d5;
+}
+
+.equalizer {
+  display:flex;
+  gap:5px;
+  align-items:end;
+  height:45px;
+  margin-top:18px;
+}
+
+.equalizer i {
+  display:block;
+  flex:1;
+  height:var(--h);
+  background:var(--green);
+  border-radius:4px;
+  animation:pulse 1.8s ease-in-out infinite alternate;
+  animation-delay:var(--delay);
+}
+
+@keyframes pulse {
+  from { transform:scaleY(.55); opacity:.55; }
+  to { transform:scaleY(1); opacity:1; }
+}
+
+.radio-bottom {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:22px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.knob {
+  height:55px;
+  width:55px;
+  background:#a6bbcd;
+  border:10px solid #344b62;
+  border-radius:50%;
+}
+
+.section { padding:45px 0 75px; }
+
+.heading { padding:65px 0 20px; }
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:17px;
 }
 
 .card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  padding: 23px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px;
 }
 
-.card p {
-  color: var(--muted);
-  margin-bottom: 0;
+.card .emoji {
+  font-size:33px;
+  margin-bottom:12px;
 }
 
-.clickable {
-  cursor: pointer;
-  transition: .2s;
+.card a { color:var(--green); }
+
+.notice {
+  padding:19px;
+  background:#14342f;
+  border:1px solid #367663;
+  border-radius:13px;
+  margin:25px 0;
 }
 
-.clickable:hover {
-  border-color: var(--accent);
-  transform: translateY(-3px);
+.notice p {
+  color:#c5f1e1;
+  margin:0;
 }
 
-.section-heading {
-  margin-bottom: 25px;
+.page-title {
+  font-size:clamp(34px,5vw,55px);
 }
 
-input {
-  width: 100%;
-  background: #0b192b;
-  color: white;
-  padding: 14px 16px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  outline: none;
-  margin: 15px 0;
+.province-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
+  margin:25px 0;
 }
 
-input:focus { border-color: var(--accent); }
-
-.station {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 17px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  margin: 10px 0;
+.province-btn {
+  text-align:left;
+  padding:21px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  color:white;
+  border-radius:13px;
+  transition:.2s;
+  min-height:110px;
 }
 
-.station strong {
-  color: var(--accent);
-  font-size: 20px;
-  white-space: nowrap;
+.province-btn:hover {
+  border-color:var(--green);
+  background:#193a38;
+  transform:translateY(-3px);
 }
 
-.station small {
-  color: var(--muted);
+.province-btn strong {
+  display:block;
+  margin-bottom:8px;
+  font-size:17px;
 }
 
-.emergency {
-  padding: 22px;
-  background: #31251c;
-  border: 1px solid #8e6337;
-  border-radius: 14px;
-  margin: 20px 0;
-}
-
-.emergency h3 {
-  color: var(--warning);
-  margin-top: 0;
-}
-
-.note {
-  padding: 15px;
-  background: var(--panel2);
-  border-left: 3px solid var(--accent);
-  border-radius: 8px;
-  color: var(--muted);
-  margin: 25px 0;
-}
+.province-btn small { color:var(--muted); }
 
 .back {
-  color: var(--accent);
-  background: transparent;
-  border: 0;
-  padding: 0;
-  margin-bottom: 20px;
+  border:0;
+  padding:0;
+  background:transparent;
+  color:var(--green);
+  font-size:15px;
+  margin-bottom:18px;
 }
 
-.badge {
-  display: inline-block;
-  padding: 5px 10px;
-  background: #204839;
-  color: var(--accent);
-  border-radius: 30px;
-  font-size: 12px;
-  font-weight: bold;
+.emergency-card {
+  padding:24px;
+  margin:22px 0 35px;
+  background:#311a25;
+  border:1px solid #a44255;
+  border-radius:17px;
+}
+
+.emergency-card h2 { margin:10px 0; }
+
+.emergency-card p { color:#e5b9c3; }
+
+.emergency-head {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.nood-badge {
+  background:#e52d49;
+  color:white;
+  border-radius:6px;
+  padding:5px 9px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+
+.emergency-list {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(245px,1fr));
+  gap:10px;
+  margin-top:20px;
+}
+
+.emergency-item {
+  background:#421e2a;
+  border:1px solid #874456;
+  border-radius:11px;
+  padding:15px;
+}
+
+.emergency-item strong {
+  display:block;
+  color:white;
+  font-size:23px;
+}
+
+.emergency-item small { color:#e5b9c3; }
+
+.station-tools {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin:23px 0;
+}
+
+.search {
+  flex:1;
+  min-width:220px;
+  background:#111e31;
+  border:1px solid #3b526e;
+  border-radius:10px;
+  padding:14px;
+  color:white;
+  outline:none;
+}
+
+.search:focus { border-color:var(--green); }
+
+.count {
+  color:var(--muted);
+  font-size:14px;
+}
+
+.station-table-wrap {
+  overflow-x:auto;
+  border:1px solid var(--line);
+  border-radius:13px;
+}
+
+table {
+  width:100%;
+  border-collapse:collapse;
+  min-width:500px;
+}
+
+th {
+  text-align:left;
+  padding:15px;
+  background:#1b2c43;
+  color:#c3d5e9;
+  font-size:14px;
+}
+
+td {
+  padding:14px 15px;
+  border-top:1px solid var(--line);
+}
+
+tr:hover td { background:#17293e; }
+
+.freq {
+  color:var(--green);
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.emergency-row td { background:#271d2b; }
+
+.emergency-row .freq { color:#ff8b9b; }
+
+.station-name {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  flex-wrap:wrap;
+}
+
+.small {
+  font-size:13px;
+  color:var(--muted);
+}
+
+.info-box {
+  margin:20px 0;
+  padding:18px;
+  border:1px solid var(--line);
+  background:var(--panel);
+  border-radius:12px;
+}
+
+.info-box a {
+  color:var(--green);
+  text-decoration:underline;
+}
+
+.empty {
+  padding:30px;
+  text-align:center;
+  color:var(--muted);
 }
 
 footer {
-  background: #101b2e;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  padding: 30px 15px;
-  color: var(--muted);
-  font-size: 14px;
+  padding:30px 0;
+  border-top:1px solid var(--line);
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
 }
 
-footer strong { color: var(--accent); }
+@media(max-width:900px) {
+  .hero { grid-template-columns:1fr; }
+  .province-grid { grid-template-columns:repeat(3,1fr); }
+}
 
-@media (max-width: 600px) {
-  .nav { justify-content: center; }
-  nav { justify-content: center; }
-  .page { padding-top: 30px; }
-  .station { align-items: flex-start; }
+@media(max-width:650px) {
+  .cards { grid-template-columns:1fr; }
+  .province-grid { grid-template-columns:repeat(2,1fr); }
+  .province-btn { padding:15px; }
+  .nav { justify-content:center; }
+  .heading { padding-top:35px; }
+  .hero { padding:45px 0; }
+  .radio { padding:20px; }
 }
 </style>
 </head>
@@ -266,287 +479,416 @@ footer strong { color: var(--accent); }
 
 <header>
   <div class="container nav">
-    <a href="#home" class="logo" onclick="showPage('home')">
-      📡 Daan's Radio Corner
+
+    <a class="logo" href="#home">
+      📻 Daan's <span>Radio Corner</span>
     </a>
 
-    <nav>
-      <a href="#home" onclick="showPage('home')">Home</a>
-      <a href="#fm" onclick="showPage('fm')">FM-radio</a>
-      <a href="#amateur" onclick="showPage('amateur')">Zendamateur</a>
-      <a href="#about" onclick="showPage('about')">Over mij</a>
+    <nav class="links">
+      <button data-page="home">Home</button>
+      <button data-page="fm">FM-radio</button>
+      <button data-page="amateur">Zendamateurs</button>
+      <button data-page="over">Over Daan</button>
     </nav>
+
   </div>
 </header>
 
 <main>
 
-<!-- HOMEPAGE -->
-<section id="home" class="page active">
+<!-- ================= HOME ================= -->
+
+<section id="home" class="page">
   <div class="container">
 
     <div class="hero">
-      <div class="symbol">📻</div>
-      <span class="badge">Welkom in de ether</span>
 
-      <h1>Daan's <span class="accent">Radio Corner</span></h1>
+      <div>
+        <div class="eyebrow">
+          ● Welkom bij Daan's Radio Corner
+        </div>
 
-      <p>
-        Ontdek de wereld van radio!
-        Van lokale FM-zenders en regionale calamiteitenzenders
-        tot de fascinerende hobby van radiozendamateurs.
-      </p>
+        <h1>Ontdek de <span>ether.</span></h1>
 
-      <div class="actions">
-        <button class="btn" onclick="showPage('fm')">
-          📻 Bekijk FM-frequenties
+        <p class="lead">
+          Jouw plek voor FM-radio, frequenties,
+          regionale calamiteitenzenders
+          en alles over radiozendamateurs.
+        </p>
+
+        <p>
+          Ontdek welke zenders je in Nederland
+          via FM kunt ontvangen.
+          Selecteer een provincie, zoek op frequentie
+          en bekijk de officiële regionale noodzenders.
+        </p>
+
+        <button class="btn" data-page="fm">
+          📻 FM-frequenties
         </button>
 
-        <button class="btn secondary" onclick="showPage('amateur')">
+        <button class="btn secondary" data-page="amateur">
           📡 Zendamateurs
         </button>
       </div>
+
+      <div class="radio">
+
+        <div class="radio-top">
+          <span>DAAN'S RADIO</span>
+          <span>● FM</span>
+        </div>
+
+        <div class="screen">
+          <div class="digits">101.2</div>
+          <p>MHz · FM STEREO</p>
+
+          <div class="equalizer">
+            <i style="--h:35%;--delay:0s"></i>
+            <i style="--h:70%;--delay:.2s"></i>
+            <i style="--h:45%;--delay:.4s"></i>
+            <i style="--h:95%;--delay:.1s"></i>
+            <i style="--h:55%;--delay:.3s"></i>
+            <i style="--h:80%;--delay:.5s"></i>
+            <i style="--h:40%;--delay:.2s"></i>
+            <i style="--h:90%;--delay:.4s"></i>
+            <i style="--h:65%;--delay:.1s"></i>
+            <i style="--h:35%;--delay:.3s"></i>
+            <i style="--h:75%;--delay:.5s"></i>
+            <i style="--h:50%;--delay:.2s"></i>
+          </div>
+        </div>
+
+        <div class="radio-bottom">
+          <span>DISCOVER THE AIRWAVES</span>
+          <div class="knob"></div>
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="grid">
+    <div class="section">
 
-      <div class="card clickable" onclick="showPage('fm')">
-        <h2>📻 FM-radio</h2>
+      <h2>Wat vind je hier?</h2>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="emoji">📻</div>
+          <h3>FM-radio</h3>
+          <p>
+            Frequenties van landelijke, regionale
+            en lokale zenders per provincie.
+          </p>
+          <a href="#fm">Bekijk provincies →</a>
+        </div>
+
+        <div class="card">
+          <div class="emoji">🚨</div>
+          <h3>Noodfrequenties</h3>
+          <p>
+            Vind de officiële regionale
+            calamiteitenzenders en hun FM-frequenties.
+          </p>
+          <a href="#fm">Bekijk noodzenders →</a>
+        </div>
+
+        <div class="card">
+          <div class="emoji">📡</div>
+          <h3>Zendamateurs</h3>
+          <p>
+            Binnenkort informatie over amateurbanden,
+            repeaters en radioapparatuur.
+          </p>
+          <a href="#amateur">Ontdek meer →</a>
+        </div>
+
+      </div>
+
+      <div class="notice">
         <p>
-          Kies jouw provincie en ontdek FM-frequenties
-          van radiozenders in Nederland.
+          <strong>📡 Website in ontwikkeling</strong><br>
+          De FM-startlijst wordt verder uitgebreid.
+          De officiële calamiteitenfrequenties
+          zijn apart aangegeven met een rood label.
         </p>
       </div>
 
-      <div class="card clickable" onclick="showPage('fm')">
-        <h2>🚨 Noodzenders</h2>
-        <p>
-          Vind informatie over regionale calamiteitenzenders
-          die bij noodsituaties worden gebruikt.
-        </p>
-      </div>
-
-      <div class="card clickable" onclick="showPage('amateur')">
-        <h2>📡 Zendamateurs</h2>
-        <p>
-          Binnenkort meer over frequentiebanden,
-          apparatuur, antennes en verbindingen.
-        </p>
-      </div>
-
-    </div>
-
-    <div class="note">
-      <strong>Welkom!</strong><br>
-      Deze website is nog in ontwikkeling.
-      Binnenkort voeg ik meer radiofrequenties,
-      handige informatie en zendamateurtips toe.
     </div>
 
   </div>
 </section>
 
-<!-- FM RADIO -->
+<!-- ================= FM ================= -->
+
 <section id="fm" class="page">
   <div class="container">
 
-    <div class="section-heading">
-      <span class="badge">87.5 – 108 MHz</span>
-      <h1>📻 FM-radio Nederland</h1>
-      <p class="muted">
-        Selecteer een provincie om FM-zenders en
-        regionale noodzenderinformatie te bekijken.
+    <div class="heading">
+      <div class="eyebrow">FM-radio Nederland</div>
+      <h1 class="page-title">
+        Kies je <span>provincie.</span>
+      </h1>
+
+      <p>
+        Klik op een provincie om de FM-zenders
+        en regionale noodfrequenties te bekijken.
       </p>
     </div>
 
-    <div class="grid" id="provinceGrid"></div>
+    <div id="provinceGrid" class="province-grid"></div>
 
-    <div class="note">
-      FM-ontvangst verschilt per woonplaats.
-      Niet iedere zender is overal in een provincie te ontvangen.
-      De frequentielijst is nog niet volledig en wordt uitgebreid.
+    <div class="info-box">
+      📡 Het Nederlandse FM-omroepbereik loopt
+      van 87,5 tot 108 MHz.
+      Ontvangst hangt af van je locatie, antenne
+      en de gebruikte zendmast.
+
+      <p>
+        Dit is een groeiende lokale database.
+        Voor aanvullende frequenties is per provincie
+        ook een link naar een uitgebreider overzicht aanwezig.
+      </p>
     </div>
 
   </div>
 </section>
 
-<!-- PROVINCIE -->
+<!-- ================ PROVINCIE ================ -->
+
 <section id="province" class="page">
   <div class="container">
 
-    <button class="back" onclick="showPage('fm')">
-      ← Terug naar provincies
-    </button>
+    <div class="heading">
 
-    <h1 id="provinceTitle"></h1>
+      <button class="back" id="backButton">
+        ← Alle provincies
+      </button>
 
-    <p class="muted">
-      FM-frequenties en calamiteitenzenderinformatie
-      voor deze provincie.
-    </p>
+      <div class="eyebrow">FM-frequenties</div>
 
-    <div class="emergency">
-      <h3>🚨 Regionale calamiteitenzender</h3>
-      <div id="emergencyInfo"></div>
+      <h1 id="provinceTitle" class="page-title"></h1>
 
       <p>
-        Bij een calamiteit kan de regionale publieke omroep
-        officiële informatie van de overheid doorgeven.
+        Radiofrequenties en regionale calamiteitenzenders
+        voor deze provincie.
       </p>
 
-      <small>
-        Controleer de juiste frequentie voor jouw woonplaats.
-        Volg bij nood altijd NL-Alert en officiële instructies.
-      </small>
-
-      <p>
-        <a href="https://www.nederlandveilig.nl/"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="accent">
-          Meer informatie over veiligheid ↗
-        </a>
-      </p>
     </div>
 
-    <h2>📡 FM-frequenties</h2>
+    <div class="emergency-card">
 
-    <input
-      type="search"
-      id="stationSearch"
-      placeholder="Zoek een zender of frequentie..."
-      oninput="renderStations()"
-    >
+      <div class="emergency-head">
+        <span class="nood-badge">🚨 NOODFREQUENTIE</span>
+        <span>Officiële calamiteitenzender</span>
+      </div>
 
-    <p class="muted" id="stationCount"></p>
+      <h2>Regionale noodzenders</h2>
 
-    <div id="stationList"></div>
+      <p>
+        Bij calamiteiten kan de overheid via
+        de regionale publieke omroep informatie
+        en aanwijzingen geven.
+      </p>
 
-    <div class="note">
-      <strong>Let op:</strong>
-      dit is een voorlopige voorbeeldlijst.
-      Frequenties zijn niet live gecontroleerd.
-      Sommige zenders gebruiken per stad of regio
-      verschillende frequenties.
+      <div id="emergencyList" class="emergency-list"></div>
+
+      <p class="small">
+        Bron:
+        <a href="https://www.denkvooruit.nl/bereid-je-voor/zo-krijg-je-een-waarschuwing/radio"
+           target="_blank"
+           rel="noopener noreferrer"
+           style="color:#ff9aaa;text-decoration:underline">
+          Denk Vooruit – Overheid
+        </a>
+      </p>
+
+    </div>
+
+    <h2>📻 Alle vermelde FM-zenders</h2>
+
+    <p>
+      De noodzenders staan ook in onderstaande lijst,
+      met een rood noodlabel naast hun naam.
+    </p>
+
+    <div class="station-tools">
+
+      <input
+        class="search"
+        id="stationSearch"
+        type="search"
+        placeholder="Zoek radiozender, plaats of MHz..."
+        aria-label="Zoek frequentie"
+      >
+
+      <span id="stationCount" class="count"></span>
+
+    </div>
+
+    <div class="station-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Frequentie</th>
+            <th>Radiozender</th>
+            <th>Zendlocatie / regio</th>
+          </tr>
+        </thead>
+
+        <tbody id="stationRows"></tbody>
+      </table>
+    </div>
+
+    <div class="info-box">
+
+      <strong>📻 Meer FM-frequenties vinden</strong>
+
+      <p>
+        De ingebouwde lijst is nog niet volledig.
+        Via de onderstaande link kun je het
+        uitgebreidere frequentieoverzicht van deze
+        provincie bekijken.
+      </p>
+
+      <a id="moreFrequencies"
+         href="https://radiostations.nl/frequenties/"
+         target="_blank"
+         rel="noopener noreferrer">
+         Bekijk uitgebreider provincieoverzicht ↗
+      </a>
+
+      <p class="small">
+        Frequentievermeldingen zijn geen garantie
+        dat een zender op dit moment daadwerkelijk
+        vanaf jouw locatie te ontvangen is.
+      </p>
+
     </div>
 
   </div>
 </section>
 
-<!-- ZENDAMATEUR -->
+<!-- ================ ZENDAMATEURS ================ -->
+
 <section id="amateur" class="page">
   <div class="container">
 
-    <span class="badge">Binnenkort meer</span>
+    <div class="heading">
+      <div class="eyebrow">Ham Radio</div>
+      <h1 class="page-title">De <span>zendamateurhoek.</span></h1>
 
-    <h1>📡 Radiozendamateurs</h1>
+      <p>
+        Alles over de wereld van radiozendamateurs.
+        Dit gedeelte wordt later uitgebreid.
+      </p>
+    </div>
 
-    <p class="muted">
-      Welkom in het zendamateurgedeelte van Daan's Radio Corner!
-      Hier komt alles over de mooie hobby van amateurradio.
-    </p>
-
-    <div class="grid">
+    <div class="cards">
 
       <div class="card">
-        <h2>📶 Frequentiebanden</h2>
+        <div class="emoji">📡</div>
+        <h3>HF / VHF / UHF</h3>
         <p>
-          Informatie over HF, VHF en UHF.
-          Binnenkort komen hier bandplannen en uitleg.
+          Binnenkort informatie over de
+          radioamateurbanden en bandplannen.
         </p>
       </div>
 
       <div class="card">
-        <h2>🎙️ Apparatuur</h2>
+        <div class="emoji">🎙️</div>
+        <h3>Radioapparatuur</h3>
         <p>
-          Portofoons, transceivers, ontvangers
-          en andere radioapparatuur.
+          Transceivers, portofoons, ontvangers
+          en interessante radioapparatuur.
         </p>
       </div>
 
       <div class="card">
-        <h2>📡 Antennes</h2>
+        <div class="emoji">📶</div>
+        <h3>Repeaters</h3>
         <p>
-          Alles over antennes, coaxkabels,
-          SWR en het verbeteren van ontvangst.
+          Later een overzicht van repeaters
+          en hun frequenties in Nederland.
         </p>
       </div>
 
       <div class="card">
-        <h2>🌍 Verbindingen</h2>
+        <div class="emoji">🌍</div>
+        <h3>Verbindingen</h3>
         <p>
-          Ontdek hoe radioamateurs contact maken
-          met stations over de hele wereld.
+          Meer over het maken van contacten
+          met radioamateurs over de wereld.
         </p>
       </div>
 
       <div class="card">
-        <h2>📖 Licenties</h2>
+        <div class="emoji">🛠️</div>
+        <h3>Zelfbouw</h3>
         <p>
-          Informatie over de Nederlandse
-          N- en F-registraties en examens.
+          Antennes, experimenten,
+          radio-elektronica en projecten.
         </p>
       </div>
 
       <div class="card">
-        <h2>🛠️ Mijn projecten</h2>
+        <div class="emoji">📚</div>
+        <h3>Licenties</h3>
         <p>
-          Hier komen later mijn eigen radio-experimenten,
-          projecten en ervaringen.
+          Binnenkort meer over
+          de Nederlandse N- en F-registraties.
         </p>
       </div>
 
     </div>
 
-    <div class="note">
-      Dit onderdeel is nog in aanbouw.
-      Zenden op amateurbanden vereist de juiste registratie
-      en naleving van de geldende regels.
+    <div class="notice">
+      <p>
+        📡 Coming soon! Hier komen later
+        nog veel meer radiozendamateurfuncties bij.
+      </p>
     </div>
 
   </div>
 </section>
 
-<!-- OVER MIJ -->
-<section id="about" class="page">
+<!-- ================= OVER ================= -->
+
+<section id="over" class="page">
   <div class="container">
 
-    <h1>👋 Over Daan</h1>
-
-    <div class="card">
-      <h2>Welkom op mijn website!</h2>
-
-      <p>
-        Hoi! Ik ben Daan en welkom op Daan's Radio Corner.
-      </p>
-
-      <p>
-        Deze website gaat over alles wat met radio te maken heeft.
-        Van gewone FM-radiozenders tot amateurradio,
-        ontvangers, antennes en frequenties.
-      </p>
-
-      <p>
-        Ik ben deze website begonnen om radio-informatie
-        op één overzichtelijke plek te verzamelen.
-      </p>
-
-      <p>
-        Binnenkort vertel ik hier meer over mezelf,
-        mijn apparatuur en mijn interesse in radio.
-      </p>
+    <div class="heading">
+      <div class="eyebrow">Over deze website</div>
+      <h1 class="page-title">Over <span>Daan.</span></h1>
     </div>
 
-    <div class="grid">
-      <div class="card">
-        <h3>📻 Mijn radio's</h3>
-        <p>Hier komt later mijn apparatuur.</p>
-      </div>
+    <div class="card">
+      <h2>Welkom bij mijn radiohoek!</h2>
 
-      <div class="card">
-        <h3>📡 Mijn antennes</h3>
-        <p>Hier komen later mijn antennes en projecten.</p>
-      </div>
+      <p>
+        Hoi! Ik ben Daan en dit is
+        mijn eigen radio-website.
+      </p>
+
+      <p>
+        Hier verzamel ik informatie over
+        FM-radio, radiofrequenties,
+        calamiteitenzenders en amateurradio.
+      </p>
+
+      <p>
+        Later voeg ik hier meer toe over
+        mijn apparatuur, antennes, projecten
+        en mijn interesse in radio.
+      </p>
+
+      <h3>📻 Binnenkort meer!</h3>
+
+      <p>
+        Daan's Radio Corner is een persoonlijk
+        hobbyproject en blijft zich ontwikkelen.
+      </p>
     </div>
 
   </div>
@@ -555,350 +897,920 @@ footer strong { color: var(--accent); }
 </main>
 
 <footer>
-  <strong>📡 Daan's Radio Corner</strong>
-  <p>Ontdek de ether • FM-radio • Zendamateurs</p>
-  <p>© <span id="year"></span> Daan's Radio Corner</p>
-  <p>Gemaakt met ❤️ voor radioliefhebbers</p>
+  <div class="container">
+    📻 <strong>Daan's Radio Corner</strong>
+    <p>Ontdek de ether · FM-radio · Zendamateurs</p>
+    © <span id="year"></span> Daan's Radio Corner
+  </div>
 </footer>
 
 <script>
+"use strict";
 
 /*
-=======================================
-DAAN'S RADIO CORNER
-=======================================
+========================================
+ DAAN'S RADIO CORNER
+========================================
 
-Hieronder kun je de provincies,
-noodzenders en FM-zenders aanpassen.
+NOODFREQUENTIES:
+Officiële bron:
+https://www.denkvooruit.nl/bereid-je-voor/zo-krijg-je-een-waarschuwing/radio
 
-De frequenties zijn voorbeelden en
-moeten worden gecontroleerd voordat
-de lijst als volledig en actueel geldt.
+NORMALE FM:
+Startlijst samengesteld aan de hand
+van publieke frequentieoverzichten.
+
+LET OP:
+- Niet alle FM-frequenties zijn opgenomen.
+- Frequenties kunnen wijzigen.
+- Een zendlocatie ligt soms buiten de
+  provincie waar het signaal te ontvangen is.
+- De browser meet geen live FM-ontvangst.
+========================================
 */
 
-// Provincies en regionale omroepen
+// Provinciegegevens.
 
 const provinces = [
-  {
-    id: "groningen",
-    name: "Groningen",
-    emoji: "🌾",
-    emergency: "RTV Noord",
-    info: "Controleer de lokale FM-frequentie van RTV Noord."
-  },
-  {
-    id: "friesland",
-    name: "Friesland",
-    emoji: "⛵",
-    emergency: "Omrop Fryslân",
-    info: "Controleer de lokale FM-frequentie van Omrop Fryslân."
-  },
-  {
-    id: "drenthe",
-    name: "Drenthe",
-    emoji: "🌳",
-    emergency: "RTV Drenthe",
-    info: "Controleer de lokale FM-frequentie van RTV Drenthe."
-  },
-  {
-    id: "overijssel",
-    name: "Overijssel",
-    emoji: "🌿",
-    emergency: "Oost",
-    info: "Controleer de lokale FM-frequentie van Oost."
-  },
-  {
-    id: "flevoland",
-    name: "Flevoland",
-    emoji: "🌊",
-    emergency: "Omroep Flevoland",
-    info: "Controleer de lokale FM-frequentie van Omroep Flevoland."
-  },
-  {
-    id: "gelderland",
-    name: "Gelderland",
-    emoji: "🌲",
-    emergency: "Omroep Gelderland",
-    info: "Controleer de lokale FM-frequentie van Omroep Gelderland."
-  },
-  {
-    id: "utrecht",
-    name: "Utrecht",
-    emoji: "🏰",
-    emergency: "RTV Utrecht",
-    info: "Controleer de lokale FM-frequentie van RTV Utrecht."
-  },
-  {
-    id: "noord-holland",
-    name: "Noord-Holland",
-    emoji: "🏙️",
-    emergency: "NH Radio",
-    info: "Controleer de lokale FM-frequentie van NH Radio."
-  },
-  {
-    id: "zuid-holland",
-    name: "Zuid-Holland",
-    emoji: "🌉",
-    emergency: "Radio West en Radio Rijnmond",
-    info: "De juiste calamiteitenzender verschilt per regio."
-  },
-  {
-    id: "zeeland",
-    name: "Zeeland",
-    emoji: "⚓",
-    emergency: "Omroep Zeeland",
-    info: "Controleer de lokale FM-frequentie van Omroep Zeeland."
-  },
-  {
-    id: "noord-brabant",
-    name: "Noord-Brabant",
-    emoji: "🏡",
-    emergency: "Omroep Brabant",
-    info: "Controleer de lokale FM-frequentie van Omroep Brabant."
-  },
-  {
-    id: "limburg",
-    name: "Limburg",
-    emoji: "⛰️",
-    emergency: "L1 Radio",
-    info: "Controleer de lokale FM-frequentie van L1 Radio."
-  }
+  ["groningen","Groningen","🌾"],
+  ["friesland","Friesland","⛵"],
+  ["drenthe","Drenthe","🌲"],
+  ["overijssel","Overijssel","🌿"],
+  ["flevoland","Flevoland","🌊"],
+  ["gelderland","Gelderland","🏰"],
+  ["utrecht","Utrecht","🏙️"],
+  ["noord-holland","Noord-Holland","🌷"],
+  ["zuid-holland","Zuid-Holland","🌉"],
+  ["zeeland","Zeeland","⚓"],
+  ["noord-brabant","Noord-Brabant","🏡"],
+  ["limburg","Limburg","⛰️"]
 ];
 
 /*
-VOORBEELD FM-FREQUENTIES
+========================================
+ OFFICIËLE NOODFREQUENTIES
+========================================
 
-Je kunt nieuwe zenders toevoegen:
+Formaat:
+"provincie": [
+  ["Omroep","Frequentie","Locatie"]
+]
 
-{
-  name: "Naam radiozender",
-  freq: "100.0",
-  area: "Plaats of regio"
-}
-
-Controleer iedere frequentie voordat
-je deze als actueel publiceert.
+Zuid-Holland heeft twee regionale
+calamiteitenomroepen.
 */
 
-const frequencies = {
+const emergency = {
 
-  "groningen": [
-    { name: "NPO Radio 1", freq: "91.8", area: "Regio Groningen" },
-    { name: "NPO Radio 2", freq: "88.0", area: "Regio Groningen" }
-  ],
+"groningen":[
+  ["Radio Noord","97.5","Groningen"]
+],
 
-  "friesland": [
-    { name: "NPO Radio 1", freq: "91.8", area: "Regio Friesland" },
-    { name: "NPO Radio 2", freq: "88.0", area: "Regio Friesland" }
-  ],
+"friesland":[
+  ["Omrop Fryslân","92.2","Jirnsum"],
+  ["Omrop Fryslân","92.5","Smilde"]
+],
 
-  "drenthe": [
-    { name: "NPO Radio 1", freq: "91.8", area: "Regio Drenthe" },
-    { name: "NPO Radio 2", freq: "88.0", area: "Regio Drenthe" }
-  ],
+"drenthe":[
+  ["Radio Drenthe","90.8","Smilde"],
+  ["Radio Drenthe","99.3","Emmen"]
+],
 
-  "overijssel": [
-    { name: "NPO Radio 1", freq: "91.8", area: "Regio Overijssel" },
-    { name: "NPO Radio 2", freq: "88.0", area: "Regio Overijssel" }
-  ],
+"overijssel":[
+  ["Radio Oost","89.4","Hengelo"],
+  ["Radio Oost","95.6","Markelo"],
+  ["Radio Oost","97.9","Deventer"],
+  ["Radio Oost","99.4","Zwollekerspel"]
+],
 
-  "flevoland": [
-    { name: "NPO Radio 1", freq: "98.9", area: "Regio Flevoland" },
-    { name: "NPO Radio 2", freq: "88.0", area: "Regio Flevoland" }
-  ],
+"flevoland":[
+  ["Omroep Flevoland","89.8","Lelystad"]
+],
 
-  "gelderland": [
-    { name: "NPO Radio 1", freq: "98.9", area: "Regio Gelderland" },
-    { name: "NPO Radio 2", freq: "88.2", area: "Regio Gelderland" }
-  ],
+"gelderland":[
+  ["Radio Gelderland","88.9","Arnhem"],
+  ["Radio Gelderland","103.5","Ugchelen"],
+  ["Radio Gelderland","90.4","Ruurlo"],
+  ["Radio Gelderland","89.1","Megen"],
+  ["Radio Gelderland","99.6","Zaltbommel"]
+],
 
-  "utrecht": [
-    { name: "NPO Radio 1", freq: "98.9", area: "Regio Utrecht" },
-    { name: "NPO Radio 2", freq: "92.6", area: "Regio Utrecht" }
-  ],
+"utrecht":[
+  ["Radio M Utrecht","93.1","Lopik"],
+  ["Radio M Utrecht","97.9","Rhenen"]
+],
 
-  "noord-holland": [
-    { name: "NPO Radio 1", freq: "98.9", area: "Regio Noord-Holland" },
-    { name: "NPO Radio 2", freq: "92.6", area: "Regio Noord-Holland" }
-  ],
+"noord-holland":[
+  ["NH Radio","88.9","Amsterdam"],
+  ["NH Radio","88.7","Alkmaar"],
+  ["NH Radio","88.7","Hilversum"],
+  ["NH Radio","93.9","Wieringermeer"]
+],
 
-  "zuid-holland": [
-    { name: "NPO Radio 1", freq: "98.9", area: "Regio Zuid-Holland" },
-    { name: "NPO Radio 2", freq: "92.6", area: "Regio Zuid-Holland" }
-  ],
+"zuid-holland":[
+  ["Radio West","89.3","Den Haag"],
+  ["Radio West","88.0","Leiden"],
+  ["Radio Rijnmond","93.4","Rotterdam"]
+],
 
-  "zeeland": [
-    { name: "NPO Radio 1", freq: "98.4", area: "Regio Zeeland" },
-    { name: "NPO Radio 2", freq: "97.8", area: "Regio Zeeland" }
-  ],
+"zeeland":[
+  ["Omroep Zeeland","87.9","Goes"],
+  ["Omroep Zeeland","98.4","Vlissingen"]
+],
 
-  "noord-brabant": [
-    { name: "NPO Radio 1", freq: "98.9", area: "Regio Noord-Brabant" },
-    { name: "NPO Radio 2", freq: "88.2", area: "Regio Noord-Brabant" }
-  ],
+"noord-brabant":[
+  ["Omroep Brabant","91.0","West-Brabant"],
+  ["Omroep Brabant","91.9","Midden-Brabant"],
+  ["Omroep Brabant","95.8","Noordoost-Brabant"],
+  ["Omroep Brabant","87.6","Zuidoost-Brabant"]
+],
 
-  "limburg": [
-    { name: "NPO Radio 1", freq: "98.9", area: "Regio Limburg" },
-    { name: "NPO Radio 2", freq: "88.2", area: "Regio Limburg" }
-  ]
+"limburg":[
+  ["L1 Radio","100.3","Roermond"],
+  ["L1 Radio","95.3","Emmaberg"]
+]
 
 };
 
-let selectedProvince = null;
+/*
+========================================
+ NORMALE FM-FREQUENTIES
+========================================
 
-// Pagina tonen
+Formaat per regel:
+Provincie|MHz|Radiozender|Zendlocatie
+
+Dit is een ingebouwde startlijst.
+Breid hem uit met gecontroleerde gegevens.
+
+Er is bewust geen automatische scraping
+van externe websites nodig.
+De site werkt dus volledig op GitHub Pages.
+*/
+
+const fmData = `
+Groningen|89.1|RADIONL Grunn FM|Groningen
+Groningen|89.6|BNR Nieuwsradio|Hoogersmilde
+Groningen|90.3|Sublime|Hoogezand
+Groningen|91.3|Simone FM|Hoogezand
+Groningen|91.3|Simone FM|Stadskanaal
+Groningen|92.4|Radio Continu|Hoogezand
+Groningen|92.9|Simone FM|Groningen
+Groningen|93.0|Simone FM|Winschoten
+Groningen|93.7|SLAM!|Hoogezand
+Groningen|95.3|Regio FM|Bedum
+Groningen|97.5|Radio Noord|Groningen
+Groningen|104.4|RADIONL|Groningen
+
+Friesland|89.4|Lokale Omroep Ameland|Ameland
+Friesland|89.9|NPO 3FM|West Terschelling
+Friesland|91.0|SLAM!|Tjerkgaast
+Friesland|91.2|SLAM!|Jirnsum
+Friesland|92.2|Omrop Fryslân|Jirnsum
+Friesland|92.8|Waterstad FM|Heerenveen
+Friesland|93.2|Waterstad FM|Jirnsum
+Friesland|93.5|Waterstad FM|Drachten
+Friesland|94.1|RADIONL|Tjerkgaast
+Friesland|94.3|RADIONL|Sneek
+Friesland|95.5|BNR Nieuwsradio|Tjerkgaast
+Friesland|96.0|RADIONL|Drachten
+Friesland|96.3|RADIONL|Dokkum
+Friesland|96.6|RADIONL|Leeuwarden
+Friesland|97.3|Frysk FM|Heerenveen
+Friesland|97.9|Radio Continu|Tjerkgaast
+Friesland|99.1|100%NL|Tjerkgaast
+Friesland|104.3|NPO Radio 1|Jirnsum
+
+Drenthe|87.6|Radio 10|Hoogersmilde
+Drenthe|88.0|NPO Radio 2|Hoogersmilde
+Drenthe|88.6|NPO 3FM|Hoogersmilde
+Drenthe|89.6|BNR Nieuwsradio|Hoogersmilde
+Drenthe|89.9|RADIONL|Emmen
+Drenthe|90.5|Sublime|Hoogersmilde
+Drenthe|90.8|Radio Drenthe|Smilde
+Drenthe|91.8|NPO Radio 1|Hoogersmilde
+Drenthe|92.3|Radio Continu|Emmen
+Drenthe|92.5|Omrop Fryslân|Hoogersmilde
+Drenthe|92.6|Radio Continu|Eext
+Drenthe|92.7|Radio Continu|Zuidwolde
+Drenthe|93.0|RTV Meppel|Meppel
+Drenthe|93.0|Simone FM|Assen
+Drenthe|93.1|SLAM!|Emmen
+Drenthe|94.0|Radio Veronica|Emmen
+Drenthe|94.2|100%NL|Hoogersmilde
+Drenthe|94.8|NPO Klassiek|Hoogersmilde
+Drenthe|95.4|BNR Nieuwsradio|Emmen
+Drenthe|95.7|RADIONL|Meppel
+Drenthe|97.0|RADIONL|Hoogeveen
+Drenthe|97.1|RADIONL|Assen
+Drenthe|99.3|Radio Drenthe|Emmen
+Drenthe|101.0|Sky Radio|Hoogersmilde
+Drenthe|104.2|RADIONL|Hoogersmilde
+Drenthe|104.7|Radio Continu|Hoogersmilde
+
+Overijssel|87.6|Joy Radio|Enschede
+Overijssel|89.2|RADIONL|Zwolle
+Overijssel|89.4|Radio Oost|Hengelo
+Overijssel|89.9|Radio Continu|Deventer
+Overijssel|90.0|Tukker FM|De Lutte
+Overijssel|90.7|Sublime|Enschede
+Overijssel|91.0|SLAM!|Markelo
+Overijssel|91.4|NPO Klassiek|Markelo
+Overijssel|92.3|Radio 350|Rijssen
+Overijssel|92.4|Radio Continu|Ommen
+Overijssel|93.1|RADIONL|Ommen
+Overijssel|93.1|RADIONL|Bathmen
+Overijssel|93.3|RADIONL|Enschede
+Overijssel|93.4|RADIONL|Hardenberg
+Overijssel|93.5|RADIONL|Markelo
+Overijssel|93.6|SLAM!|Zwollekerspel
+Overijssel|93.7|SLAM!|Hengelo
+Overijssel|93.9|Twente FM|Wierden
+Overijssel|95.3|BNR Nieuwsradio|Zwollekerspel
+Overijssel|95.6|Radio Oost|Markelo
+Overijssel|96.2|NPO 3FM|Markelo
+Overijssel|97.2|RADIONL|Zwolle
+Overijssel|97.6|100%NL|Zwolle
+Overijssel|97.9|Radio Oost|Deventer
+Overijssel|98.0|Radio Continu|Hengelo
+Overijssel|98.4|NPO Radio 1|Markelo
+Overijssel|99.4|Radio Oost|Zwollekerspel
+Overijssel|104.6|NPO Radio 2|Markelo
+Overijssel|105.0|RTV Zwolle FM|Zwolle
+Overijssel|105.1|1Twente|Enschede
+Overijssel|105.1|Salland1|Raalte
+
+Flevoland|87.7|Radio 10|Lelystad
+Flevoland|89.4|RADIONL|Lelystad
+Flevoland|89.8|Omroep Flevoland|Lelystad
+Flevoland|90.3|Radio Lelystad|Lelystad
+Flevoland|97.4|Wild FM Hitradio|Almere
+Flevoland|95.9|Qmusic Non-stop Maximum Hits|Almere
+Flevoland|105.2|527|Emmeloord
+
+Gelderland|87.6|Kerkradio Apeldoorn|Apeldoorn
+Gelderland|87.8|100%NL|Arnhem
+Gelderland|88.2|100%NL|Ugchelen
+Gelderland|88.5|RADIONL|Elst
+Gelderland|88.7|RADIONL|Apeldoorn
+Gelderland|88.9|Radio Gelderland|Arnhem
+Gelderland|89.0|100%NL|Lochem
+Gelderland|89.6|RADIONL|Arnhem
+Gelderland|89.8|Sublime|Nijmegen
+Gelderland|90.4|Radio Gelderland|Ruurlo
+Gelderland|90.5|Sublime|Arnhem
+Gelderland|90.6|Omroep Berg en Dal|Groesbeek
+Gelderland|90.9|SLAM!|Arnhem
+Gelderland|92.1|NPO Klassiek|Arnhem
+Gelderland|92.9|NPO Radio 2|Arnhem
+Gelderland|93.5|A1 Radio|Barneveld
+Gelderland|94.0|RADIONL|Apeldoorn
+Gelderland|94.0|Favoriet FM|Zevenaar
+Gelderland|94.2|RADIONL|Nijmegen
+Gelderland|94.3|Radio Continu|Winterswijk
+Gelderland|94.7|Optimaal FM|Vethuizen
+Gelderland|94.7|NPO Klassiek|Wageningen
+Gelderland|95.0|100%NL|Nijmegen
+Gelderland|95.5|RADIONL|Duiven
+Gelderland|96.0|RADIONL|Ede
+Gelderland|96.5|NPO 3FM|Arnhem
+Gelderland|97.7|Radio 10|Arnhem
+Gelderland|103.5|Radio Gelderland|Ugchelen
+Gelderland|104.9|Achterhoek FM|Vorden
+Gelderland|104.9|Favoriet FM|Doesburg
+Gelderland|104.9|OKÉ FM|Zaltbommel
+Gelderland|105.0|Slingeland FM|Winterswijk
+Gelderland|105.0|Veluwe FM|Ermelo
+Gelderland|105.1|Omroep Berg en Dal|Berg en Dal
+Gelderland|105.1|Radio Ideaal|Zelhem
+Gelderland|105.3|Gelre FM|Eibergen
+
+Utrecht|87.8|Radio 10|Utrecht
+Utrecht|89.2|EVA|Amersfoort
+Utrecht|89.5|100%NL|Utrecht
+Utrecht|90.7|Sublime|IJsselstein
+Utrecht|91.7|Radio 90FM|Leersum
+Utrecht|92.6|NPO Radio 2|IJsselstein
+Utrecht|93.1|Radio M Utrecht|Lopik
+Utrecht|93.6|SLAM!|Utrecht
+Utrecht|94.3|NPO Klassiek|IJsselstein
+Utrecht|95.0|100%NL|Amersfoort
+Utrecht|95.5|RTV9|IJsselstein
+Utrecht|95.6|SRC FM|Vianen
+Utrecht|96.1|NPO FunX|Utrecht
+Utrecht|96.8|NPO 3FM|IJsselstein
+Utrecht|97.3|Radio Royaal|Utrecht
+Utrecht|97.5|Radio Veronica|Amersfoort
+Utrecht|97.8|Radio 10|IJsselstein
+Utrecht|97.9|Radio M Utrecht|Rhenen
+Utrecht|105.2|EVA|Amersfoort
+
+Noord-Holland|88.1|Radio 10|Alkmaar
+Noord-Holland|88.1|Radio 10|Hilversum
+Noord-Holland|88.3|100%NL|Wieringerwerf
+Noord-Holland|88.7|NH Radio|Alkmaar
+Noord-Holland|88.7|NH Radio|Hilversum
+Noord-Holland|88.9|NH Radio|Amsterdam
+Noord-Holland|89.1|Radio Veronica|Wieringerwerf
+Noord-Holland|89.5|100%NL|Alkmaar
+Noord-Holland|89.6|100%NL|Amsterdam
+Noord-Holland|89.9|Haarlem 105|Haarlem
+Noord-Holland|90.0|SLAM!|Alkmaar
+Noord-Holland|90.1|247Spice|Diemen
+Noord-Holland|90.1|SLAM!|Wieringerwerf
+Noord-Holland|90.4|Sublime|Hilversum
+Noord-Holland|90.4|Sublime|Hoorn
+Noord-Holland|91.1|SLAM!|Hilversum
+Noord-Holland|91.6|Radio Veronica|Amsterdam
+Noord-Holland|92.0|NH Gooi|Hilversum
+Noord-Holland|92.0|100%NL|IJmuiden
+Noord-Holland|92.3|NPO Radio 2|Amsterdam
+Noord-Holland|92.9|NPO Radio 2|Wieringerwerf
+Noord-Holland|93.3|Ujala Radio|Amsterdam
+Noord-Holland|93.6|Wild Hitradio|Amsterdam
+Noord-Holland|93.8|100%NL|Haarlem
+Noord-Holland|93.9|NH Radio|Wieringermeer
+Noord-Holland|94.5|NPO Klassiek|Amsterdam
+Noord-Holland|94.5|RADIONL|Den Helder
+Noord-Holland|94.9|RADIONL|Amsterdam
+Noord-Holland|95.0|NPO Radio 1|Wieringerwerf
+Noord-Holland|95.3|SLAM!|Amsterdam
+Noord-Holland|95.4|Qmusic Non-stop Maximum Hits|Alkmaar
+Noord-Holland|95.5|Radio Veronica|Hilversum
+Noord-Holland|95.7|Qmusic Non-stop Maximum Hits|Amsterdam
+Noord-Holland|96.0|Coastline FM|Wieringerwerf
+Noord-Holland|96.1|NPO FunX|Amsterdam
+Noord-Holland|96.3|Wild FM Hitradio|Alkmaar
+Noord-Holland|96.5|NPO 3FM|Amsterdam
+Noord-Holland|96.5|NPO 3FM|Hoorn
+Noord-Holland|97.3|Wild FM Hitradio|Haarlem
+Noord-Holland|97.4|Wild FM Hitradio|Almere
+Noord-Holland|98.0|Radio Royaal|Amsterdam
+Noord-Holland|98.0|SLAM!|Amsterdam
+Noord-Holland|98.3|Radio Decibel|Alkmaar
+Noord-Holland|101.2|Radio 538|Regio Noord-Holland
+Noord-Holland|104.2|RADIONL|Alkmaar
+Noord-Holland|104.4|100%NL|Hilversum
+Noord-Holland|104.9|Jamm FM|Duivendrecht
+Noord-Holland|104.9|Radio Purmerend|Purmerend
+Noord-Holland|105.0|Castricum 105|Castricum
+Noord-Holland|105.1|NH Gooi|Huizen
+Noord-Holland|105.1|NPO Radio 2|Hoorn
+Noord-Holland|105.2|Razo SALTO|Amsterdam
+Noord-Holland|105.3|Alkmaar Centraal|Alkmaar
+
+Zuid-Holland|87.6|WOS|Naaldwijk
+Zuid-Holland|88.0|Radio West|Leiden
+Zuid-Holland|88.2|SLAM!|Den Haag
+Zuid-Holland|88.6|SLAM!|Rotterdam
+Zuid-Holland|88.6|SLAM!|Rijswijk
+Zuid-Holland|88.8|SLAM!|Dordrecht
+Zuid-Holland|89.3|Radio West|Den Haag
+Zuid-Holland|89.8|Amor FM|Den Haag
+Zuid-Holland|90.0|Studio Alphen|Alphen aan den Rijn
+Zuid-Holland|90.3|Sublime|Den Haag
+Zuid-Holland|90.5|Sublime|Rotterdam
+Zuid-Holland|91.3|BNR Nieuwsradio|Rotterdam
+Zuid-Holland|91.5|BNR Nieuwsradio|Dordrecht
+Zuid-Holland|91.8|NPO FunX|Rotterdam
+Zuid-Holland|92.0|Den Haag FM|Den Haag
+Zuid-Holland|92.2|Lansingerland FM|Bergschenhoek
+Zuid-Holland|92.9|NPO Radio 2|Den Haag
+Zuid-Holland|92.9|NPO Radio 2|Rotterdam
+Zuid-Holland|93.4|Radio Rijnmond|Rotterdam
+Zuid-Holland|93.7|RADIONL|Leiden
+Zuid-Holland|94.1|NPO Klassiek|Den Haag
+Zuid-Holland|94.7|NPO Klassiek|Rotterdam
+Zuid-Holland|95.2|SLAM!|Alphen aan den Rijn
+Zuid-Holland|95.6|Qmusic Non-stop Maximum Hits|Rijswijk
+Zuid-Holland|95.7|Drechtstad FM|Dordrecht
+Zuid-Holland|95.9|Qmusic Non-stop Maximum Hits|Gouda
+Zuid-Holland|95.9|Qmusic Non-stop Maximum Hits|Alphen aan den Rijn
+Zuid-Holland|96.0|Qmusic Non-stop Maximum Hits|Naaldwijk
+Zuid-Holland|96.0|Radio Hoeksche Waard|Puttershoek
+Zuid-Holland|96.5|NPO 3FM|Den Haag
+Zuid-Holland|96.5|NPO 3FM|Alphen aan den Rijn
+Zuid-Holland|97.1|NPO 3FM|Rotterdam
+Zuid-Holland|97.3|Klokradio|Alblasserdam
+Zuid-Holland|97.6|Radio Royaal|Rotterdam
+Zuid-Holland|98.0|Radio Royaal|Den Haag
+Zuid-Holland|98.0|SLAM!|Den Haag
+Zuid-Holland|98.4|NPO FunX|Den Haag
+Zuid-Holland|104.6|100%NL|Rotterdam
+Zuid-Holland|105.0|Papendrecht FM|Papendrecht
+Zuid-Holland|105.0|Studio Kaag en Braassem|Roelofarendsveen
+Zuid-Holland|105.1|Linq FM|Spijkenisse
+Zuid-Holland|105.1|Studio Alphen|Boskoop
+Zuid-Holland|105.3|Bo Radio|Noordwijk
+
+Zeeland|87.9|Omroep Zeeland|Goes
+Zeeland|88.8|Sublime|Vlissingen
+Zeeland|89.3|RADIONL|Vlissingen
+Zeeland|90.0|100%NL|Vlissingen
+Zeeland|90.5|100%NL|Goes
+Zeeland|90.8|Sublime|Terneuzen
+Zeeland|91.5|BNR Nieuwsradio|Biervliet
+Zeeland|92.4|RADIONL|Westdorpe
+Zeeland|93.0|Radio 10|Westdorpe
+Zeeland|93.3|Radio 10|Vlissingen
+Zeeland|94.4|NPO Radio 2|Goes
+Zeeland|95.0|NPO Klassiek|Goes
+Zeeland|97.1|Radio 10|Vlissingen
+Zeeland|97.8|NPO Radio 2|Westdorpe
+Zeeland|98.4|Omroep Zeeland|Vlissingen
+Zeeland|104.4|NPO Radio 1|Goes
+Zeeland|105.0|WFM96|Middelburg
+Zeeland|105.1|Zuidwest FM|Hoogerheide
+
+Noord-Brabant|87.6|Omroep Brabant|Zuidoost-Brabant
+Noord-Brabant|87.8|De Stille Genieter|Baarle-Nassau
+Noord-Brabant|87.9|Radio 10|Vught
+Noord-Brabant|88.4|SLAM!|Roosendaal
+Noord-Brabant|88.6|BNR Nieuwsradio|Mierlo
+Noord-Brabant|88.8|Radio 10 Brabant|Waalwijk
+Noord-Brabant|88.9|Radio 10 Brabant|Den Bosch
+Noord-Brabant|89.2|Radio 10 Brabant|Breda
+Noord-Brabant|89.3|Radio 10 Brabant|Eindhoven
+Noord-Brabant|89.6|Maasland Radio|Nieuw-Bergen
+Noord-Brabant|89.7|Sublime|Breda
+Noord-Brabant|89.7|Sublime|Mierlo
+Noord-Brabant|90.0|100%NL|Loon op Zand
+Noord-Brabant|90.1|RADIONL|Oss
+Noord-Brabant|90.2|100%NL|Roosendaal
+Noord-Brabant|90.3|RADIONL|Eindhoven
+Noord-Brabant|90.5|RADIONL|Helmond
+Noord-Brabant|91.0|Omroep Brabant|West-Brabant
+Noord-Brabant|91.1|Omroep Centraal|Gemert
+Noord-Brabant|91.2|BNR Nieuwsradio|Vught
+Noord-Brabant|91.3|BNR Nieuwsradio|Tilburg
+Noord-Brabant|91.5|BNR Nieuwsradio|Roosendaal
+Noord-Brabant|91.6|L-FM|Zeeland
+Noord-Brabant|91.9|Omroep Brabant|Midden-Brabant
+Noord-Brabant|92.1|NPO Radio 1|Roosendaal
+Noord-Brabant|92.3|NPO Radio 2|Mierlo
+Noord-Brabant|92.9|Radio Horizon|Leende
+Noord-Brabant|93.2|Radio JND|Eindhoven
+Noord-Brabant|93.3|RADIONL|Loon op Zand
+Noord-Brabant|93.6|Radio JND|Eindhoven
+Noord-Brabant|93.8|SLAM!|Megen
+Noord-Brabant|93.9|Radio 10 Brabant|Roosendaal
+Noord-Brabant|94.0|Glow FM|Eindhoven
+Noord-Brabant|94.0|Omroep Land van Cuijk|Sint Anthonis
+Noord-Brabant|94.1|RADIONL|Vught
+Noord-Brabant|94.9|100%NL|Mierlo
+Noord-Brabant|95.3|Radio 8FM|Cuijk
+Noord-Brabant|95.4|BNR Nieuwsradio|Gilze
+Noord-Brabant|95.5|Radio 10 Brabant|Mierlo
+Noord-Brabant|95.8|Omroep Brabant|Noordoost-Brabant
+Noord-Brabant|96.0|VLOH Radio|Hilvarenbeek
+Noord-Brabant|96.3|Radio 10|Loon op Zand
+Noord-Brabant|96.5|NPO 3FM|Roosendaal
+Noord-Brabant|97.1|NPO 3FM|Mierlo
+Noord-Brabant|97.2|Kempen FM|Hapert
+Noord-Brabant|97.3|Puur NL|Roosendaal
+Noord-Brabant|97.4|Radio 10 Brabant|Den Bosch
+Noord-Brabant|97.7|Radio 10|Mierlo
+Noord-Brabant|98.2|NPO Klassiek|Loon op Zand
+Noord-Brabant|104.3|Puur NL|Breda
+Noord-Brabant|104.6|NPO Radio 1|Mierlo
+Noord-Brabant|105.0|L-FM|Schaijk
+Noord-Brabant|105.1|SLOG FM|Raamsdonksveer
+Noord-Brabant|105.1|Zuidwest FM|Hoogerheide
+Noord-Brabant|105.2|MFM|Oss
+
+Limburg|88.2|NPO Radio 2|Roermond
+Limburg|88.9|Sublime|Maastricht
+Limburg|89.2|SLAM!|Venlo
+Limburg|90.2|BFBS Radio|Brunssum
+Limburg|90.2|Omroep Venray|Venray
+Limburg|90.9|NPO 3FM|Roermond
+Limburg|91.1|Radio 10|Maastricht
+Limburg|91.5|BNR Nieuwsradio|Eys
+Limburg|91.9|100%NL|Venlo
+Limburg|92.1|100%NL|Emmaberg
+Limburg|92.5|Omroep P&M|Panningen
+Limburg|92.9|Maasland Radio|Wellerlooi
+Limburg|93.4|NPO Radio 2|Emmaberg
+Limburg|94.5|NPO Klassiek|Roermond
+Limburg|95.2|Radio 10 Brabant|Weert
+Limburg|95.3|L1 Radio|Emmaberg
+Limburg|96.1|Qmusic Limburg|Roermond
+Limburg|96.2|Omroep Stein|Urmond
+Limburg|96.9|AFN Benelux|Brunssum
+Limburg|96.9|Omroep Venlo|Venlo
+Limburg|97.0|Weert FM|Nederweert
+Limburg|97.2|NPO Radio 2|Eys
+Limburg|97.6|Qmusic Limburg|Maastricht
+Limburg|97.7|Qmusic Limburg|Landgraaf
+Limburg|98.1|Qmusic Limburg|Eys
+Limburg|100.3|L1 Radio|Roermond
+Limburg|104.8|NPO Radio 1|Roermond
+`;
+
+/*
+========================================
+ DATA VERWERKEN
+========================================
+*/
+
+const stations = [];
+
+fmData.trim().split("\n").forEach(line => {
+  const parts = line.split("|").map(s => s.trim());
+
+  if(parts.length !== 4) return;
+
+  const [province,frequency,name,location] = parts;
+
+  if(!frequency || !name) return;
+
+  stations.push({
+    province,
+    frequency,
+    name,
+    location,
+    emergency:false
+  });
+});
+
+/*
+Voeg officiële noodfrequenties toe
+aan dezelfde FM-lijst.
+
+Geen dubbele regels in dezelfde
+provincie voor dezelfde omroep,
+frequentie en zendlocatie.
+*/
+
+provinces.forEach(province => {
+
+  const id = province[0];
+  const name = province[1];
+
+  const emergencyStations = emergency[id] || [];
+
+  emergencyStations.forEach(entry => {
+
+    const [radio,freq,location] = entry;
+
+    const existing = stations.find(s =>
+      s.province === name &&
+      s.frequency === freq &&
+      s.name.toLowerCase() === radio.toLowerCase() &&
+      s.location.toLowerCase() === location.toLowerCase()
+    );
+
+    if(existing) {
+      existing.emergency = true;
+    } else {
+      stations.push({
+        province:name,
+        frequency:freq,
+        name:radio,
+        location,
+        emergency:true
+      });
+    }
+
+  });
+
+});
+
+// Markeer ook overeenkomende regionale
+// noodzenderregels, bijvoorbeeld wanneer
+// de zendlocatie anders omschreven is.
+
+stations.forEach(station => {
+
+  const province = provinces.find(p => p[1] === station.province);
+
+  if(!province) return;
+
+  const matches = (emergency[province[0]] || []).some(item =>
+    item[0].toLowerCase() === station.name.toLowerCase() &&
+    item[1] === station.frequency
+  );
+
+  if(matches) station.emergency = true;
+
+});
+
+let selectedProvince = "Noord-Holland";
+
+/*
+========================================
+ NAVIGATIE
+========================================
+*/
 
 function showPage(id) {
+
   document.querySelectorAll(".page").forEach(page => {
-    page.classList.remove("active");
+    page.classList.toggle("active",page.id === id);
   });
 
-  const target = document.getElementById(id);
+  document.querySelectorAll("[data-page]").forEach(button => {
+    button.classList.toggle(
+      "active",
+      button.dataset.page === id
+    );
+  });
 
-  if (target) {
-    target.classList.add("active");
-    window.scrollTo(0, 0);
-  }
+  window.scrollTo(0,0);
 }
 
-// Provincies tonen
+function navigate(id) {
+  location.hash = id;
+  showPage(id);
+}
+
+document.querySelectorAll("[data-page]").forEach(button => {
+  button.addEventListener("click",() => {
+    navigate(button.dataset.page);
+  });
+});
+
+document.querySelector(".logo").addEventListener("click",() => {
+  showPage("home");
+});
+
+document.getElementById("backButton").addEventListener("click",() => {
+  navigate("fm");
+});
+
+/*
+========================================
+ PROVINCIES WEERGEVEN
+========================================
+*/
 
 function renderProvinces() {
+
   const grid = document.getElementById("provinceGrid");
 
-  grid.innerHTML = "";
+  grid.replaceChildren();
 
   provinces.forEach(province => {
-    const card = document.createElement("div");
 
-    card.className = "card clickable";
+    const [id,name,emoji] = province;
 
-    card.innerHTML = `
-      <h2>${province.emoji} ${province.name}</h2>
-      <p>
-        Bekijk de FM-frequenties en regionale
-        calamiteitenzender.
-      </p>
-      <p class="accent">Bekijk frequenties →</p>
-    `;
+    const count = stations.filter(
+      s => s.province === name
+    ).length;
 
-    card.addEventListener("click", () => {
-      openProvince(province.id);
+    const button = document.createElement("button");
+
+    button.className = "province-btn";
+
+    const title = document.createElement("strong");
+    title.textContent = emoji + " " + name;
+
+    const subtitle = document.createElement("small");
+    subtitle.textContent =
+      count + " frequentievermeldingen · 🚨 noodzender";
+
+    button.append(title,subtitle);
+
+    button.addEventListener("click",() => {
+      openProvince(id);
     });
 
-    grid.appendChild(card);
+    grid.appendChild(button);
+
   });
 }
 
-// Provincie openen
+/*
+========================================
+ PROVINCIE OPENEN
+========================================
+*/
 
 function openProvince(id) {
-  selectedProvince = id;
 
-  const province = provinces.find(p => p.id === id);
+  const province = provinces.find(p => p[0] === id);
 
-  if (!province) return;
+  if(!province) return;
+
+  selectedProvince = province[1];
 
   document.getElementById("provinceTitle").textContent =
-    province.emoji + " " + province.name;
-
-  const emergencyInfo =
-    document.getElementById("emergencyInfo");
-
-  emergencyInfo.innerHTML = "";
-
-  const name = document.createElement("h2");
-  name.textContent = province.emergency;
-
-  const info = document.createElement("p");
-  info.textContent = province.info;
-
-  emergencyInfo.appendChild(name);
-  emergencyInfo.appendChild(info);
+    province[2] + " " + province[1];
 
   document.getElementById("stationSearch").value = "";
 
+  /*
+  Rechtstreekse link naar het actuele
+  provincieoverzicht van radiostations.nl.
+  */
+
+  const source = document.getElementById("moreFrequencies");
+
+  source.href =
+    "https://radiostations.nl/frequenties/" +
+    "?provincie=" + encodeURIComponent(selectedProvince);
+
+  renderEmergency(id);
   renderStations();
-  showPage("province");
+
+  navigate("province");
 }
 
-// FM-zenders weergeven
+/*
+========================================
+ NOODZENDERS TONEN
+========================================
+*/
+
+function renderEmergency(id) {
+
+  const list = document.getElementById("emergencyList");
+
+  list.replaceChildren();
+
+  (emergency[id] || []).forEach(entry => {
+
+    const [name,frequency,location] = entry;
+
+    const card = document.createElement("div");
+    card.className = "emergency-item";
+
+    const badge = document.createElement("span");
+    badge.className = "nood-badge";
+    badge.textContent = "🚨 NOODFREQUENTIE";
+
+    const title = document.createElement("h3");
+    title.textContent = name;
+    title.style.marginTop = "12px";
+
+    const freq = document.createElement("strong");
+    freq.textContent = frequency + " MHz";
+
+    const place = document.createElement("small");
+    place.textContent = "📍 " + location;
+
+    card.append(badge,title,freq,place);
+
+    list.appendChild(card);
+
+  });
+}
+
+/*
+========================================
+ FM-STATIONS TONEN
+========================================
+*/
 
 function renderStations() {
-  if (!selectedProvince) return;
 
-  const query = document
-    .getElementById("stationSearch")
-    .value
-    .toLowerCase()
+  const query = document.getElementById("stationSearch")
+    .value.toLocaleLowerCase("nl")
     .trim();
 
-  const stations = frequencies[selectedProvince] || [];
-
   const filtered = stations
-    .filter(station => {
-      return (
-        station.name.toLowerCase().includes(query) ||
-        station.freq.includes(query) ||
-        station.area.toLowerCase().includes(query)
-      );
+    .filter(s => s.province === selectedProvince)
+    .filter(s => {
+
+      const searchText =
+        s.name + " " +
+        s.location + " " +
+        s.frequency;
+
+      return searchText.toLocaleLowerCase("nl").includes(query);
+
     })
-    .sort((a, b) => Number(a.freq) - Number(b.freq));
+    .sort((a,b) => {
 
-  const list = document.getElementById("stationList");
+      const difference =
+        Number(a.frequency) - Number(b.frequency);
 
-  list.innerHTML = "";
+      if(difference !== 0) return difference;
+
+      return a.name.localeCompare(b.name,"nl");
+
+    });
+
+  const tbody = document.getElementById("stationRows");
+
+  tbody.replaceChildren();
 
   document.getElementById("stationCount").textContent =
-    filtered.length + " frequentie(s) in deze voorlopige lijst";
+    filtered.length + " vermeldingen";
 
-  if (filtered.length === 0) {
-    list.innerHTML = `
-      <div class="card">
-        <p>Geen frequenties gevonden.</p>
-      </div>
-    `;
+  if(filtered.length === 0) {
+
+    const tr = document.createElement("tr");
+
+    const td = document.createElement("td");
+    td.colSpan = 3;
+    td.className = "empty";
+    td.textContent = "Geen radiozenders gevonden.";
+
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+
     return;
   }
 
   filtered.forEach(station => {
-    const item = document.createElement("div");
 
-    item.className = "station";
+    const tr = document.createElement("tr");
 
-    const details = document.createElement("div");
+    if(station.emergency) {
+      tr.className = "emergency-row";
+    }
 
-    const title = document.createElement("b");
-    title.textContent = station.name;
+    const freqCell = document.createElement("td");
+    freqCell.className = "freq";
+    freqCell.textContent = station.frequency + " MHz";
 
-    const area = document.createElement("div");
-    const small = document.createElement("small");
-    small.textContent = station.area;
+    const nameCell = document.createElement("td");
 
-    area.appendChild(small);
-    details.appendChild(title);
-    details.appendChild(area);
+    const nameWrap = document.createElement("div");
+    nameWrap.className = "station-name";
 
-    const freq = document.createElement("strong");
-    freq.textContent = station.freq + " MHz";
+    const stationName = document.createElement("strong");
+    stationName.textContent = station.name;
 
-    item.appendChild(details);
-    item.appendChild(freq);
+    nameWrap.appendChild(stationName);
 
-    list.appendChild(item);
+    if(station.emergency) {
+
+      const badge = document.createElement("span");
+      badge.className = "nood-badge";
+      badge.textContent = "🚨 NOODFREQUENTIE";
+
+      nameWrap.appendChild(badge);
+
+    }
+
+    nameCell.appendChild(nameWrap);
+
+    const locationCell = document.createElement("td");
+    locationCell.textContent = station.location;
+
+    tr.append(freqCell,nameCell,locationCell);
+
+    tbody.appendChild(tr);
+
   });
 }
 
-// Start
+document.getElementById("stationSearch")
+  .addEventListener("input",renderStations);
+
+/*
+========================================
+ INITIALISATIE
+========================================
+*/
 
 document.getElementById("year").textContent =
   new Date().getFullYear();
 
 renderProvinces();
 
-showPage("home");
+const allowedPages = [
+  "home",
+  "fm",
+  "province",
+  "amateur",
+  "over"
+];
+
+function handleHash() {
+
+  const hash = location.hash.slice(1);
+
+  if(allowedPages.includes(hash)) {
+
+    if(hash === "province") {
+
+      const province = provinces.find(
+        p => p[1] === selectedProvince
+      );
+
+      if(province) {
+        document.getElementById("provinceTitle").textContent =
+          province[2] + " " + province[1];
+
+        renderEmergency(province[0]);
+        renderStations();
+      }
+    }
+
+    showPage(hash);
+
+  } else {
+    showPage("home");
+  }
+}
+
+window.addEventListener("hashchange",handleHash);
+
+handleHash();
 
 </script>
-
 </body>
 </html>
