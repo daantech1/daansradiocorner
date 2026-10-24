@@ -3,360 +3,475 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#08111e">
-<meta name="description" content="Daan's Radio Corner - FM-radio, amateurrepeaters en luisterfrequenties.">
-<title>Daan's Radio Corner | Ontdek de ether</title>
+<title>Daan's Radio Corner</title>
 
 <style>
-:root{
- --bg:#08111e;
- --panel:#142238;
- --panel2:#1c3049;
- --border:#30445e;
- --green:#55e8bb;
- --text:#f1f6ff;
- --muted:#a4b7cf;
- --red:#ff5068;
- --orange:#ffcb80;
+:root {
+  --bg: #091321;
+  --panel: #15253b;
+  --panel2: #1b314b;
+  --border: #344a62;
+  --text: #f5f8ff;
+  --muted: #afc0d4;
+  --green: #5be7b7;
+  --red: #f95770;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- margin:0;background:var(--bg);color:var(--text);
- font-family:Arial,Helvetica,sans-serif;line-height:1.6;
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
 }
-button,input,select{font:inherit}
-button{cursor:pointer}
-a{color:var(--green);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{width:min(1150px,93%);margin:auto}
-header{
- position:sticky;top:0;z-index:30;
- background:#101b2cf5;border-bottom:1px solid var(--border);
+
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+a { color: var(--green); }
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
 }
-.nav{
- display:flex;justify-content:space-between;align-items:center;
- gap:12px;flex-wrap:wrap;padding:16px 0;
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #101d30;
+  border-bottom: 1px solid var(--border);
 }
-.logo{font-weight:800;font-size:20px;color:white}
-.logo span{color:var(--green)}
-.links{display:flex;gap:4px;flex-wrap:wrap}
-.links button{
- border:0;background:transparent;color:var(--muted);
- padding:9px 11px;border-radius:9px;font-size:14px;
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
-.links button:hover,.links button.active{
- background:var(--panel2);color:var(--green);
+
+.logo {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
 }
-.page{display:none;min-height:70vh;padding:42px 0 75px}
-.page.active{display:block}
-h1{
- font-size:clamp(35px,5vw,58px);
- letter-spacing:-2px;line-height:1.15;
+
+.logo span { color: var(--green); }
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
-h1 span,h2 span{color:var(--green)}
-h2{font-size:28px}
-h3{margin:0 0 8px}
-p{color:var(--muted)}
-.eyebrow{
- color:var(--green);font-size:12px;
- font-weight:bold;letter-spacing:2px;text-transform:uppercase;
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 9px;
+  border-radius: 8px;
 }
-.hero{text-align:center;padding:32px 0}
-.hero p{max-width:690px;margin:17px auto;font-size:18px}
-.greeting{
- font-size:clamp(27px,4vw,43px);
- color:var(--green);font-weight:900;
+
+nav a:hover,
+nav a.active {
+  color: var(--green);
+  background: var(--panel2);
 }
-.btn{
- display:inline-block;padding:12px 19px;margin:5px;
- border-radius:10px;border:1px solid var(--green);
- background:var(--green);color:#09251d;font-weight:bold;
+
+.page {
+  padding-top: 40px;
+  padding-bottom: 65px;
+  min-height: 65vh;
 }
-.btn.secondary{background:transparent;color:var(--green)}
-.btn:hover{filter:brightness(1.1);text-decoration:none}
-.grid{
- display:grid;grid-template-columns:repeat(4,1fr);
- gap:15px;margin:25px 0;
+
+.page[hidden] {
+  display: none !important;
 }
-.card{
- background:var(--panel);border:1px solid var(--border);
- padding:22px;border-radius:16px;
+
+h1 {
+  font-size: clamp(35px, 5vw, 58px);
+  line-height: 1.1;
 }
-.card-icon{font-size:33px;margin-bottom:12px}
-.clickable{cursor:pointer;transition:.2s}
-.clickable:hover{border-color:var(--green);transform:translateY(-3px)}
-.notice{
- padding:19px;background:#14372f;
- border:1px solid #397663;border-radius:13px;margin:25px 0;
+
+h2 { font-size: 27px; }
+h3 { margin-bottom: 8px; }
+
+p { color: var(--muted); }
+
+.accent { color: var(--green); }
+
+.hero {
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
 }
-.notice p{color:#c6f2e3;margin:0}
-.warning{
- background:#352a1f;border:1px solid #937349;
- padding:18px;border-radius:13px;margin:20px 0;
+
+.greeting {
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: bold;
+  color: var(--green);
 }
-.warning p{color:#ead7bc;margin:0}
-.badge{
- display:inline-block;background:#24513f;color:var(--green);
- font-size:11px;font-weight:800;padding:5px 9px;
- border-radius:7px;white-space:nowrap;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
 }
-.badge.red{background:#e1334e;color:white}
-.badge.blue{background:#2a5077;color:white}
-.badge.orange{background:#67472a;color:#ffe3bd}
-.badge.purple{background:#45366c;color:#ded0ff}
-.badge.gray{background:#334257;color:#e0e8f3}
-.provinces{
- display:grid;grid-template-columns:repeat(4,1fr);
- gap:13px;margin:25px 0;
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
 }
-.province{
- background:var(--panel);border:1px solid var(--border);
- border-radius:13px;padding:19px;text-align:left;
- color:white;min-height:100px;
+
+.card p { margin-bottom: 0; }
+
+.btn {
+  display: inline-block;
+  padding: 11px 17px;
+  background: var(--green);
+  color: #09251c;
+  border: 1px solid var(--green);
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 4px;
 }
-.province strong{display:block;font-size:17px}
-.province small{display:block;color:var(--muted);margin-top:8px}
-.province:hover{border-color:var(--green);background:#1a3b36}
-.back{
- background:transparent;border:0;color:var(--green);
- padding:0;margin-bottom:18px;
+
+.btn.secondary {
+  background: transparent;
+  color: var(--green);
 }
-.search,select{
- background:#101e30;color:white;border:1px solid #45607c;
- border-radius:10px;padding:14px;outline:none;
+
+.btn:hover { filter: brightness(1.12); }
+
+.actions {
+  margin: 24px 0;
 }
-.search:focus,select:focus{border-color:var(--green)}
-.search{width:100%;margin:15px 0}
-.info{
- background:var(--panel);border:1px solid var(--border);
- padding:20px;border-radius:13px;margin:24px 0;
+
+.notice {
+  border-left: 4px solid var(--green);
+  background: #17392f;
+  padding: 16px;
+  border-radius: 9px;
+  margin: 20px 0;
 }
-.emergency{
- background:#331d29;border:1px solid #a4475d;
- border-radius:15px;padding:22px;margin:24px 0;
+
+.warning {
+  border-left: 4px solid orange;
+  background: #382e1f;
+  padding: 16px;
+  border-radius: 9px;
+  margin: 20px 0;
 }
-.emergency-grid{
- display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));
- gap:11px;margin-top:17px;
+
+.provinces {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 24px 0;
 }
-.emergency-item{
- background:#462431;border:1px solid #924f63;
- padding:15px;border-radius:10px;
+
+.province {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 19px;
+  text-align: left;
+  color: white;
 }
-.emergency-item strong{
- display:block;font-size:23px;color:#ffc4ce;
+
+.province strong,
+.province small {
+  display: block;
 }
-.emergency-item small{color:#dfb7c1}
-.table-wrap{
- overflow-x:auto;border:1px solid var(--border);
- border-radius:12px;
+
+.province small {
+  color: var(--muted);
+  margin-top: 7px;
 }
-table{width:100%;border-collapse:collapse;min-width:520px}
-th{
- text-align:left;padding:14px;background:#1c2e46;color:#d3e2f1;
+
+.province:hover {
+  border-color: var(--green);
 }
-td{padding:13px;border-top:1px solid var(--border)}
-.freq{color:var(--green);font-weight:bold;white-space:nowrap}
-.nood-row td{background:#2d1e2b}
-.nood-row .freq{color:#ff9aaa}
-.station-name{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+
+.back {
+  border: none;
+  color: var(--green);
+  background: none;
+  margin-bottom: 15px;
+}
+
+.search, select {
+  width: 100%;
+  padding: 13px;
+  color: white;
+  background: #0d1d30;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.tablewrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 500px;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+th { background: var(--panel2); }
+
+.freq {
+  color: var(--green);
+  font-weight: bold;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  background: #245845;
+  color: white;
+  font-size: 11px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.badge.red {
+  background: #df304e;
+}
+
+.badge.blue {
+  background: #294e7c;
+}
+
+.emergency {
+  background: #341e2b;
+  border: 1px solid #a3495f;
+  border-radius: 13px;
+  padding: 18px;
+  margin: 20px 0;
+}
+
+.emergency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.emergency-grid .card {
+  background: #482834;
+}
+
+.emergency-grid strong {
+  color: #ffc4cf;
+  font-size: 22px;
+}
+
+.repeater-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.call {
+  color: var(--green);
+  font-size: 24px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.field {
+  background: #0d1e30;
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 9px;
+}
+
+.field small {
+  display: block;
+  color: var(--muted);
+}
+
+.field strong {
+  overflow-wrap: anywhere;
+}
+
+.photo {
+  display: block;
+  max-width: 100%;
+  max-height: 330px;
+  object-fit: contain;
+  margin: 15px 0;
+  border-radius: 10px;
+}
+
+.frequency-list {
+  display: grid;
+  gap: 14px;
+}
+
+.frequency-list .fields {
+  grid-template-columns: repeat(3, 1fr);
+}
 
 /* KLOK */
-.clock-panel{
- background:linear-gradient(145deg,#173447,#0a1c2e);
- border:1px solid #386878;border-radius:24px;
- padding:26px 12px;max-width:810px;margin:30px auto;
- box-shadow:0 20px 50px #0005;
-}
-.clock-label{
- text-align:center;color:var(--green);
- font-size:12px;letter-spacing:3px;font-weight:bold;
-}
-.digital-clock{
- display:flex;align-items:center;justify-content:center;
- gap:clamp(3px,1vw,10px);margin:24px 0;
-}
-.digit{
- position:relative;flex-shrink:0;
- width:clamp(32px,8vw,75px);
- height:clamp(59px,15vw,130px);
-}
-.segment{position:absolute;background:#174133;opacity:.28}
-.segment.on{
- background:var(--green);opacity:1;
- box-shadow:0 0 12px #55e8bb88;
-}
-.seg-a,.seg-g,.seg-d{
- left:16%;width:68%;height:8%;
- clip-path:polygon(12% 0,88% 0,100% 50%,88% 100%,12% 100%,0 50%);
-}
-.seg-a{top:2%}
-.seg-g{top:46%}
-.seg-d{bottom:2%}
-.seg-f,.seg-b,.seg-e,.seg-c{
- height:39%;width:13%;
- clip-path:polygon(50% 0,100% 10%,100% 90%,50% 100%,0 90%,0 10%);
-}
-.seg-f{left:3%;top:8%}
-.seg-b{right:3%;top:8%}
-.seg-e{left:3%;bottom:8%}
-.seg-c{right:3%;bottom:8%}
-.colon{
- display:flex;flex-direction:column;justify-content:space-evenly;
- align-items:center;height:clamp(59px,15vw,130px);
- width:clamp(8px,2vw,18px);
-}
-.colon i{
- width:40%;aspect-ratio:1;
- background:var(--green);border-radius:50%;
-}
-.clock-date{
- text-align:center;color:#d7fff1;font-weight:bold;
- font-size:clamp(16px,2.5vw,22px);text-transform:capitalize;
-}
-.clock-zone{text-align:center;color:var(--muted);font-size:12px}
 
-/* REPEATERS */
-.repeater-grid{
- display:grid;grid-template-columns:repeat(2,1fr);
- gap:16px;margin:20px 0;
+.clock {
+  max-width: 750px;
+  margin: 28px auto;
+  background: #092b2a;
+  border: 1px solid #3a8270;
+  border-radius: 18px;
+  padding: 23px 12px;
 }
-.repeater{
- background:var(--panel);border:1px solid var(--border);
- padding:22px;border-radius:15px;
-}
-.repeater-head{
- display:flex;align-items:center;justify-content:space-between;
- gap:10px;flex-wrap:wrap;
-}
-.call{
- color:var(--green);font-size:24px;
- font-weight:900;font-family:monospace;
-}
-.fields{
- display:grid;grid-template-columns:repeat(2,1fr);
- gap:10px;margin:18px 0;
-}
-.field{
- background:#0d1b2e;border:1px solid var(--border);
- border-radius:10px;padding:13px;
-}
-.field small{display:block;color:var(--muted);font-size:11px}
-.field strong{display:block;margin-top:5px;overflow-wrap:anywhere}
-.field.rx strong{color:var(--green)}
-.field.locked strong{color:#91a6bd}
-.repeater-info{
- border-top:1px solid var(--border);padding-top:15px;
-}
-.repeater-photo{
- display:block;width:100%;max-height:350px;
- object-fit:contain;background:#071522;
- border:1px solid var(--border);border-radius:12px;
- margin:18px 0 7px;
-}
-.photo-credit{font-size:12px;color:var(--muted)}
-.unlock{
- background:#1d3048;border:1px solid #4c6b88;
- padding:22px;border-radius:15px;margin:24px 0;
-}
-.unlock-controls{
- display:flex;gap:10px;flex-wrap:wrap;margin:15px 0;
-}
-.unlock-controls input{
- flex:1;min-width:160px;background:#0d1d30;
- color:white;border:1px solid #53718c;
- border-radius:10px;padding:13px;
-}
-.unlock-controls button{
- background:var(--green);color:#08251c;border:0;
- border-radius:10px;padding:13px 18px;font-weight:bold;
-}
-.listen-box{
- background:#102b30;border:1px solid #347868;
- padding:15px;border-radius:12px;margin:17px 0;
-}
-.listen-box h3{color:var(--green);font-size:16px}
-.listen-box.missing{background:#1a2b40;border-color:var(--border)}
-.listen-box.missing h3{color:#cad9e9}
-.listen-button{
- display:inline-block;padding:11px 16px;margin-top:8px;
- background:var(--green);color:#08251d;
- font-weight:bold;border-radius:9px;
-}
-.listen-note{font-size:12px;margin:9px 0 0}
 
-/* NIEUWE FREQUENTIES PAGINA */
-.filter-bar{
- display:grid;grid-template-columns:2fr 1fr 1fr;
- gap:12px;margin:24px 0;
+.clock-label {
+  color: var(--green);
+  font-size: 12px;
+  letter-spacing: 2px;
 }
-.filter-bar .search{margin:0}
-.freq-list{display:grid;gap:14px;margin:22px 0}
-.freq-card{
- background:var(--panel);border:1px solid var(--border);
- border-radius:15px;padding:20px;
+
+.digits {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(3px, 1vw, 8px);
+  margin: 22px auto;
 }
-.freq-card-head{
- display:flex;justify-content:space-between;
- align-items:flex-start;gap:12px;flex-wrap:wrap;
+
+.digit {
+  position: relative;
+  width: clamp(31px, 8vw, 67px);
+  height: clamp(55px, 14vw, 118px);
+  flex-shrink: 0;
 }
-.freq-card h3{font-size:21px;margin-bottom:3px}
-.freq-location{color:var(--muted);font-size:13px}
-.freq-badges{display:flex;gap:6px;flex-wrap:wrap}
-.freq-card-data{
- display:grid;grid-template-columns:repeat(3,1fr);
- gap:10px;margin-top:16px;
+
+.seg {
+  position: absolute;
+  background: #205143;
+  opacity: .25;
 }
-.freq-data-item{
- background:#0d1b2e;border:1px solid var(--border);
- border-radius:10px;padding:13px;
+
+.seg.on {
+  background: var(--green);
+  opacity: 1;
+  box-shadow: 0 0 9px #55e8bb77;
 }
-.freq-data-item small{
- display:block;color:var(--muted);
- font-size:11px;letter-spacing:.5px;
+
+.a, .g, .d {
+  left: 17%;
+  width: 66%;
+  height: 8%;
+  clip-path: polygon(
+    12% 0, 88% 0, 100% 50%,
+    88% 100%, 12% 100%, 0 50%
+  );
 }
-.freq-data-item strong{
- display:block;color:var(--green);
- font-size:17px;margin-top:5px;
- overflow-wrap:anywhere;
+
+.a { top: 2%; }
+.g { top: 46%; }
+.d { bottom: 2%; }
+
+.f, .b, .e, .c {
+  width: 13%;
+  height: 39%;
+  clip-path: polygon(
+    50% 0, 100% 12%, 100% 88%,
+    50% 100%, 0 88%, 0 12%
+  );
 }
-.freq-data-item.secret strong{color:#a7b6ca}
-.frequency-counter{
- color:var(--muted);font-size:14px;
+
+.f { left: 3%; top: 8%; }
+.b { right: 3%; top: 8%; }
+.e { left: 3%; bottom: 8%; }
+.c { right: 3%; bottom: 8%; }
+
+.colon {
+  width: 11px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
-.toolbar{
- display:flex;align-items:center;justify-content:space-between;
- gap:12px;flex-wrap:wrap;
+
+.colon span {
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background: var(--green);
 }
-.freq-description{
- color:var(--muted);font-size:13px;margin-top:14px;
- border-top:1px solid var(--border);padding-top:12px;
+
+.date {
+  color: #d9fff1;
+  font-size: 20px;
+  font-weight: bold;
 }
-.empty{padding:25px;text-align:center;color:var(--muted)}
-footer{
- text-align:center;border-top:1px solid var(--border);
- padding:30px;color:var(--muted);font-size:14px;
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
 }
-@media(max-width:950px){
- .grid{grid-template-columns:repeat(2,1fr)}
- .provinces{grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:650px){
- .nav{justify-content:center}
- .links{justify-content:center}
- .links button{padding:8px;font-size:13px}
- .grid,.repeater-grid{grid-template-columns:1fr}
- .provinces{grid-template-columns:repeat(2,1fr)}
- .filter-bar{grid-template-columns:1fr}
- .freq-card-data{grid-template-columns:1fr 1fr}
- .page{padding-top:25px}
- .clock-panel{padding:18px 7px}
- .digital-clock{gap:3px}
-}
-@media(prefers-reduced-motion:reduce){
- html{scroll-behavior:auto}
- .clickable{transition:none}
+
+@media(max-width:760px) {
+  .grid,
+  .repeater-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .provinces {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .frequency-list .fields {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nav {
+    justify-content: center;
+  }
+
+  nav {
+    justify-content: center;
+  }
 }
 </style>
 </head>
@@ -365,1593 +480,1083 @@ footer{
 
 <header>
 <div class="container nav">
+  <a class="logo" href="#home">
+    📻 Daan's <span>Radio Corner</span>
+  </a>
 
-<a class="logo" href="#home">
- 📻 Daan's <span>Radio Corner</span>
-</a>
-
-<nav class="links">
- <button data-page="home">Home</button>
- <button data-page="fm">FM-radio</button>
- <button data-page="amateur">Zendamateurs</button>
- <button data-page="frequencies">Frequenties</button>
- <button data-page="receiver">Radio-ontvangers</button>
- <button data-page="about">Over Daan</button>
-</nav>
-
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#fm">FM-radio</a>
+    <a href="#amateur">Zendamateurs</a>
+    <a href="#frequenties">Frequenties</a>
+    <a href="#ontvangers">Radio-ontvangers</a>
+    <a href="#over">Over Daan</a>
+  </nav>
 </div>
 </header>
 
 <main>
 
-<!-- HOME -->
-<section id="home" class="page active">
-<div class="container">
+<!-- HOMEPAGE -->
+
+<section id="home" class="page container">
 
 <div class="hero">
+  <div id="greeting" class="greeting">Welkom!</div>
 
- <div class="eyebrow">● Welkom in de ether</div>
- <div id="greeting" class="greeting">Welkom!</div>
+  <h1>
+    Daan's <span class="accent">Radio Corner</span>
+  </h1>
 
- <h1>Daan's <span>Radio Corner.</span></h1>
+  <p>
+    Ontdek FM-radio, noodfrequenties,
+    zendamateurs, repeaters en mijn
+    persoonlijke frequentielijst!
+  </p>
 
- <p>
-  Alles over FM-radio, noodfrequenties,
-  radiozendamateurs en radio-ontvangers.
-  Nu ook met mijn eigen frequentielijst!
- </p>
+  <div class="clock">
+    <div class="clock-label">◉ NEDERLANDSE TIJD</div>
 
- <div class="clock-panel">
-  <div class="clock-label">◉ NEDERLANDSE TIJD</div>
-  <div class="digital-clock" id="digitalClock"
-       role="timer" aria-label="Nederlandse tijd"></div>
-  <div class="clock-date" id="clockDate"></div>
-  <div class="clock-zone" id="clockZone">Nederland</div>
- </div>
+    <div id="digits" class="digits"></div>
 
- <button class="btn" data-page="fm">📻 FM-radio</button>
- <button class="btn secondary" data-page="amateur">📡 Zendamateurs</button>
- <button class="btn secondary" data-page="frequencies">📋 Frequenties</button>
- <button class="btn secondary" data-page="receiver">🎧 Ontvangers</button>
+    <div id="date" class="date">
+      Datum laden...
+    </div>
 
+    <div id="tz">Europe/Amsterdam</div>
+  </div>
+
+  <div class="actions">
+    <a class="btn" href="#fm">📻 FM-radio</a>
+    <a class="btn secondary" href="#amateur">📡 Zendamateurs</a>
+    <a class="btn secondary" href="#frequenties">📋 Frequenties</a>
+  </div>
 </div>
 
 <h2>Ontdek de website</h2>
 
 <div class="grid">
 
- <div class="card clickable" data-page="fm">
-  <div class="card-icon">📻</div>
-  <h3>FM-radio</h3>
-  <p>Muziekzenders en calamiteitenfrequenties per provincie.</p>
- </div>
+  <div class="card">
+    <h3>📻 FM-radio</h3>
+    <p>
+      Normale radiozenders en noodfrequenties.
+    </p>
+    <p><a href="#fm">Bekijk FM-radio →</a></p>
+  </div>
 
- <div class="card clickable" data-page="amateur">
-  <div class="card-icon">📡</div>
-  <h3>Zendamateurs</h3>
-  <p>Repeaters, RX, TX, CTCSS en online luisteren.</p>
- </div>
+  <div class="card">
+    <h3>📡 Zendamateurs</h3>
+    <p>
+      Repeaters, RX, TX, CTCSS en online luisterlinks.
+    </p>
+    <p><a href="#amateur">Bekijk repeaters →</a></p>
+  </div>
 
- <div class="card clickable" data-page="frequencies">
-  <div class="card-icon">📋</div>
-  <h3>Frequentielijst</h3>
-  <p>Mijn eigen luisterfrequenties, zoeken op naam en plaats.</p>
- </div>
-
- <div class="card clickable" data-page="receiver">
-  <div class="card-icon">🎧</div>
-  <h3>Radio-ontvangers</h3>
-  <p>Later meer over scanners, SDR en ontvangapparatuur.</p>
- </div>
-
-</div>
-
-<div class="notice">
- <p>
-  <strong>📋 Nieuw!</strong>
-  Mijn persoonlijke frequentielijst is toegevoegd.
-  Zoek op Utrecht, Amsterdam, Wijk bij Duurstede,
-  NS algemeen of het ISS.
- </p>
-</div>
+  <div class="card">
+    <h3>📋 Frequenties</h3>
+    <p>
+      Mijn persoonlijke frequentielijst met plaatsfilters.
+    </p>
+    <p><a href="#frequenties">Bekijk frequenties →</a></p>
+  </div>
 
 </div>
+
 </section>
 
 <!-- FM -->
-<section id="fm" class="page">
-<div class="container">
 
-<div class="eyebrow">FM-radio Nederland</div>
-<h1>Ontdek de <span>FM-band.</span></h1>
+<section id="fm" class="page container" hidden>
+
+<h1>📻 FM-radio Nederland</h1>
 
 <p>
- Kies een provincie om normale radiozenders
- en regionale noodfrequenties te bekijken.
+  Selecteer een provincie om radiozenders
+  en noodfrequenties te zien.
 </p>
 
 <div id="fmProvinces" class="provinces"></div>
 
-<div class="info">
- <h3>📻 FM-radio</h3>
- <p>
-  Het reguliere FM-omroepbereik loopt van 87,5 tot 108 MHz.
-  De lijst is een startoverzicht en wordt verder uitgebreid.
- </p>
+<div class="notice">
+  <p>
+    De FM-lijst is een startoverzicht.
+    Niet alle actieve zenders zijn opgenomen.
+  </p>
 </div>
 
-</div>
 </section>
 
-<!-- FM REGIO -->
-<section id="fmRegion" class="page">
-<div class="container">
+<!-- FM DETAIL -->
 
-<button class="back" id="fmBack">← Alle provincies</button>
+<section id="fmDetail" class="page container" hidden>
 
-<div class="eyebrow">FM-frequenties</div>
-<h1 id="fmRegionTitle"></h1>
+<button id="fmBack" class="back">
+  ← Terug naar provincies
+</button>
+
+<h1 id="fmTitle"></h1>
 
 <div class="emergency">
+  <h2>🚨 Calamiteitenzenders</h2>
 
- <span class="badge red">🚨 NOODFREQUENTIE</span>
- <h2 style="margin-top:12px">Regionale calamiteitenzenders</h2>
+  <div id="emergencyList" class="emergency-grid"></div>
 
- <p>
-  Bij calamiteiten kunnen regionale publieke omroepen
-  officiële informatie doorgeven.
- </p>
-
- <div id="emergencyGrid" class="emergency-grid"></div>
-
- <p style="font-size:12px">
-  Bron:
-  <a href="https://www.denkvooruit.nl/bereid-je-voor/zo-krijg-je-een-waarschuwing/radio"
-     target="_blank" rel="noopener noreferrer">
-   Denk Vooruit – Overheid ↗
-  </a>
- </p>
-
+  <p>
+    Controleer de actuele noodradiofrequentie bij
+    <a href="https://www.denkvooruit.nl/bereid-je-voor/zo-krijg-je-een-waarschuwing/radio"
+       target="_blank" rel="noopener noreferrer">
+      Denk Vooruit
+    </a>.
+  </p>
 </div>
 
-<h2>📻 FM-muziekzenders</h2>
+<h2>FM-zenders</h2>
 
-<input id="fmSearch" class="search" type="search"
-       placeholder="Zoek naam, plaats of frequentie...">
+<input id="fmSearch" class="search"
+       placeholder="Zoek zender, plaats of MHz">
 
 <p id="fmCount"></p>
 
-<div class="table-wrap">
- <table>
-  <thead>
-   <tr><th>MHz</th><th>Zender</th><th>Regio</th></tr>
-  </thead>
-  <tbody id="fmRows"></tbody>
- </table>
+<div class="tablewrap">
+  <table>
+    <thead>
+      <tr>
+        <th>MHz</th>
+        <th>Zender</th>
+        <th>Regio</th>
+      </tr>
+    </thead>
+    <tbody id="fmRows"></tbody>
+  </table>
 </div>
-
-<div class="info">
- <p>
-  Dit is een voorlopig frequentieoverzicht.
-  Niet alle zenders zijn live gecontroleerd.
- </p>
- <a href="https://www.radio-tv-nederland.nl/"
-    target="_blank" rel="noopener noreferrer">
-  Uitgebreidere frequentielijst ↗
- </a>
-</div>
-
-</div>
-</section>
-
-<!-- AMATEUR -->
-<section id="amateur" class="page">
-<div class="container">
-
-<div class="eyebrow">Ham Radio Nederland</div>
-<h1>De <span>zendamateurhoek.</span></h1>
 
 <p>
- Bekijk repeaters met RX, TX, CTCSS,
- informatie en eventuele online luistermogelijkheden.
+  Uitgebreider overzicht:
+  <a href="https://www.radio-tv-nederland.nl/"
+     target="_blank" rel="noopener noreferrer">
+    Radio-TV Nederland
+  </a>
+</p>
+
+</section>
+
+<!-- ZENDAMATEURS -->
+
+<section id="amateur" class="page container" hidden>
+
+<h1>📡 Zendamateurs</h1>
+
+<p>
+  Selecteer een provincie om repeaters te bekijken.
+  RX is openbaar. TX en CTCSS zijn afgeschermd.
 </p>
 
 <div class="warning">
- <p>
-  ⚠️ Een websitewachtwoord is geen zendvergunning.
-  Voor zenden gelden wettelijke regels.
- </p>
+  <p>
+    Een wachtwoord is geen zendvergunning.
+    Voor zenden gelden wettelijke regels.
+  </p>
 </div>
 
-<h2>Kies een provincie</h2>
 <div id="amateurProvinces" class="provinces"></div>
 
-<div class="info">
- <h3>Wat betekent alles?</h3>
- <p><strong>RX:</strong> repeateruitgang ontvangen.</p>
- <p><strong>TX:</strong> ingang van de repeater.</p>
- <p><strong>CTCSS:</strong> eventuele subaudiotoon.</p>
-</div>
-
-</div>
 </section>
 
-<!-- AMATEUR REGIO -->
-<section id="amateurRegion" class="page">
-<div class="container">
+<!-- REPEATER DETAIL -->
 
-<button class="back" id="amateurBack">← Alle provincies</button>
+<section id="amateurDetail" class="page container" hidden>
 
-<div class="eyebrow">Amateurrepeaters</div>
-<h1 id="amateurRegionTitle"></h1>
+<button id="amateurBack" class="back">
+  ← Terug naar provincies
+</button>
 
-<div class="unlock">
+<h1 id="amateurTitle"></h1>
 
- <span class="badge orange">🔒 Zendinstellingen</span>
- <h2>TX en CTCSS ontgrendelen</h2>
+<div class="card">
+  <h2>🔒 TX en CTCSS</h2>
+  <p>
+    Voer het demo-wachtwoord in om
+    TX en CTCSS te bekijken.
+  </p>
 
- <p>
-  Gebruik hetzelfde demo-wachtwoord
-  als bij mijn persoonlijke frequentielijst.
- </p>
+  <button id="unlockBtn" class="btn">
+    Ontgrendelen
+  </button>
 
- <div class="unlock-controls">
-  <input id="password" type="password" placeholder="Wachtwoord">
-  <button id="unlockButton">Ontgrendelen</button>
-  <button id="lockButton" hidden>Vergrendelen</button>
- </div>
+  <button id="lockBtn" class="btn secondary" hidden>
+    Vergrendelen
+  </button>
 
- <p id="passwordMessage"></p>
-
- <p style="font-size:12px">
-  Dit is uitsluitend een zichtbaarheidsslot,
-  geen beveiligde licentiecontrole.
- </p>
-
+  <p id="lockStatus">Vergrendeld</p>
 </div>
 
-<h2>📡 Repeaters</h2>
-
-<input class="search" id="repeaterSearch" type="search"
-       placeholder="Zoek callsign of locatie...">
+<input id="repeaterSearch" class="search"
+       placeholder="Zoek callsign, plaats of RX">
 
 <p id="repeaterCount"></p>
 
-<div id="repeaterGrid" class="repeater-grid"></div>
+<div id="repeaterList" class="repeater-grid"></div>
 
-</div>
 </section>
 
-<!-- =====================================
-     NIEUWE TAB FREQUENTIES
-===================================== -->
+<!-- PERSOONLIJKE FREQUENTIES -->
 
-<section id="frequencies" class="page">
-<div class="container">
+<section id="frequenties" class="page container" hidden>
 
-<div class="eyebrow">Persoonlijke radiolijst</div>
-<h1>Mijn <span>frequenties.</span></h1>
+<h1>📋 Mijn frequenties</h1>
 
 <p>
- Mijn eigen frequentieverzameling met luchtvaart,
- scheepvaart, spoorwegen, radioamateurs
- en andere luisterfrequenties.
+  Mijn eigen frequenties uit Excel.
+  Zoek op naam, plaats of frequentie.
 </p>
 
-<div class="notice">
- <p>
-  <strong>🎧 Luisterlijst</strong><br>
-  De frequenties zijn overgenomen uit mijn eigen Excel-lijst.
-  Ontvangst hangt af van je locatie, ontvanger en antenne.
- </p>
+<div class="filters">
+  <input id="personalSearch" class="search"
+         placeholder="Zoek naam, plaats of MHz">
+
+  <select id="placeFilter">
+    <option value="">Alle plaatsen</option>
+  </select>
+
+  <select id="modeFilter">
+    <option value="">FM en AM</option>
+    <option value="FM">FM</option>
+    <option value="AM">AM</option>
+  </select>
 </div>
 
-<div class="filter-bar">
+<div class="card">
+  <h3>🔒 TX en CTCSS</h3>
+  <p>
+    RX is altijd zichtbaar.
+    TX en CTCSS kun je ontgrendelen.
+  </p>
 
- <input id="frequencySearch"
-        class="search"
-        type="search"
-        placeholder="🔎 Zoek naam, plaats of frequentie...">
+  <button class="btn" id="personalUnlock">
+    Ontgrendelen
+  </button>
 
- <select id="placeFilter" aria-label="Filter op plaats">
-  <option value="">Alle plaatsen</option>
- </select>
+  <button class="btn secondary" id="personalLock" hidden>
+    Vergrendelen
+  </button>
 
- <select id="modeFilter" aria-label="Filter op modulatie">
-  <option value="">FM en AM</option>
-  <option value="FM">Alleen FM</option>
-  <option value="AM">Alleen AM</option>
- </select>
-
+  <p id="personalStatus">Vergrendeld</p>
 </div>
 
-<div class="toolbar">
- <span id="frequencyCount" class="frequency-counter"></span>
- <button class="btn secondary" id="resetFrequencyFilters">
-  Filters wissen
- </button>
+<p id="personalCount"></p>
+
+<div id="personalList" class="frequency-list"></div>
+
+<div class="warning">
+  <p>
+    Deze lijst bevat onder meer luchtvaart-,
+    spoorweg- en bedrijfsfrequenties.
+    Gebruik de gegevens alleen volgens
+    de geldende regels.
+  </p>
 </div>
 
-<div class="unlock">
-
- <span class="badge orange">🔒 Extra instellingen</span>
-
- <h2>TX en CTCSS weergeven</h2>
-
- <p>
-  Alle RX-frequenties zijn zichtbaar.
-  Als een TX of CTCSS bekend is,
-  wordt deze pas na ontgrendeling weergegeven.
- </p>
-
- <p id="personalLockStatus">
-  🔒 TX en CTCSS zijn vergrendeld.
- </p>
-
- <button class="btn" id="frequencyUnlockButton">
-  🔓 Instellingen ontgrendelen
- </button>
-
- <button class="btn secondary"
-         id="frequencyLockButton" hidden>
-  🔒 Vergrendelen
- </button>
-
- <p style="font-size:12px">
-  Dit zichtbaarheidsslot is geen zendvergunning.
-  Zend nooit zomaar op een frequentie:
-  sommige diensten vereisen specifieke bevoegdheden
-  en zijn geen radioamateurbanden.
- </p>
-
-</div>
-
-<div id="frequencyList" class="freq-list"></div>
-
-<div class="info">
- <h3>ℹ️ Over deze frequenties</h3>
- <p>
-  Deze lijst is overgenomen uit een persoonlijke programmering.
-  De gegevens zijn niet onafhankelijk gecontroleerd
-  op actuele toewijzing of uitzending.
- </p>
- <p>
-  Bij sommige items is geen aparte TX-frequentie opgegeven.
-  Dan wordt deze als onbekend getoond,
-  niet automatisch gelijkgesteld aan RX.
- </p>
-</div>
-
-</div>
 </section>
 
 <!-- RADIO ONTVANGERS -->
-<section id="receiver" class="page">
-<div class="container">
 
-<div class="eyebrow">Luisteren en ontvangen</div>
-<h1>Radio-<span>ontvangers.</span></h1>
+<section id="ontvangers" class="page container" hidden>
 
-<p>
- Hier komt later een uitgebreid gedeelte
- over scanners, SDR en ontvangen.
-</p>
+<h1>🎧 Radio-ontvangers</h1>
+
+<div class="notice">
+  <p>
+    Binnenkort gaan we hier verder met
+    scanners, SDR, antennes en luistertips!
+  </p>
+</div>
 
 <div class="grid">
 
- <div class="card">
-  <div class="card-icon">📟</div>
-  <h3>Scanners</h3>
-  <p>Breedbandontvangers en draagbare scanners.</p>
- </div>
+  <div class="card">
+    <h3>📟 Scanners</h3>
+    <p>Breedbandontvangers en handscanners.</p>
+  </div>
 
- <div class="card">
-  <div class="card-icon">💻</div>
-  <h3>SDR</h3>
-  <p>Software Defined Radio en WebSDR.</p>
- </div>
+  <div class="card">
+    <h3>💻 SDR</h3>
+    <p>Software Defined Radio.</p>
+  </div>
 
- <div class="card">
-  <div class="card-icon">🌍</div>
-  <h3>Kortegolf</h3>
-  <p>HF-radio en propagatie.</p>
- </div>
-
- <div class="card clickable" data-page="frequencies">
-  <div class="card-icon">📋</div>
-  <h3>Frequenties</h3>
-  <p>Bekijk alvast mijn eigen luisterfrequenties.</p>
- </div>
+  <div class="card">
+    <h3>🌍 Kortegolf</h3>
+    <p>HF-radio en verre signalen.</p>
+  </div>
 
 </div>
 
-</div>
 </section>
 
 <!-- OVER -->
-<section id="about" class="page">
-<div class="container">
 
-<div class="eyebrow">Over deze website</div>
-<h1>Over <span>Daan.</span></h1>
+<section id="over" class="page container" hidden>
+
+<h1>Over <span class="accent">Daan</span></h1>
 
 <div class="card">
- <h2>Welkom bij mijn radiohoek!</h2>
- <p>
-  Hoi! Ik ben Daan.
-  Op deze website verzamel ik
-  alles wat met mijn radiohobby te maken heeft.
- </p>
- <p>
-  Je vindt hier FM-radio, repeaters,
-  ontvangfrequenties en binnenkort
-  ook meer over mijn radioapparatuur.
- </p>
+  <h2>Welkom bij mijn radiohoek!</h2>
+
+  <p>
+    Hoi! Ik ben Daan.
+    Dit is mijn persoonlijke radio-website.
+  </p>
+
+  <p>
+    Hier verzamel ik informatie over
+    gewone radio, zendamateurs,
+    repeaters en frequenties.
+  </p>
 </div>
 
-</div>
 </section>
 
 </main>
 
 <footer>
-📻 <strong>Daan's Radio Corner</strong>
-<p>FM-radio · Zendamateurs · Frequenties · Ontvangers</p>
-© <span id="year"></span> Daan's Radio Corner
+  📻 Daan's Radio Corner
+  <p>FM-radio · Zendamateurs · Frequenties · Ontvangers</p>
+  © <span id="year">2026</span>
 </footer>
 
 <script>
 "use strict";
 
-/* =====================================
-   ALGEMENE INSTELLINGEN
-===================================== */
+/* INSTELLINGEN */
 
 const PASSWORD = "DAAN2026";
-const TIMEZONE = "Europe/Amsterdam";
 
 const provinces = [
- ["Groningen","🌾"],
- ["Friesland","⛵"],
- ["Drenthe","🌲"],
- ["Overijssel","🌿"],
- ["Flevoland","🌊"],
- ["Gelderland","🏰"],
- ["Utrecht","🏙️"],
- ["Noord-Holland","🌷"],
- ["Zuid-Holland","🌉"],
- ["Zeeland","⚓"],
- ["Noord-Brabant","🏡"],
- ["Limburg","⛰️"]
+  "Groningen",
+  "Friesland",
+  "Drenthe",
+  "Overijssel",
+  "Flevoland",
+  "Gelderland",
+  "Utrecht",
+  "Noord-Holland",
+  "Zuid-Holland",
+  "Zeeland",
+  "Noord-Brabant",
+  "Limburg"
 ];
 
 let selectedFM = "Utrecht";
 let selectedAmateur = "Utrecht";
 let unlocked = false;
 
-/* =====================================
-   NAVIGATIE
-===================================== */
+/* NAVIGATIE */
 
 const pages = [
- "home","fm","fmRegion",
- "amateur","amateurRegion",
- "frequencies","receiver","about"
+  "home",
+  "fm",
+  "fmDetail",
+  "amateur",
+  "amateurDetail",
+  "frequenties",
+  "ontvangers",
+  "over"
 ];
 
-function showPage(name){
- if(!pages.includes(name)) name="home";
+function showPage() {
+  let page = location.hash.substring(1) || "home";
 
- document.querySelectorAll(".page").forEach(page=>{
-  page.classList.toggle("active",page.id===name);
- });
+  if (!pages.includes(page)) page = "home";
 
- document.querySelectorAll("[data-page]").forEach(button=>{
-  button.classList.toggle("active",button.dataset.page===name);
- });
+  document.querySelectorAll(".page").forEach(section => {
+    section.hidden = section.id !== page;
+  });
 
- window.scrollTo(0,0);
+  document.querySelectorAll("nav a").forEach(link => {
+    link.classList.toggle(
+      "active",
+      link.getAttribute("href") === "#" + page
+    );
+  });
+
+  window.scrollTo(0, 0);
 }
 
-function navigate(name){
- location.hash=name;
- showPage(name);
+function navigate(page) {
+  location.hash = page;
+  showPage();
 }
 
-document.querySelectorAll("[data-page]").forEach(button=>{
- button.addEventListener("click",()=>{
-  navigate(button.dataset.page);
- });
-});
+window.addEventListener("hashchange", showPage);
 
-document.getElementById("fmBack").onclick=()=>navigate("fm");
-document.getElementById("amateurBack").onclick=()=>navigate("amateur");
+/* HULPFUNCTIE */
 
-window.addEventListener("hashchange",()=>{
- showPage(location.hash.substring(1));
-});
+function el(tag, text, className) {
+  const element = document.createElement(tag);
 
-/* =====================================
-   LIVE 7-SEGMENT KLOK
-===================================== */
-
-const segmentMap={
- "0":[1,1,1,1,1,1,0],
- "1":[0,1,1,0,0,0,0],
- "2":[1,1,0,1,1,0,1],
- "3":[1,1,1,1,0,0,1],
- "4":[0,1,1,0,0,1,1],
- "5":[1,0,1,1,0,1,1],
- "6":[1,0,1,1,1,1,1],
- "7":[1,1,1,0,0,0,0],
- "8":[1,1,1,1,1,1,1],
- "9":[1,1,1,1,0,1,1]
-};
-
-const segmentNames=[
- "seg-a","seg-b","seg-c",
- "seg-d","seg-e","seg-f","seg-g"
-];
-
-const digits=[];
-
-function buildClock(){
- const clock=document.getElementById("digitalClock");
- clock.replaceChildren();
-
- for(let i=0;i<6;i++){
-  if(i===2||i===4){
-   const colon=document.createElement("div");
-   colon.className="colon";
-   colon.append(
-    document.createElement("i"),
-    document.createElement("i")
-   );
-   clock.appendChild(colon);
+  if (text !== undefined) {
+    element.textContent = text;
   }
 
-  const digit=document.createElement("div");
-  digit.className="digit";
+  if (className) {
+    element.className = className;
+  }
 
-  const segments=[];
-
-  segmentNames.forEach(name=>{
-   const segment=document.createElement("span");
-   segment.className="segment "+name;
-   digit.appendChild(segment);
-   segments.push(segment);
-  });
-
-  digits.push(segments);
-  clock.appendChild(digit);
- }
+  return element;
 }
 
-const timeFormat=new Intl.DateTimeFormat("nl-NL",{
- timeZone:TIMEZONE,
- hour:"2-digit",minute:"2-digit",second:"2-digit",
- hourCycle:"h23"
-});
+/* 7-SEGMENT KLOK */
 
-const dateFormat=new Intl.DateTimeFormat("nl-NL",{
- timeZone:TIMEZONE,
- weekday:"long",day:"numeric",
- month:"long",year:"numeric"
-});
-
-function updateClock(){
- const now=new Date();
- const parts=timeFormat.formatToParts(now);
-
- const get=type=>
-  parts.find(p=>p.type===type)?.value||"00";
-
- const hour=get("hour");
- const minute=get("minute");
- const second=get("second");
-
- (hour+minute+second).split("").forEach((n,i)=>{
-  const pattern=segmentMap[n];
-
-  digits[i].forEach((segment,j)=>{
-   segment.classList.toggle("on",pattern[j]===1);
-  });
- });
-
- document.getElementById("clockDate").textContent=
-  dateFormat.format(now);
-
- const zone=new Intl.DateTimeFormat("nl-NL",{
-  timeZone:TIMEZONE,timeZoneName:"short"
- }).formatToParts(now)
-  .find(p=>p.type==="timeZoneName")?.value||"NL";
-
- document.getElementById("clockZone").textContent=
-  "Nederland · "+zone;
-
- const h=Number(hour);
- let greeting="Goedenacht! 🌌";
-
- if(h>=6&&h<12)greeting="Goedemorgen! ☀️";
- else if(h>=12&&h<18)greeting="Goedemiddag! 🌤️";
- else if(h>=18&&h<23)greeting="Goedenavond! 🌙";
-
- document.getElementById("greeting").textContent=greeting;
-}
-
-buildClock();
-updateClock();
-setInterval(updateClock,1000);
-
-/* =====================================
-   OFFICIËLE NOODZENDERS
-===================================== */
-
-const emergency={
-"Groningen":[["Radio Noord","97.5","Groningen"]],
-"Friesland":[
- ["Omrop Fryslân","92.2","Jirnsum"],
- ["Omrop Fryslân","92.5","Smilde"]
-],
-"Drenthe":[
- ["Radio Drenthe","90.8","Smilde"],
- ["Radio Drenthe","99.3","Emmen"]
-],
-"Overijssel":[
- ["Radio Oost","89.4","Hengelo"],
- ["Radio Oost","95.6","Markelo"],
- ["Radio Oost","97.9","Deventer"],
- ["Radio Oost","99.4","Zwollekerspel"]
-],
-"Flevoland":[["Omroep Flevoland","89.8","Lelystad"]],
-"Gelderland":[
- ["Radio Gelderland","88.9","Arnhem"],
- ["Radio Gelderland","103.5","Ugchelen"],
- ["Radio Gelderland","90.4","Ruurlo"],
- ["Radio Gelderland","89.1","Megen"],
- ["Radio Gelderland","99.6","Zaltbommel"]
-],
-"Utrecht":[
- ["Radio M Utrecht","93.1","Lopik"],
- ["Radio M Utrecht","97.9","Rhenen"]
-],
-"Noord-Holland":[
- ["NH Radio","88.9","Amsterdam"],
- ["NH Radio","88.7","Alkmaar"],
- ["NH Radio","88.7","Hilversum"],
- ["NH Radio","93.9","Wieringermeer"]
-],
-"Zuid-Holland":[
- ["Radio West","89.3","Den Haag"],
- ["Radio West","88.0","Leiden"],
- ["Radio Rijnmond","93.4","Rotterdam"]
-],
-"Zeeland":[
- ["Omroep Zeeland","87.9","Goes"],
- ["Omroep Zeeland","98.4","Vlissingen"]
-],
-"Noord-Brabant":[
- ["Omroep Brabant","91.0","West-Brabant"],
- ["Omroep Brabant","91.9","Midden-Brabant"],
- ["Omroep Brabant","95.8","Noordoost-Brabant"],
- ["Omroep Brabant","87.6","Zuidoost-Brabant"]
-],
-"Limburg":[
- ["L1 Radio","100.3","Roermond"],
- ["L1 Radio","95.3","Emmaberg"]
-]
+const patterns = {
+  "0": "abcdef",
+  "1": "bc",
+  "2": "abged",
+  "3": "abgcd",
+  "4": "fgbc",
+  "5": "afgcd",
+  "6": "afgecd",
+  "7": "abc",
+  "8": "abcdefg",
+  "9": "abfgcd"
 };
 
-/* =====================================
-   NORMALE FM-RADIO
-   VOORLOPIGE STARTLIJST
-===================================== */
+const clockDigits = [];
 
-const fmData=`
+function buildClock() {
+  const clock = document.getElementById("digits");
+
+  for (let i = 0; i < 6; i++) {
+    if (i === 2 || i === 4) {
+      const colon = el("div", undefined, "colon");
+      colon.append(el("span"), el("span"));
+      clock.append(colon);
+    }
+
+    const digit = el("div", undefined, "digit");
+    const segments = {};
+
+    for (const name of ["a", "b", "c", "d", "e", "f", "g"]) {
+      const segment = el("span", undefined, "seg " + name);
+      segments[name] = segment;
+      digit.append(segment);
+    }
+
+    clockDigits.push(segments);
+    clock.append(digit);
+  }
+}
+
+const timeFormatter = new Intl.DateTimeFormat("nl-NL", {
+  timeZone: "Europe/Amsterdam",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hourCycle: "h23"
+});
+
+const dateFormatter = new Intl.DateTimeFormat("nl-NL", {
+  timeZone: "Europe/Amsterdam",
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+  year: "numeric"
+});
+
+function updateClock() {
+  const now = new Date();
+
+  const parts = timeFormatter.formatToParts(now);
+
+  const get = type =>
+    parts.find(part => part.type === type)?.value || "00";
+
+  const hour = get("hour");
+  const minute = get("minute");
+  const second = get("second");
+
+  const time = hour + minute + second;
+
+  [...time].forEach((number, index) => {
+    const enabled = patterns[number];
+
+    Object.entries(clockDigits[index]).forEach(([name, segment]) => {
+      segment.classList.toggle("on", enabled.includes(name));
+    });
+  });
+
+  document.getElementById("date").textContent =
+    dateFormatter.format(now);
+
+  const h = Number(hour);
+
+  let greeting = "Goedenacht! 🌌";
+
+  if (h >= 6 && h < 12) {
+    greeting = "Goedemorgen! ☀️";
+  } else if (h >= 12 && h < 18) {
+    greeting = "Goedemiddag! 🌤️";
+  } else if (h >= 18 && h < 23) {
+    greeting = "Goedenavond! 🌙";
+  }
+
+  document.getElementById("greeting").textContent = greeting;
+
+  document.getElementById("tz").textContent =
+    "Nederland · " + hour + ":" + minute + ":" + second;
+}
+
+/* FM NOODZENDERS */
+
+const emergency = {
+  "Groningen": [
+    ["Radio Noord", "97.5", "Groningen"]
+  ],
+  "Friesland": [
+    ["Omrop Fryslân", "92.2", "Jirnsum"],
+    ["Omrop Fryslân", "92.5", "Smilde"]
+  ],
+  "Drenthe": [
+    ["Radio Drenthe", "90.8", "Smilde"],
+    ["Radio Drenthe", "99.3", "Emmen"]
+  ],
+  "Overijssel": [
+    ["Radio Oost", "89.4", "Hengelo"],
+    ["Radio Oost", "95.6", "Markelo"],
+    ["Radio Oost", "97.9", "Deventer"],
+    ["Radio Oost", "99.4", "Zwollekerspel"]
+  ],
+  "Flevoland": [
+    ["Omroep Flevoland", "89.8", "Lelystad"]
+  ],
+  "Gelderland": [
+    ["Radio Gelderland", "88.9", "Arnhem"],
+    ["Radio Gelderland", "103.5", "Ugchelen"],
+    ["Radio Gelderland", "90.4", "Ruurlo"],
+    ["Radio Gelderland", "89.1", "Megen"],
+    ["Radio Gelderland", "99.6", "Zaltbommel"]
+  ],
+  "Utrecht": [
+    ["Radio M Utrecht", "93.1", "Lopik"],
+    ["Radio M Utrecht", "97.9", "Rhenen"]
+  ],
+  "Noord-Holland": [
+    ["NH Radio", "88.9", "Amsterdam"],
+    ["NH Radio", "88.7", "Alkmaar"],
+    ["NH Radio", "88.7", "Hilversum"],
+    ["NH Radio", "93.9", "Wieringermeer"]
+  ],
+  "Zuid-Holland": [
+    ["Radio West", "89.3", "Den Haag"],
+    ["Radio West", "88.0", "Leiden"],
+    ["Radio Rijnmond", "93.4", "Rotterdam"]
+  ],
+  "Zeeland": [
+    ["Omroep Zeeland", "87.9", "Goes"],
+    ["Omroep Zeeland", "98.4", "Vlissingen"]
+  ],
+  "Noord-Brabant": [
+    ["Omroep Brabant", "91.0", "West-Brabant"],
+    ["Omroep Brabant", "91.9", "Midden-Brabant"],
+    ["Omroep Brabant", "95.8", "Noordoost-Brabant"],
+    ["Omroep Brabant", "87.6", "Zuidoost-Brabant"]
+  ],
+  "Limburg": [
+    ["L1 Radio", "100.3", "Roermond"],
+    ["L1 Radio", "95.3", "Emmaberg"]
+  ]
+};
+
+/* FM MUZIEKZENDERS */
+
+const fmData = `
 Groningen|89.1|RADIONL|Groningen
-Groningen|89.6|BNR Nieuwsradio|Hoogersmilde
-Groningen|90.3|Sublime|Hoogezand
-Groningen|91.3|Simone FM|Stadskanaal
 Groningen|92.4|Radio Continu|Hoogezand
-Groningen|92.9|Simone FM|Groningen
 Groningen|93.7|SLAM!|Hoogezand
-Groningen|104.4|RADIONL|Groningen
-Friesland|91.0|SLAM!|Tjerkgaast
 Friesland|92.8|Waterstad FM|Heerenveen
-Friesland|93.2|Waterstad FM|Jirnsum
-Friesland|93.5|Waterstad FM|Drachten
-Friesland|94.1|RADIONL|Tjerkgaast
 Friesland|94.3|RADIONL|Sneek
-Friesland|95.5|BNR Nieuwsradio|Tjerkgaast
-Friesland|96.6|RADIONL|Leeuwarden
 Friesland|97.9|Radio Continu|Tjerkgaast
-Friesland|99.1|100%NL|Tjerkgaast
-Drenthe|87.6|Radio 10|Hoogersmilde
 Drenthe|88.0|NPO Radio 2|Hoogersmilde
-Drenthe|88.6|NPO 3FM|Hoogersmilde
-Drenthe|89.6|BNR Nieuwsradio|Hoogersmilde
-Drenthe|90.5|Sublime|Hoogersmilde
 Drenthe|91.8|NPO Radio 1|Hoogersmilde
-Drenthe|92.3|Radio Continu|Emmen
-Drenthe|94.2|100%NL|Hoogersmilde
-Drenthe|94.8|NPO Klassiek|Hoogersmilde
 Drenthe|101.0|Sky Radio|Hoogersmilde
 Overijssel|87.6|Joy Radio|Enschede
-Overijssel|89.2|RADIONL|Zwolle
-Overijssel|90.0|Tukker FM|De Lutte
-Overijssel|90.7|Sublime|Enschede
 Overijssel|91.0|SLAM!|Markelo
-Overijssel|91.4|NPO Klassiek|Markelo
-Overijssel|93.3|RADIONL|Enschede
-Overijssel|95.3|BNR Nieuwsradio|Zwollekerspel
-Overijssel|96.2|NPO 3FM|Markelo
-Overijssel|97.6|100%NL|Zwolle
 Overijssel|98.4|NPO Radio 1|Markelo
-Overijssel|104.6|NPO Radio 2|Markelo
 Flevoland|87.7|Radio 10|Lelystad
-Flevoland|89.4|RADIONL|Lelystad
 Flevoland|90.3|Radio Lelystad|Lelystad
 Flevoland|97.4|Wild FM Hitradio|Almere
-Flevoland|105.2|527|Emmeloord
-Gelderland|87.8|100%NL|Arnhem
-Gelderland|88.2|100%NL|Ugchelen
-Gelderland|89.6|RADIONL|Arnhem
 Gelderland|89.8|Sublime|Nijmegen
-Gelderland|90.5|Sublime|Arnhem
-Gelderland|90.9|SLAM!|Arnhem
-Gelderland|92.1|NPO Klassiek|Arnhem
 Gelderland|92.9|NPO Radio 2|Arnhem
-Gelderland|94.2|RADIONL|Nijmegen
-Gelderland|95.0|100%NL|Nijmegen
 Gelderland|96.5|NPO 3FM|Arnhem
-Gelderland|97.7|Radio 10|Arnhem
 Utrecht|87.8|Radio 10|Utrecht
-Utrecht|89.5|100%NL|Utrecht
-Utrecht|90.7|Sublime|IJsselstein
-Utrecht|91.7|Radio 90FM|Leersum
 Utrecht|92.6|NPO Radio 2|IJsselstein
 Utrecht|93.6|SLAM!|Utrecht
-Utrecht|94.3|NPO Klassiek|IJsselstein
-Utrecht|95.0|100%NL|Amersfoort
 Utrecht|96.1|NPO FunX|Utrecht
-Utrecht|96.8|NPO 3FM|IJsselstein
-Utrecht|97.8|Radio 10|IJsselstein
 Utrecht|98.9|NPO Radio 1|Lopik
-Noord-Holland|88.1|Radio 10|Alkmaar
-Noord-Holland|89.5|100%NL|Alkmaar
 Noord-Holland|89.6|100%NL|Amsterdam
-Noord-Holland|89.9|Haarlem 105|Haarlem
-Noord-Holland|90.0|SLAM!|Alkmaar
-Noord-Holland|90.4|Sublime|Hilversum
 Noord-Holland|91.6|Radio Veronica|Amsterdam
 Noord-Holland|92.3|NPO Radio 2|Amsterdam
-Noord-Holland|93.6|Wild FM Hitradio|Amsterdam
-Noord-Holland|94.5|NPO Klassiek|Amsterdam
-Noord-Holland|95.3|SLAM!|Amsterdam
-Noord-Holland|96.1|NPO FunX|Amsterdam
 Noord-Holland|96.5|NPO 3FM|Amsterdam
-Noord-Holland|98.9|NPO Radio 1|Amsterdam
-Zuid-Holland|87.6|WOS|Naaldwijk
-Zuid-Holland|88.2|SLAM!|Den Haag
 Zuid-Holland|88.6|SLAM!|Rotterdam
-Zuid-Holland|89.8|Amor FM|Den Haag
-Zuid-Holland|90.3|Sublime|Den Haag
-Zuid-Holland|90.5|Sublime|Rotterdam
-Zuid-Holland|91.3|BNR Nieuwsradio|Rotterdam
 Zuid-Holland|91.8|NPO FunX|Rotterdam
-Zuid-Holland|92.0|Den Haag FM|Den Haag
 Zuid-Holland|92.9|NPO Radio 2|Rotterdam
-Zuid-Holland|94.1|NPO Klassiek|Den Haag
-Zuid-Holland|96.5|NPO 3FM|Den Haag
 Zuid-Holland|97.1|NPO 3FM|Rotterdam
-Zuid-Holland|98.9|NPO Radio 1|Rotterdam
-Zeeland|88.8|Sublime|Vlissingen
-Zeeland|89.3|RADIONL|Vlissingen
 Zeeland|90.0|100%NL|Vlissingen
-Zeeland|90.5|100%NL|Goes
-Zeeland|90.8|Sublime|Terneuzen
-Zeeland|91.5|BNR Nieuwsradio|Biervliet
-Zeeland|93.0|Radio 10|Westdorpe
 Zeeland|94.4|NPO Radio 2|Goes
-Zeeland|95.0|NPO Klassiek|Goes
 Zeeland|104.4|NPO Radio 1|Goes
-Noord-Brabant|87.9|Radio 10|Vught
-Noord-Brabant|88.4|SLAM!|Roosendaal
-Noord-Brabant|88.6|BNR Nieuwsradio|Mierlo
 Noord-Brabant|89.7|Sublime|Breda
-Noord-Brabant|90.2|100%NL|Roosendaal
-Noord-Brabant|90.3|RADIONL|Eindhoven
-Noord-Brabant|91.3|BNR Nieuwsradio|Tilburg
 Noord-Brabant|92.3|NPO Radio 2|Mierlo
 Noord-Brabant|93.6|Radio JND|Eindhoven
-Noord-Brabant|94.0|Glow FM|Eindhoven
-Noord-Brabant|94.9|100%NL|Mierlo
-Noord-Brabant|97.1|NPO 3FM|Mierlo
 Noord-Brabant|104.6|NPO Radio 1|Mierlo
 Limburg|88.2|NPO Radio 2|Roermond
-Limburg|88.9|Sublime|Maastricht
-Limburg|89.2|SLAM!|Venlo
-Limburg|90.9|NPO 3FM|Roermond
 Limburg|91.1|Radio 10|Maastricht
-Limburg|91.9|100%NL|Venlo
-Limburg|93.4|NPO Radio 2|Emmaberg
-Limburg|94.5|NPO Klassiek|Roermond
 Limburg|96.1|Qmusic Limburg|Roermond
-Limburg|97.6|Qmusic Limburg|Maastricht
 Limburg|104.8|NPO Radio 1|Roermond
 `;
 
-const fmStations=[];
+const fm = [];
 
-fmData.trim().split("\n").forEach(line=>{
- const [province,freq,name,place]=line.split("|");
- if(province&&freq&&name){
-  fmStations.push({province,freq,name,place,emergency:false});
- }
+fmData.trim().split("\n").forEach(line => {
+  const [province, mhz, name, place] = line.split("|");
+
+  fm.push({
+    province,
+    mhz,
+    name,
+    place,
+    nood: false
+  });
 });
 
-Object.entries(emergency).forEach(([province,items])=>{
- items.forEach(([name,freq,place])=>{
-  fmStations.push({province,freq,name,place,emergency:true});
- });
+Object.entries(emergency).forEach(([province, stations]) => {
+  stations.forEach(([name, mhz, place]) => {
+    fm.push({
+      province,
+      mhz,
+      name,
+      place,
+      nood: true
+    });
+  });
 });
 
-/* =====================================
-   ZENDAMATEURREPEATERS
-   VOORLOPIGE LIJST
-===================================== */
+/* REPEATERS */
 
-const repeaterData=`
-Utrecht|PI3UTR|IJsselstein / Utrecht|2m|145.5750|144.9750|77.0|FM|Bovenregionale repeater van Hobbyscoop in Utrecht.
-Utrecht|PI2NOS|IJsselstein / Utrecht|70cm|430.1250|431.7250|77.0|FM|Bovenregionale repeater, controleer de actuele toon.
-Utrecht|PI2ZST|Zeist|70cm|430.0750|431.6750|-|FM|Amateurrepeater in Zeist.
-Utrecht|PI2AMF|Amersfoort|2m|145.6250|145.0250|77.0|FM|Repeatervermelding in Amersfoort.
+const repeaterData = `
+Utrecht|PI3UTR|IJsselstein/Utrecht|2m|145.5750|144.9750|77.0|FM|Repeater in Utrecht van Hobbyscoop.
+Utrecht|PI2NOS|Utrecht/IJsselstein|70cm|430.1250|431.7250|77.0|FM|Bovenregionaal systeem.
+Utrecht|PI2ZST|Zeist|70cm|430.0750|431.6750|-|FM|Repeatervermelding in Zeist.
 Groningen|PI3GRN|Groningen|2m|145.7500|145.1500|82.5|FM|Repeater in Groningen.
-Groningen|PI3NOG|Delfzijl|2m|145.6125|145.0125|82.5|FM|Repeater voor Noordoost-Groningen.
-Groningen|PI2GRO|Groningen|70cm|430.2375|431.8375|82.5|FM|70cm-repeater in Groningen.
+Groningen|PI2GRO|Groningen|70cm|430.2375|431.8375|82.5|FM|70cm-repeater.
 Friesland|PI3HVN|Heerenveen|2m|145.7000|145.1000|82.5|FM|Repeater in Heerenveen.
-Friesland|PI2HVN|Heerenveen|70cm|430.0250|431.6250|82.5|FM|70cm-repeater in Heerenveen.
-Friesland|PI2FRL|Leeuwarden|70cm|430.1000|431.7000|82.5|FM|Repeatervermelding in Leeuwarden.
-Drenthe|PI3ZOD|Emmen|2m|145.6250|145.0250|-|FM|Repeater voor Zuidoost-Drenthe.
-Drenthe|PI3MEP|Meppel|2m|145.6500|145.0500|82.5|FM|Regionale repeater bij Meppel.
+Friesland|PI2HVN|Heerenveen|70cm|430.0250|431.6250|82.5|FM|70cm-repeater.
+Drenthe|PI3ZOD|Emmen|2m|145.6250|145.0250|-|FM|Repeater in Zuidoost-Drenthe.
 Drenthe|PI2ASN|Assen|70cm|430.0500|431.6500|-|FM|Repeatervermelding in Assen.
-Overijssel|PI3VHP|Den Ham|2m|145.6875|145.0875|77.0|FM|Repeater voor Den Ham.
-Overijssel|PI2KMP|Kampen|70cm|430.1750|431.7750|77.0|FM|Repeater voor Kampen.
-Overijssel|PI2TWE|Enschede|70cm|430.2250|431.8250|-|FM|Repeatervermelding in Twente.
-Overijssel|PI2DEV|Deventer|70cm|438.2500|430.6500|-|FM|Repeater in Deventer.
-Flevoland|PI2NOS|Lelystad / Utrecht|70cm|430.1250|431.7250|77.0|FM|Bovenregionale repeater richting Flevoland.
+Overijssel|PI3VHP|Den Ham|2m|145.6875|145.0875|77.0|FM|Repeater in Den Ham.
+Overijssel|PI2KMP|Kampen|70cm|430.1750|431.7750|77.0|FM|Repeater in Kampen.
+Flevoland|PI2NOS|Lelystad/Utrecht|70cm|430.1250|431.7250|77.0|FM|Bovenregionale repeater.
 Gelderland|PI3APD|Apeldoorn|2m|145.7250|145.1250|77.0|FM|Repeater in Apeldoorn.
-Gelderland|PI3DTC|Doetinchem|2m|145.7000|145.1000|77.0|FM|Repeater voor de Achterhoek.
-Gelderland|PI3NOV|'t Harde|2m|145.6750|145.0750|77.0|FM|Repeater op de Veluwe.
-Gelderland|PI2ANH|Oosterbeek|70cm|430.0500|431.6500|77.0|FM|Repeater bij Arnhem.
-Gelderland|PI2NMG|Nijmegen|2m|145.7500|145.1500|-|FM|Repeater voor Nijmegen.
+Gelderland|PI3DTC|Doetinchem|2m|145.7000|145.1000|77.0|FM|Repeater in de Achterhoek.
 Noord-Holland|PI3ALK|Alkmaar|2m|145.6000|145.0000|88.5|FM|Repeater in Alkmaar.
-Noord-Holland|PI3ZAZ|Assendelft|2m|145.7125|145.1125|88.5|FM|Repeater in de Zaanstreek.
 Noord-Holland|PI3ASD|Amsterdam|2m|145.7875|145.1875|110.9|FM|Repeater in Amsterdam.
-Noord-Holland|PI2ALK|Alkmaar|70cm|430.3750|431.9750|88.5|FM|70cm-repeater in Alkmaar.
-Noord-Holland|PI2HLM|Haarlem|70cm|430.2500|431.8500|88.5|FM|Repeater voor Haarlem.
-Noord-Holland|PI2TXL|Texel|70cm|438.1000|430.5000|88.5|FM|Repeater op Texel.
+Noord-Holland|PI2HLM|Haarlem|70cm|430.2500|431.8500|88.5|FM|Repeater in Haarlem.
 Zuid-Holland|PI3RTD|Rotterdam|2m|145.6750|145.0750|88.5|FM|Repeater in Rotterdam.
-Zuid-Holland|PI3RAZ|Zoetermeer|2m|145.7500|145.1500|88.5|FM|Repeater in Zoetermeer.
-Zuid-Holland|PI2RTD|Rotterdam|70cm|430.3000|431.9000|88.5|FM|70cm-repeater in Rotterdam.
-Zuid-Holland|PI2NWK|Noordwijk|70cm|430.0500|431.6500|88.5|FM|Repeater in de Bollenstreek.
-Zuid-Holland|PI2SWK|Gouda|70cm|430.2250|431.8250|88.5|FM|Repeater voor Gouda.
+Zuid-Holland|PI2NWK|Noordwijk|70cm|430.0500|431.6500|88.5|FM|Repeater in Noordwijk.
 Zeeland|PI3GOE|Goes|2m|145.7750|145.1750|88.5|FM|Repeater in Goes.
-Zeeland|PI3ZVL|Westdorpe|2m|145.6000|145.0000|88.5|FM|Repeater in Zeeuws-Vlaanderen.
-Zeeland|PI2VLI|Vlissingen|70cm|430.3375|431.9375|88.5|FM|70cm-repeater in Vlissingen.
+Zeeland|PI2VLI|Vlissingen|70cm|430.3375|431.9375|88.5|FM|Repeater in Vlissingen.
 Noord-Brabant|PI3BOZ|Bergen op Zoom|2m|145.6250|145.0250|88.5|FM|Repeater in Bergen op Zoom.
-Noord-Brabant|PI2BOZ|Bergen op Zoom|70cm|430.2750|431.8750|88.5|FM|70cm-repeater in Bergen op Zoom.
-Noord-Brabant|PI3BRD|Breda|2m|145.6500|145.0500|71.9|FM|Repeater in Breda.
+Noord-Brabant|PI2BOZ|Bergen op Zoom|70cm|430.2750|431.8750|88.5|FM|70cm-repeater.
 Noord-Brabant|PI3EHV|Eindhoven|2m|145.7000|145.1000|71.9|FM|Repeater in Eindhoven.
-Noord-Brabant|PI2EHV|Eindhoven|70cm|430.1000|431.7000|71.9|FM|70cm-repeater in Eindhoven.
-Noord-Brabant|PI2SHB|Den Bosch|70cm|430.1750|431.7750|71.9|FM|Repeater voor Den Bosch.
 Limburg|PI3SRT|Venlo|2m|145.6000|145.0000|71.9|FM|Repeater in Noord-Limburg.
-Limburg|PI3ZLB|Hulsberg|2m|145.7250|145.1250|71.9|FM|Repeater voor Zuid-Limburg.
-Limburg|PI2NLB|Heijen|70cm|430.2000|431.8000|71.9|FM|70cm-repeater in Noord-Limburg.
-Limburg|PI2VNR|Venray|70cm|430.3500|431.9500|71.9|FM|Repeater in Venray.
+Limburg|PI3ZLB|Hulsberg|2m|145.7250|145.1250|71.9|FM|Repeater in Zuid-Limburg.
 `;
 
-const repeaters=[];
+const repeaters = repeaterData.trim().split("\n").map(line => {
+  const [
+    province, call, place, band,
+    rx, tx, tone, mode, info
+  ] = line.split("|");
 
-repeaterData.trim().split("\n").forEach(line=>{
- const p=line.split("|");
- if(p.length===9){
-  repeaters.push({
-   province:p[0],call:p[1],place:p[2],band:p[3],
-   rx:p[4],tx:p[5],tone:p[6],mode:p[7],info:p[8]
-  });
- }
+  return {
+    province, call, place, band,
+    rx, tx, tone, mode, info
+  };
 });
 
-/* =====================================
-   REPEATER LUISTERLINKS
-===================================== */
+/* ONLINE LUISTERLINKS */
 
-const listenSources={
- "PI3BOZ":{
-  url:"https://www.repeatersboz.nl/luister-online/",
-  text:"🎧 Online luisteren",
-  note:"Externe repeaterluisterpagina."
- },
- "PI2BOZ":{
-  url:"https://www.repeatersboz.nl/luister-online/",
-  text:"🎧 Online luisteren",
-  note:"Externe repeaterluisterpagina."
- },
- "PI3HVN":{
-  url:"https://pihvn.pa8q.nl/",
-  text:"🎧 Luister naar Heerenveen",
-  note:"Externe luisterpagina."
- },
- "PI2HVN":{
-  url:"https://pihvn.pa8q.nl/",
-  text:"🎧 Luister naar Heerenveen",
-  note:"Externe luisterpagina."
- },
- "PI3UTR":{
-  url:"https://www.dynode.nl/audiostreams/",
-  text:"🎧 Open luisterpost 030",
-  note:"Gedeelde scanner. Niet continu uitsluitend PI3UTR."
- }
+const streams = {
+  PI3UTR: [
+    "Gedeelde luisterpost",
+    "https://www.dynode.nl/audiostreams/"
+  ],
+  PI3HVN: [
+    "Luisterpagina Heerenveen",
+    "https://pihvn.pa8q.nl/"
+  ],
+  PI2HVN: [
+    "Luisterpagina Heerenveen",
+    "https://pihvn.pa8q.nl/"
+  ],
+  PI3BOZ: [
+    "Luisterpagina Bergen op Zoom",
+    "https://www.repeatersboz.nl/luister-online/"
+  ],
+  PI2BOZ: [
+    "Luisterpagina Bergen op Zoom",
+    "https://www.repeatersboz.nl/luister-online/"
+  ]
 };
 
-/* =====================================
-   NIEUWE PERSOONLIJKE FREQUENTIELIJST
-=====================================
+/* MIJN FREQUENTIELIJST */
 
-Overgenomen uit de Excel-foto.
+const personal = [
+  ["PI3UTR","Utrecht","Zendamateur","145.57500","144.97500","77.0","FM"],
+  ["AMS GROUND","Amsterdam","Luchtvaart","121.80000",null,null,"AM"],
+  ["AMS TOWER","Amsterdam","Luchtvaart","119.22500",null,null,"AM"],
+  ["AMS APPROACH","Amsterdam","Luchtvaart","119.05000",null,null,"AM"],
+  ["AMS APPROACH","Amsterdam","Luchtvaart","126.67500",null,null,"AM"],
+  ["SLUIS WBD","Wijk bij Duurstede","Scheepvaart","160.67500","156.67500",null,"FM"],
+  ["NS open","NS algemeen","Spoorwegen","429.88750",null,null,"FM"],
+  ["NS CTCSS","NS algemeen","Spoorwegen","429.88750",null,"136.5","FM"],
+  ["NS S&V","NS algemeen","Spoorwegen","429.85000",null,null,"FM"],
+  ["ISS","International Space Station","Ruimtevaart","145.80000",null,null,"FM"],
+  ["SYNTUS 030","Utrecht","Vervoer","419.87500",null,"100.0","FM"],
+  ["GVB Remise","Amsterdam","Vervoer","145.57500",null,"162.2","FM"],
+  ["McDon Neude","Utrecht","Bedrijfsradio","455.81000",null,"192.8","FM"]
+].map(([name, place, category, rx, tx, tone, mode]) => ({
+  name, place, category, rx, tx, tone, mode
+}));
 
-RX is openbaar.
+/* PROVINCIEKNOPPEN */
 
-TX = null betekent:
-geen TX opgegeven in de foto.
+function buildProvinces() {
+  for (const name of provinces) {
+    const fmButton = el("button", undefined, "province");
 
-CTCSS = null betekent:
-geen toon opgegeven in de foto.
+    fmButton.append(
+      el("strong", name),
+      el("small", "📻 FM + 🚨 nood")
+    );
 
-De twee RX/TX-combinaties zijn
-samengevoegd tot één vermelding.
-De overige items blijven afzonderlijk.
-===================================== */
+    fmButton.addEventListener("click", () => openFM(name));
 
-const personalFrequencies=[
- {
-  name:"PI3UTR",
-  place:"Utrecht",
-  category:"Zendamateur",
-  rx:"145.57500",
-  tx:"144.97500",
-  ctcss:"77.0",
-  mode:"FM",
-  info:"2-meter repeater in de regio Utrecht. De Excel-lijst bevat een aparte RX- en TX-regel met CTCSS 77,0 Hz."
- },
- {
-  name:"AMS GROUND",
-  place:"Amsterdam",
-  category:"Luchtvaart",
-  rx:"121.80000",
-  tx:null,
-  ctcss:null,
-  mode:"AM",
-  info:"Luchtvaartfrequentie, in je lijst opgenomen als Amsterdam Ground."
- },
- {
-  name:"AMS TOWER",
-  place:"Amsterdam",
-  category:"Luchtvaart",
-  rx:"119.22500",
-  tx:null,
-  ctcss:null,
-  mode:"AM",
-  info:"Luchtvaartfrequentie, in je lijst opgenomen als Amsterdam Tower."
- },
- {
-  name:"AMS APPROACH",
-  place:"Amsterdam",
-  category:"Luchtvaart",
-  rx:"119.05000",
-  tx:null,
-  ctcss:null,
-  mode:"AM",
-  info:"Eerste Amsterdam Approach-frequentie uit je lijst."
- },
- {
-  name:"AMS APPROACH",
-  place:"Amsterdam",
-  category:"Luchtvaart",
-  rx:"126.67500",
-  tx:null,
-  ctcss:null,
-  mode:"AM",
-  info:"Tweede Amsterdam Approach-frequentie uit je lijst."
- },
- {
-  name:"SLUIS WBD",
-  place:"Wijk bij Duurstede",
-  category:"Scheepvaart",
-  rx:"160.67500",
-  tx:"156.67500",
-  ctcss:null,
-  mode:"FM",
-  info:"Sluisfrequenties uit je lijst. De RX- en TX-regels zijn als één vermelding samengevoegd. Controleer de actuele kanaaltoewijzing."
- },
- {
-  name:"NS open",
-  place:"NS algemeen",
-  category:"Spoorwegen",
-  rx:"429.88750",
-  tx:null,
-  ctcss:null,
-  mode:"FM",
-  info:"Spoorwegfrequentie uit je lijst, aangeduid als NS open."
- },
- {
-  name:"NS CTCSS",
-  place:"NS algemeen",
-  category:"Spoorwegen",
-  rx:"429.88750",
-  tx:null,
-  ctcss:"136.5",
-  mode:"FM",
-  info:"Dezelfde RX-frequentie als NS open, maar in de Excel-lijst geprogrammeerd met CTCSS 136,5 Hz."
- },
- {
-  name:"NS S&V",
-  place:"NS algemeen",
-  category:"Spoorwegen",
-  rx:"429.85000",
-  tx:null,
-  ctcss:null,
-  mode:"FM",
-  info:"Spoorwegfrequentie uit je lijst, aangeduid als NS S&V."
- },
- {
-  name:"ISS",
-  place:"International Space Station",
-  category:"Ruimtevaart",
-  rx:"145.80000",
-  tx:null,
-  ctcss:null,
-  mode:"FM",
-  info:"Bekende amateurspraakfrequentie voor uitzendingen vanaf het ISS. Er zijn niet voortdurend uitzendingen."
- },
- {
-  name:"SYNTUS 030",
-  place:"Utrecht",
-  category:"Vervoer",
-  rx:"419.87500",
-  tx:null,
-  ctcss:"100.0",
-  mode:"FM",
-  info:"Vervoersfrequentie uit je Excel-lijst, aangeduid als Syntus 030."
- },
- {
-  name:"GVB Remise",
-  place:"Amsterdam",
-  category:"Vervoer",
-  rx:"145.57500",
-  tx:null,
-  ctcss:"162.2",
-  mode:"FM",
-  info:"Frequentievermelding uit je Excel-lijst. De combinatie van naam en frequentie is niet onafhankelijk bevestigd."
- },
- {
-  name:"McDon Neude",
-  place:"Utrecht",
-  category:"Bedrijfsradio",
-  rx:"455.81000",
-  tx:null,
-  ctcss:"192.8",
-  mode:"FM",
-  info:"Frequentie uit je Excel-lijst, aangeduid als McDon Neude. Geen bevestiging van actuele toewijzing."
- }
-];
+    document.getElementById("fmProvinces").append(fmButton);
 
-/* =====================================
-   ELEMENT MAKEN
-===================================== */
+    const repeaterButton = el("button", undefined, "province");
 
-function el(tag,text,className){
- const element=document.createElement(tag);
- if(text!==undefined)element.textContent=text;
- if(className)element.className=className;
- return element;
-}
+    const count = repeaters.filter(r => r.province === name).length;
 
-/* =====================================
-   PROVINCIES
-===================================== */
+    repeaterButton.append(
+      el("strong", name),
+      el("small", "📡 " + count + " repeaters")
+    );
 
-function renderProvinceButtons(){
- const fmGrid=document.getElementById("fmProvinces");
- const amGrid=document.getElementById("amateurProvinces");
+    repeaterButton.addEventListener("click", () => openAmateur(name));
 
- fmGrid.replaceChildren();
- amGrid.replaceChildren();
-
- provinces.forEach(([name,emoji])=>{
-  const fmBtn=el("button",undefined,"province");
-  fmBtn.append(
-   el("strong",emoji+" "+name),
-   el("small","📻 FM + 🚨 Nood")
-  );
-  fmBtn.onclick=()=>openFM(name);
-  fmGrid.appendChild(fmBtn);
-
-  const count=repeaters.filter(r=>r.province===name).length;
-
-  const amBtn=el("button",undefined,"province");
-  amBtn.append(
-   el("strong",emoji+" "+name),
-   el("small","📡 "+count+" repeaters")
-  );
-  amBtn.onclick=()=>openAmateur(name);
-  amGrid.appendChild(amBtn);
- });
-}
-
-/* =====================================
-   FM RADIO
-===================================== */
-
-function openFM(name){
- selectedFM=name;
- const emoji=provinces.find(p=>p[0]===name)?.[1]||"📻";
-
- document.getElementById("fmRegionTitle").textContent=
-  emoji+" "+name;
-
- document.getElementById("fmSearch").value="";
-
- const grid=document.getElementById("emergencyGrid");
- grid.replaceChildren();
-
- (emergency[name]||[]).forEach(([station,freq,place])=>{
-  const item=el("div",undefined,"emergency-item");
-  item.append(
-   el("span","🚨 NOODFREQUENTIE","badge red"),
-   el("h3",station),
-   el("strong",freq+" MHz"),
-   el("small","📍 "+place)
-  );
-  grid.appendChild(item);
- });
-
- renderFM();
- navigate("fmRegion");
-}
-
-function renderFM(){
- const query=document.getElementById("fmSearch")
-  .value.toLowerCase().trim();
-
- const filtered=fmStations
-  .filter(s=>s.province===selectedFM)
-  .filter(s=>
-   (s.name+" "+s.freq+" "+s.place)
-   .toLowerCase().includes(query)
-  )
-  .sort((a,b)=>Number(a.freq)-Number(b.freq));
-
- document.getElementById("fmCount").textContent=
-  filtered.length+" vermeldingen";
-
- const tbody=document.getElementById("fmRows");
- tbody.replaceChildren();
-
- filtered.forEach(s=>{
-  const tr=el("tr");
-  if(s.emergency)tr.className="nood-row";
-
-  const nameCell=el("td");
-  const wrapper=el("div",undefined,"station-name");
-
-  wrapper.appendChild(el("strong",s.name));
-
-  if(s.emergency){
-   wrapper.appendChild(
-    el("span","🚨 NOODFREQUENTIE","badge red")
-   );
+    document.getElementById("amateurProvinces").append(repeaterButton);
   }
-
-  nameCell.appendChild(wrapper);
-
-  tr.append(
-   el("td",s.freq+" MHz","freq"),
-   nameCell,
-   el("td",s.place)
-  );
-  tbody.appendChild(tr);
- });
-
- if(!filtered.length){
-  const row=el("tr");
-  const cell=el("td","Geen zenders gevonden.","empty");
-  cell.colSpan=3;row.appendChild(cell);tbody.appendChild(row);
- }
 }
 
-document.getElementById("fmSearch").oninput=renderFM;
+/* FM TONEN */
 
-/* =====================================
-   ZENDAMATEURS
-===================================== */
+function openFM(name) {
+  selectedFM = name;
 
-function openAmateur(name){
- selectedAmateur=name;
- const emoji=provinces.find(p=>p[0]===name)?.[1]||"📡";
+  document.getElementById("fmTitle").textContent =
+    "📻 FM-radio " + name;
 
- document.getElementById("amateurRegionTitle").textContent=
-  emoji+" Repeaters "+name;
+  const list = document.getElementById("emergencyList");
+  list.replaceChildren();
 
- document.getElementById("repeaterSearch").value="";
- renderRepeaters();
- navigate("amateurRegion");
+  (emergency[name] || []).forEach(([station, mhz, place]) => {
+    const card = el("div", undefined, "card");
+
+    card.append(
+      el("span", "🚨 NOODFREQUENTIE", "badge red"),
+      el("h3", station),
+      el("strong", mhz + " MHz"),
+      el("p", place)
+    );
+
+    list.append(card);
+  });
+
+  document.getElementById("fmSearch").value = "";
+
+  renderFM();
+  navigate("fmDetail");
 }
 
-function createField(label,value,locked=false,rx=false){
- const field=el("div",undefined,"field");
+function renderFM() {
+  const query = document.getElementById("fmSearch")
+    .value.toLowerCase().trim();
 
- if(locked&&!unlocked)field.classList.add("locked");
- if(rx)field.classList.add("rx");
+  const results = fm
+    .filter(s => s.province === selectedFM)
+    .filter(s =>
+      (s.name + " " + s.place + " " + s.mhz)
+        .toLowerCase().includes(query)
+    )
+    .sort((a, b) => Number(a.mhz) - Number(b.mhz));
 
- field.append(
-  el("small",label),
-  el("strong",locked&&!unlocked?"🔒 Verborgen":value)
- );
- return field;
+  document.getElementById("fmCount").textContent =
+    results.length + " frequenties";
+
+  const tbody = document.getElementById("fmRows");
+  tbody.replaceChildren();
+
+  results.forEach(s => {
+    const row = el("tr");
+
+    const nameCell = el("td");
+    nameCell.append(el("strong", s.name));
+
+    if (s.nood) {
+      nameCell.append(" ", el("span", "NOOD", "badge red"));
+    }
+
+    row.append(
+      el("td", s.mhz + " MHz", "freq"),
+      nameCell,
+      el("td", s.place)
+    );
+
+    tbody.append(row);
+  });
 }
 
-function addPI3UTRPhoto(container){
- const image=document.createElement("img");
- image.src="foto1.png";
- image.alt="PI3UTR repeater - Hobbyscoop";
- image.className="repeater-photo";
- image.loading="lazy";
+/* REPEATERS */
 
- const credit=el("div",undefined,"photo-credit");
- credit.appendChild(document.createTextNode("📷 Fotobron: "));
+function openAmateur(name) {
+  selectedAmateur = name;
 
- const link=el("a","Hobbyscoop – PI3UTR");
- link.href="https://hobbyscoop.nl/status/pi3utr/";
- link.target="_blank";
- link.rel="noopener noreferrer";
+  document.getElementById("amateurTitle").textContent =
+    "📡 Repeaters " + name;
 
- credit.appendChild(link);
+  document.getElementById("repeaterSearch").value = "";
 
- image.onerror=()=>{
-  image.hidden=true;
-  container.appendChild(el(
-   "p",
-   "Upload foto1.png naast index.html om de foto te tonen."
-  ));
- };
-
- container.append(image,credit);
-}
-
-const listenSources={
- "PI3BOZ":"https://www.repeatersboz.nl/luister-online/",
- "PI2BOZ":"https://www.repeatersboz.nl/luister-online/",
- "PI3HVN":"https://pihvn.pa8q.nl/",
- "PI2HVN":"https://pihvn.pa8q.nl/",
- "PI3UTR":"https://www.dynode.nl/audiostreams/"
-};
-
-function createListenBox(r){
- const source=listenSources[r.call];
- const box=el("div",undefined,source?"listen-box":"listen-box missing");
-
- if(source){
-  box.appendChild(el("h3","🎧 Online luistermogelijkheid"));
-
-  const link=el("a","Open luisterpagina ↗","listen-button");
-  link.href=source;
-  link.target="_blank";
-  link.rel="noopener noreferrer";
-  box.appendChild(link);
-
-  box.appendChild(el(
-   "p",
-   r.call==="PI3UTR"
-    ?"Gedeelde scanner die meerdere repeaters scant."
-    :"Externe luisterpagina, beschikbaarheid kan variëren.",
-   "listen-note"
-  ));
- }else{
-  box.appendChild(el("h3","🎧 Geen directe stream bekend"));
-  const link=el("a","Bekijk WebSDR-mogelijkheden ↗");
-  link.href="https://elinek.nl/hf-internetontvangst/websdr-vhf/";
-  link.target="_blank";
-  link.rel="noopener noreferrer";
-  box.appendChild(link);
- }
- return box;
-}
-
-function renderRepeaters(){
- const query=document.getElementById("repeaterSearch")
-  .value.toLowerCase().trim();
-
- const filtered=repeaters
-  .filter(r=>r.province===selectedAmateur)
-  .filter(r=>
-   (r.call+" "+r.place+" "+r.band+" "+r.rx)
-    .toLowerCase().includes(query)
-  )
-  .sort((a,b)=>Number(a.rx)-Number(b.rx));
-
- const grid=document.getElementById("repeaterGrid");
- grid.replaceChildren();
-
- document.getElementById("repeaterCount").textContent=
-  filtered.length+" repeaters";
-
- filtered.forEach(r=>{
-  const card=el("article",undefined,"repeater");
-  const head=el("div",undefined,"repeater-head");
-  const badges=el("div");
-
-  badges.append(
-   el("span",r.band,"badge blue"),
-   document.createTextNode(" "),
-   el("span",r.mode,"badge")
-  );
-
-  head.append(el("span",r.call,"call"),badges);
-  card.appendChild(head);
-  card.appendChild(el("p","📍 "+r.place));
-
-  const fields=el("div",undefined,"fields");
-
-  fields.append(
-   createField("RX",r.rx+" MHz",false,true),
-   createField("TX",r.tx+" MHz",true),
-   createField(
-    "CTCSS",
-    r.tone==="-"?"Niet bevestigd":r.tone+" Hz",
-    true
-   ),
-   createField("MODUS",r.mode)
-  );
-
-  card.appendChild(fields);
-  card.appendChild(createListenBox(r));
-
-  const info=el("div",undefined,"repeater-info");
-  info.append(el("h3","ℹ️ Over deze repeater"),el("p",r.info));
-
-  if(r.call==="PI3UTR"&&r.province==="Utrecht"){
-   addPI3UTRPhoto(info);
-  }
-
-  card.appendChild(info);
-  grid.appendChild(card);
- });
-
- if(!filtered.length){
-  grid.appendChild(el("div","Geen repeaters gevonden.","card empty"));
- }
-}
-
-document.getElementById("repeaterSearch").oninput=renderRepeaters;
-
-/* =====================================
-   WACHTWOORD
-   GEDEELD DOOR BEIDE PAGINA'S
-===================================== */
-
-const passwordInput=document.getElementById("password");
-const passwordMessage=document.getElementById("passwordMessage");
-const unlockButton=document.getElementById("unlockButton");
-const lockButton=document.getElementById("lockButton");
-
-function updateLockUI(){
- passwordInput.hidden=unlocked;
- unlockButton.hidden=unlocked;
- lockButton.hidden=!unlocked;
-
- document.getElementById("frequencyUnlockButton").hidden=unlocked;
- document.getElementById("frequencyLockButton").hidden=!unlocked;
-
- document.getElementById("personalLockStatus").textContent=
-  unlocked
-   ?"✅ TX en CTCSS zichtbaar. Geen zendbevoegdheid."
-   :"🔒 TX en CTCSS zijn vergrendeld.";
-
- passwordMessage.textContent=unlocked
-  ?"✅ Instellingen zichtbaar."
-  :"🔒 Vergrendeld.";
-
- passwordMessage.style.color=unlocked
-  ?"var(--green)"
-  :"var(--muted)";
-}
-
-function unlockWithPassword(value){
- if(value===PASSWORD){
-  unlocked=true;
-  passwordInput.value="";
-  updateLockUI();
   renderRepeaters();
-  renderPersonalFrequencies();
-  return true;
- }
- return false;
+  navigate("amateurDetail");
 }
 
-unlockButton.onclick=()=>{
- if(!unlockWithPassword(passwordInput.value)){
-  passwordMessage.textContent="❌ Verkeerd wachtwoord.";
-  passwordMessage.style.color="var(--red)";
- }
-};
+function createField(label, value, secret) {
+  const field = el("div", undefined, "field");
 
-passwordInput.addEventListener("keydown",event=>{
- if(event.key==="Enter")unlockButton.click();
-});
+  field.append(
+    el("small", label),
+    el("strong", secret && !unlocked ? "🔒 Verborgen" : value)
+  );
 
-function lockAll(){
- unlocked=false;
- updateLockUI();
- renderRepeaters();
- renderPersonalFrequencies();
+  return field;
 }
 
-lockButton.onclick=lockAll;
+function renderRepeaters() {
+  const query = document.getElementById("repeaterSearch")
+    .value.toLowerCase().trim();
 
-document.getElementById("frequencyUnlockButton").onclick=()=>{
- const entered=prompt("Voer het websitewachtwoord in:");
+  const results = repeaters.filter(r =>
+    r.province === selectedAmateur &&
+    (r.call + " " + r.place + " " + r.rx)
+      .toLowerCase().includes(query)
+  );
 
- if(entered===null)return;
+  document.getElementById("repeaterCount").textContent =
+    results.length + " repeaters";
 
- if(!unlockWithPassword(entered)){
-  alert("Verkeerd wachtwoord.");
- }
-};
+  const list = document.getElementById("repeaterList");
+  list.replaceChildren();
 
-document.getElementById("frequencyLockButton").onclick=lockAll;
+  results.forEach(r => {
+    const card = el("article", undefined, "card");
 
-/* =====================================
-   PERSOONLIJKE FREQUENTIES
-===================================== */
+    card.append(
+      el("div", r.call, "call"),
+      el("p", "📍 " + r.place + " · " + r.band + " · " + r.mode)
+    );
 
-function buildPlaceFilter(){
- const select=document.getElementById("placeFilter");
+    const fields = el("div", undefined, "fields");
 
- const places=[
-  ...new Set(personalFrequencies.map(f=>f.place))
- ].sort((a,b)=>a.localeCompare(b,"nl"));
+    fields.append(
+      createField("RX", r.rx + " MHz", false),
+      createField("TX", r.tx + " MHz", true),
+      createField("CTCSS", r.tone === "-" ? "Niet bevestigd" : r.tone + " Hz", true),
+      createField("Modus", r.mode, false)
+    );
 
- places.forEach(place=>{
-  const option=document.createElement("option");
-  option.value=place;
-  option.textContent=place;
-  select.appendChild(option);
- });
-}
+    card.append(fields, el("p", r.info));
 
-function createFrequencyData(label,value,secret=false){
- const item=el("div",undefined,"freq-data-item");
+    if (streams[r.call]) {
+      const [label, url] = streams[r.call];
 
- if(secret&&!unlocked)item.classList.add("secret");
+      const link = el("a", "🎧 " + label + " ↗", "btn secondary");
 
- item.append(
-  el("small",label),
-  el("strong",secret&&!unlocked?"🔒 Verborgen":value)
- );
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
 
- return item;
-}
+      card.append(link);
+    } else {
+      card.append(
+        el("p", "🎧 Geen directe online stream bekend.")
+      );
+    }
 
-function renderPersonalFrequencies(){
- const search=document.getElementById("frequencySearch")
-  .value.trim().toLocaleLowerCase("nl");
+    if (r.call === "PI3UTR" && r.province === "Utrecht") {
+      const image = el("img");
+      image.src = "foto1.png";
+      image.alt = "PI3UTR repeater, bron Hobbyscoop";
+      image.className = "photo";
 
- const place=document.getElementById("placeFilter").value;
- const mode=document.getElementById("modeFilter").value;
+      image.onerror = () => image.remove();
 
- const filtered=personalFrequencies
-  .filter(f=>!place||f.place===place)
-  .filter(f=>!mode||f.mode===mode)
-  .filter(f=>{
-   const text=[
-    f.name,f.place,f.category,f.rx,f.mode
-   ].join(" ").toLocaleLowerCase("nl");
+      const credit = el("a", "📷 Fotobron: Hobbyscoop – PI3UTR ↗");
 
-   return text.includes(search);
+      credit.href = "https://hobbyscoop.nl/status/pi3utr/";
+      credit.target = "_blank";
+      credit.rel = "noopener noreferrer";
+
+      card.append(image, credit);
+    }
+
+    list.append(card);
   });
-
- document.getElementById("frequencyCount").textContent=
-  filtered.length+" van "+personalFrequencies.length+" vermeldingen";
-
- const list=document.getElementById("frequencyList");
- list.replaceChildren();
-
- filtered.forEach(f=>{
-  const card=el("article",undefined,"freq-card");
-
-  const head=el("div",undefined,"freq-card-head");
-  const left=el("div");
-  left.append(
-   el("h3",f.name),
-   el("div","📍 "+f.place,"freq-location")
-  );
-
-  const badges=el("div",undefined,"freq-badges");
-
-  badges.append(
-   el("span",f.mode,f.mode==="AM"?"badge orange":"badge blue"),
-   el("span",f.category,"badge gray")
-  );
-
-  head.append(left,badges);
-  card.appendChild(head);
-
-  const data=el("div",undefined,"freq-card-data");
-
-  data.append(
-   createFrequencyData("RX FREQUENTIE",f.rx+" MHz"),
-   createFrequencyData(
-    "TX FREQUENTIE",
-    f.tx?f.tx+" MHz":"Niet opgegeven",
-    true
-   ),
-   createFrequencyData(
-    "CTCSS TOON",
-    f.ctcss?f.ctcss+" Hz":"Niet opgegeven",
-    true
-   )
-  );
-
-  card.appendChild(data);
-  card.appendChild(el("p",f.info,"freq-description"));
-
-  list.appendChild(card);
- });
-
- if(!filtered.length){
-  list.appendChild(
-   el("div","Geen frequenties gevonden.","card empty")
-  );
- }
 }
 
-document.getElementById("frequencySearch")
- .addEventListener("input",renderPersonalFrequencies);
+/* PERSOONLIJKE FREQUENTIES */
+
+function buildPlaceFilter() {
+  const select = document.getElementById("placeFilter");
+
+  const places = [...new Set(personal.map(p => p.place))].sort();
+
+  places.forEach(place => {
+    const option = el("option", place);
+    option.value = place;
+    select.append(option);
+  });
+}
+
+function renderPersonal() {
+  const query = document.getElementById("personalSearch")
+    .value.toLowerCase().trim();
+
+  const place = document.getElementById("placeFilter").value;
+  const mode = document.getElementById("modeFilter").value;
+
+  const results = personal.filter(p =>
+    (!place || p.place === place) &&
+    (!mode || p.mode === mode) &&
+    (p.name + " " + p.place + " " + p.rx)
+      .toLowerCase().includes(query)
+  );
+
+  document.getElementById("personalCount").textContent =
+    results.length + " van " + personal.length + " frequenties";
+
+  const list = document.getElementById("personalList");
+  list.replaceChildren();
+
+  results.forEach(p => {
+    const card = el("article", undefined, "card");
+
+    card.append(
+      el("h3", p.name),
+      el("p", "📍 " + p.place + " · " + p.category + " · " + p.mode)
+    );
+
+    const fields = el("div", undefined, "fields");
+
+    fields.append(
+      createField("RX", p.rx + " MHz", false),
+      createField("TX", p.tx ? p.tx + " MHz" : "Niet opgegeven", true),
+      createField("CTCSS", p.tone ? p.tone + " Hz" : "Niet opgegeven", true)
+    );
+
+    card.append(fields);
+    list.append(card);
+  });
+}
+
+/* WACHTWOORD */
+
+function updateLock() {
+  document.getElementById("unlockBtn").hidden = unlocked;
+  document.getElementById("personalUnlock").hidden = unlocked;
+
+  document.getElementById("lockBtn").hidden = !unlocked;
+  document.getElementById("personalLock").hidden = !unlocked;
+
+  const status = unlocked
+    ? "✅ Instellingen zichtbaar (geen zendbevoegdheid)"
+    : "🔒 Vergrendeld";
+
+  document.getElementById("lockStatus").textContent = status;
+  document.getElementById("personalStatus").textContent = status;
+
+  renderRepeaters();
+  renderPersonal();
+}
+
+function unlock() {
+  const value = prompt("Voer het demo-wachtwoord in:");
+
+  if (value === null) return;
+
+  if (value === PASSWORD) {
+    unlocked = true;
+    updateLock();
+  } else {
+    alert("Verkeerd wachtwoord.");
+  }
+}
+
+function lock() {
+  unlocked = false;
+  updateLock();
+}
+
+document.getElementById("unlockBtn").onclick = unlock;
+document.getElementById("personalUnlock").onclick = unlock;
+
+document.getElementById("lockBtn").onclick = lock;
+document.getElementById("personalLock").onclick = lock;
+
+/* ZOEKFUNCTIES */
+
+document.getElementById("fmSearch")
+  .addEventListener("input", renderFM);
+
+document.getElementById("repeaterSearch")
+  .addEventListener("input", renderRepeaters);
+
+document.getElementById("personalSearch")
+  .addEventListener("input", renderPersonal);
 
 document.getElementById("placeFilter")
- .addEventListener("change",renderPersonalFrequencies);
+  .addEventListener("change", renderPersonal);
 
 document.getElementById("modeFilter")
- .addEventListener("change",renderPersonalFrequencies);
+  .addEventListener("change", renderPersonal);
 
-document.getElementById("resetFrequencyFilters").onclick=()=>{
- document.getElementById("frequencySearch").value="";
- document.getElementById("placeFilter").value="";
- document.getElementById("modeFilter").value="";
- renderPersonalFrequencies();
-};
+document.getElementById("fmBack").onclick = () => navigate("fm");
 
-/* =====================================
-   WEBSITE STARTEN
-===================================== */
+document.getElementById("amateurBack").onclick = () => navigate("amateur");
 
-document.getElementById("year").textContent=
- new Intl.DateTimeFormat("nl-NL",{
-  year:"numeric",
-  timeZone:TIMEZONE
- }).format(new Date());
+/* WEBSITE STARTEN */
 
-renderProvinceButtons();
+buildClock();
+updateClock();
+setInterval(updateClock, 1000);
+
+buildProvinces();
 buildPlaceFilter();
-updateLockUI();
-renderPersonalFrequencies();
+updateLock();
 
-const initialPage=location.hash.substring(1);
-showPage(pages.includes(initialPage)?initialPage:"home");
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+showPage();
 
 </script>
-
 </body>
 </html>
